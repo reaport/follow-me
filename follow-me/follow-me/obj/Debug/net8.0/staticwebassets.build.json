@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "1c9S1DYncAfM7MOwI+H+KlIoFV1XcKY2cC0tTv5nEhU=",
+  "Source": "follow-me",
+  "BasePath": "_content/follow-me",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

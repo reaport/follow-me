@@ -1,0 +1,120 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Follow Me API",
+    "description": "API для управления машинами сопровождения самолетов. Для подробной информации смотрите [документацию](https://docs.google.com/document/d/1-A99pLnf-T3KJgUowspAIestsUUSzbDQ0Sfr5KvSmdI/edit?tab=t.xxby8r33la9d).",
+    "contact": {
+      "name": "Ваше имя",
+      "url": "https://example.com",
+      "email": "ваш.email@example.com"
+    },
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/followme_api/get_car": {
+      "post": {
+        "tags": [
+          "FollowMe"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FollowMeRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FollowMeRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FollowMeRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/followme_api/navigate": {
+      "post": {
+        "tags": [
+          "Navigation"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NavigationRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NavigationRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NavigationRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "FollowMeRequestDto": {
+        "type": "object",
+        "properties": {
+          "airplaneId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "followType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "gateNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "runawayNumber": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NavigationRequestDto": {
+        "type": "object",
+        "properties": {
+          "navigate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "JWT Authorization header using the Bearer scheme.",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
