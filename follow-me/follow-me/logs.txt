@@ -1,2 +1,75 @@
 26.02.2025 19:42:53 | FollowMeController | INFO | Запрос на получение машины сопровождения.
 26.02.2025 19:42:53 | GroundControlService | INFO | Регистрация транспорта типа follow-me.
+26.02.2025 20:10:41 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+26.02.2025 20:10:41 | GroundControlService | INFO | Регистрация транспорта типа follow-me.
+26.02.2025 20:16:20 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+26.02.2025 20:16:20 | GroundControlService | INFO | Регистрация транспорта типа follow-me.
+26.02.2025 21:00:40 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+26.02.2025 21:00:40 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+26.02.2025 21:00:40 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID follow-me_1.
+26.02.2025 21:05:03 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+26.02.2025 21:05:03 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+26.02.2025 21:05:03 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID follow-me_1.
+26.02.2025 21:05:03 | FollowMeController | ERROR | Неверный формат VehicleId: follow-me_1
+26.02.2025 21:06:48 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+26.02.2025 21:06:48 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+26.02.2025 21:06:48 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID follow-me_1.
+26.02.2025 21:06:48 | FollowMeController | ERROR | Неверный формат VehicleId: follow-me_1
+26.02.2025 21:07:32 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+26.02.2025 21:07:32 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+26.02.2025 21:07:32 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID follow-me_1.
+26.02.2025 21:07:32 | FollowMeController | ERROR | Неверный формат VehicleId: follow-me_1
+26.02.2025 21:07:54 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+26.02.2025 21:07:54 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+26.02.2025 21:07:54 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID follow-me_1.
+26.02.2025 21:07:54 | FollowMeController | ERROR | Неверный формат VehicleId: follow-me_1
+26.02.2025 21:11:29 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+26.02.2025 21:11:29 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+26.02.2025 21:11:29 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+26.02.2025 21:11:29 | FollowMeController | INFO | Машина зарегистрирована. ID: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+26.02.2025 21:11:29 | GroundControlStub | INFO | Запрос маршрута из 4 в 2.
+26.02.2025 21:11:29 | GroundControlStub | INFO | Заглушка: Маршрут: node_1 -> node_2 -> node_3.
+26.02.2025 21:11:29 | FollowMeController | INFO | Маршрут получен: node_1 -> node_2 -> node_3
+26.02.2025 21:11:29 | FollowMeController | INFO | Запрос на перемещение из node_1 в node_2.
+26.02.2025 21:11:29 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из node_1 в node_2.
+26.02.2025 21:11:29 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+26.02.2025 21:11:29 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+26.02.2025 21:11:29 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+26.02.2025 21:11:29 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+26.02.2025 21:11:39 | FollowMeController | INFO | Запрос на перемещение из node_2 в node_3.
+26.02.2025 21:11:39 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из node_2 в node_3.
+26.02.2025 21:11:39 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+26.02.2025 21:11:39 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+26.02.2025 21:11:39 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+26.02.2025 21:11:39 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+26.02.2025 21:11:49 | FollowMeController | INFO | Уведомление о прибытии в узел node_3.
+26.02.2025 21:11:49 | GroundControlStub | INFO | Уведомление о прибытии транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 в узел node_3.
+26.02.2025 21:11:49 | GroundControlStub | INFO | Заглушка: Уведомление успешно отправлено.
+26.02.2025 21:11:49 | FollowMeController | INFO | Машина успешно завершила маршрут.
+26.02.2025 21:21:45 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+26.02.2025 21:21:45 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+26.02.2025 21:21:45 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+26.02.2025 21:21:45 | FollowMeController | INFO | Машина зарегистрирована. ID: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+26.02.2025 21:21:45 | GroundControlStub | INFO | Запрос маршрута из 4 в 2.
+26.02.2025 21:21:45 | GroundControlStub | INFO | Заглушка: Маршрут: node_1 -> node_2 -> node_3.
+26.02.2025 21:21:45 | FollowMeController | INFO | Маршрут получен: node_1 -> node_2 -> node_3
+26.02.2025 21:21:45 | FollowMeController | INFO | Ответ отправлен: {"CarId":"3fa85f64-5717-4562-b3fc-2c963f66afa6","TimeToWait":10}
+26.02.2025 21:21:45 | FollowMeController | INFO | Начало обработки маршрута для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+26.02.2025 21:21:45 | FollowMeController | INFO | Обработка перемещения из node_1 в node_2.
+26.02.2025 21:21:45 | FollowMeController | INFO | Запрос на перемещение из node_1 в node_2.
+26.02.2025 21:21:45 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из node_1 в node_2.
+26.02.2025 21:21:45 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+26.02.2025 21:21:45 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+26.02.2025 21:21:45 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+26.02.2025 21:21:45 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+26.02.2025 21:21:55 | FollowMeController | INFO | Обработка перемещения из node_2 в node_3.
+26.02.2025 21:21:55 | FollowMeController | INFO | Запрос на перемещение из node_2 в node_3.
+26.02.2025 21:21:55 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из node_2 в node_3.
+26.02.2025 21:21:55 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+26.02.2025 21:21:55 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+26.02.2025 21:21:55 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+26.02.2025 21:21:55 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+26.02.2025 21:22:05 | FollowMeController | INFO | Уведомление о прибытии в узел node_3.
+26.02.2025 21:22:05 | GroundControlStub | INFO | Уведомление о прибытии транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 в узел node_3.
+26.02.2025 21:22:05 | GroundControlStub | INFO | Заглушка: Уведомление успешно отправлено.
+26.02.2025 21:22:05 | FollowMeController | INFO | Маршрут для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6 успешно завершен.

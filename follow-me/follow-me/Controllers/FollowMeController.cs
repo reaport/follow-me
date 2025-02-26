@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FollowMe.Services;
 using FollowMe.Data;
 using FollowMe.Utils;
+using System.Text.Json;
 
 namespace FollowMe.Controllers
 {
@@ -22,9 +23,9 @@ namespace FollowMe.Controllers
             new Car { Id = Guid.NewGuid(), Status = CarStatusEnum.Available, AccompanimentsCount = 0 }
         };
 
-        private readonly GroundControlService _groundControlService;
+        private readonly IGroundControlService _groundControlService;
 
-        public FollowMeController(GroundControlService groundControlService)
+        public FollowMeController(IGroundControlService groundControlService)
         {
             _groundControlService = groundControlService;
         }
@@ -53,7 +54,7 @@ namespace FollowMe.Controllers
                 if (car == null)
                 {
                     Logger.Log("FollowMeController", "ERROR", "Нет доступных машин.");
-                    return StatusCode(500, new ErrorResponseDto { ErrorCode = 500, Message = "InternalServerError" });
+                    return StatusCode(500, new ErrorResponseDto { ErrorCode = 500, Message = "Нет доступных машин." });
                 }
             }
 
@@ -68,7 +69,18 @@ namespace FollowMe.Controllers
 
             // Регистрируем транспорт
             var registrationResponse = await _groundControlService.RegisterVehicle("follow-me");
-            car.Id = Guid.Parse(registrationResponse.VehicleId);
+
+            // Проверяем формат VehicleId
+            if (Guid.TryParse(registrationResponse.VehicleId, out var vehicleId))
+            {
+                car.Id = vehicleId;
+            }
+            else
+            {
+                Logger.Log("FollowMeController", "ERROR", $"Неверный формат VehicleId: {registrationResponse.VehicleId}");
+                return StatusCode(500, new ErrorResponseDto { ErrorCode = 500, Message = $"Неверный формат VehicleId: {registrationResponse.VehicleId}" });
+            }
+
             Logger.Log("FollowMeController", "INFO", $"Машина зарегистрирована. ID: {car.Id}");
 
             // Получаем маршрут от Вышки наземного движения
@@ -81,50 +93,77 @@ namespace FollowMe.Controllers
 
             Logger.Log("FollowMeController", "INFO", $"Маршрут получен: {string.Join(" -> ", route)}");
 
-            // Выполняем движение по маршруту
-            await MoveAlongRoute(car.Id.ToString(), "follow-me", route);
+            // Отправляем OK с данными о машине и временем ожидания
+            var response = new { CarId = car.Id, TimeToWait = timeToWait };
+            Logger.Log("FollowMeController", "INFO", $"Ответ отправлен: {JsonSerializer.Serialize(response)}");
 
-            Logger.Log("FollowMeController", "INFO", "Машина успешно завершила маршрут.");
+            // Запускаем асинхронную задачу для обработки маршрута
+            _ = ProcessRouteAsync(car.Id.ToString(), "follow-me", route);
 
-            return Ok(new { CarId = car.Id, TimeToWait = timeToWait });
+            return Ok(response);
         }
 
-        private async Task MoveAlongRoute(string vehicleId, string vehicleType, string[] route)
+        private async Task ProcessRouteAsync(string vehicleId, string vehicleType, string[] route)
         {
-            for (int i = 0; i < route.Length - 1; i++)
+            try
             {
-                string from = route[i];
-                string to = route[i + 1];
+                Logger.Log("FollowMeController", "INFO", $"Начало обработки маршрута для машины {vehicleId}.");
 
-                Logger.Log("FollowMeController", "INFO", $"Запрос на перемещение из {from} в {to}.");
-
-                // Запрашиваем разрешение на движение
-                double distance = await _groundControlService.RequestMove(vehicleId, vehicleType, from, to);
-
-                if (distance > 0)
+                for (int i = 0; i < route.Length - 1; i++)
                 {
-                    Logger.Log("FollowMeController", "INFO", $"Разрешение получено. Расстояние: {distance}.");
+                    string from = route[i];
+                    string to = route[i + 1];
 
-                    // Если разрешение получено, отправляем сигналы навигации
-                    await _groundControlService.SendNavigationSignal(vehicleId, "follow");
+                    Logger.Log("FollowMeController", "INFO", $"Обработка перемещения из {from} в {to}.");
 
-                    // Имитируем движение (например, задержку)
-                    await Task.Delay(TimeSpan.FromSeconds(distance / 10)); // Примерная задержка
+                    bool movementSuccessful = await ProcessMovementAsync(vehicleId, vehicleType, from, to);
+                    if (!movementSuccessful)
+                    {
+                        Logger.Log("FollowMeController", "WARNING", $"Перемещение из {from} в {to} не удалось. Повторная попытка.");
+                        i--; // Повторяем текущий шаг
+                    }
                 }
-                else
-                {
-                    Logger.Log("FollowMeController", "WARNING", "Разрешение на движение не получено. Повторная попытка через 5 секунд.");
 
-                    // Если разрешение не получено, ждем и повторяем запрос
-                    await Task.Delay(TimeSpan.FromSeconds(5));
-                    i--; // Повторяем текущий шаг
-                }
+                Logger.Log("FollowMeController", "INFO", $"Уведомление о прибытии в узел {route.Last()}.");
+
+                // Уведомляем о прибытии в конечную точку
+                await _groundControlService.NotifyArrival(vehicleId, vehicleType, route.Last());
+
+                Logger.Log("FollowMeController", "INFO", $"Маршрут для машины {vehicleId} успешно завершен.");
             }
+            catch (Exception ex)
+            {
+                Logger.Log("FollowMeController", "ERROR", $"Ошибка при обработке маршрута: {ex.Message}");
+            }
+        }
 
-            Logger.Log("FollowMeController", "INFO", $"Уведомление о прибытии в узел {route.Last()}.");
+        private async Task<bool> ProcessMovementAsync(string vehicleId, string vehicleType, string from, string to)
+        {
+            Logger.Log("FollowMeController", "INFO", $"Запрос на перемещение из {from} в {to}.");
 
-            // Уведомляем о прибытии в конечную точку
-            await _groundControlService.NotifyArrival(vehicleId, vehicleType, route.Last());
+            // Запрашиваем разрешение на движение
+            double distance = await _groundControlService.RequestMove(vehicleId, vehicleType, from, to);
+
+            if (distance > 0)
+            {
+                Logger.Log("FollowMeController", "INFO", $"Разрешение получено. Расстояние: {distance}.");
+
+                // Если разрешение получено, отправляем сигналы навигации
+                await _groundControlService.SendNavigationSignal(vehicleId, "follow");
+
+                // Имитируем движение (например, задержку)
+                await Task.Delay(TimeSpan.FromSeconds(distance / 10)); // Примерная задержка
+
+                return true; // Перемещение успешно
+            }
+            else
+            {
+                Logger.Log("FollowMeController", "WARNING", "Разрешение на движение не получено. Повторная попытка через 5 секунд.");
+
+                // Если разрешение не получено, ждем и повторяем запрос
+                await Task.Delay(TimeSpan.FromSeconds(5));
+                return false; // Перемещение не удалось
+            }
         }
     }
 }

@@ -2,8 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Follow Me API",
-    "description": "API для управления машинами сопровождения самолетов. Для подробной информации смотрите [документацию](https://docs.google.com/document/d/1-A99pLnf-T3KJgUowspAIestsUUSzbDQ0Sfr5KvSmdI/edit?tab=t.xxby8r33la9d).",
-    "version": "1.0.0"
+    "description": "API для управления машинами сопровождения самолетов.",
+    "version": "v1"
   },
   "paths": {
     "/get_car": {
@@ -102,13 +102,6 @@
           }
         },
         "additionalProperties": false
-      }
-    },
-    "securitySchemes": {
-      "Bearer": {
-        "type": "http",
-        "description": "JWT Authorization header using the Bearer scheme.",
-        "scheme": "bearer"
       }
     }
   }

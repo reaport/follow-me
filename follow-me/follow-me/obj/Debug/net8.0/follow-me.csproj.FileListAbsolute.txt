@@ -35,3 +35,5 @@ C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\follow-me.pdb
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\follow-me.genruntimeconfig.cache
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\ref\follow-me.dll
+C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\bin\Debug\net8.0\Castle.Core.dll
+C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\bin\Debug\net8.0\Moq.dll
