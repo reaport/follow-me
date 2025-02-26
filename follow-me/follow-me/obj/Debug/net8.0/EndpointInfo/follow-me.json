@@ -3,15 +3,10 @@
   "info": {
     "title": "Follow Me API",
     "description": "API для управления машинами сопровождения самолетов. Для подробной информации смотрите [документацию](https://docs.google.com/document/d/1-A99pLnf-T3KJgUowspAIestsUUSzbDQ0Sfr5KvSmdI/edit?tab=t.xxby8r33la9d).",
-    "contact": {
-      "name": "Ваше имя",
-      "url": "https://example.com",
-      "email": "ваш.email@example.com"
-    },
     "version": "1.0.0"
   },
   "paths": {
-    "/followme_api/get_car": {
+    "/get_car": {
       "post": {
         "tags": [
           "FollowMe"
@@ -20,17 +15,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/FollowMeRequestDto"
+                "$ref": "#/components/schemas/WeNeedFollowMeRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/FollowMeRequestDto"
+                "$ref": "#/components/schemas/WeNeedFollowMeRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/FollowMeRequestDto"
+                "$ref": "#/components/schemas/WeNeedFollowMeRequestDto"
               }
             }
           }
@@ -42,7 +37,7 @@
         }
       }
     },
-    "/followme_api/navigate": {
+    "/navigate": {
       "post": {
         "tags": [
           "Navigation"
@@ -76,7 +71,17 @@
   },
   "components": {
     "schemas": {
-      "FollowMeRequestDto": {
+      "NavigationRequestDto": {
+        "type": "object",
+        "properties": {
+          "navigate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "WeNeedFollowMeRequestDto": {
         "type": "object",
         "properties": {
           "airplaneId": {
@@ -94,16 +99,6 @@
           "runawayNumber": {
             "type": "integer",
             "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "NavigationRequestDto": {
-        "type": "object",
-        "properties": {
-          "navigate": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

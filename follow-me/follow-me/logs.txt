@@ -1,0 +1,2 @@
+26.02.2025 19:42:53 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+26.02.2025 19:42:53 | GroundControlService | INFO | Регистрация транспорта типа follow-me.

@@ -2,14 +2,14 @@
   {
     "ContainingType": "FollowMe.Controllers.FollowMeController",
     "Method": "GetCar",
-    "RelativePath": "followme_api/get_car",
+    "RelativePath": "get_car",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "FollowMe.Data.FollowMeRequestDto",
+        "Type": "FollowMe.Data.WeNeedFollowMeRequestDto",
         "IsRequired": true
       }
     ],
@@ -18,7 +18,7 @@
   {
     "ContainingType": "FollowMeM.Controllers.NavigationController",
     "Method": "Navigate",
-    "RelativePath": "followme_api/navigate",
+    "RelativePath": "navigate",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
