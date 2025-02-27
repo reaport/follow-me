@@ -1,8 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FollowMe.Services;
 using FollowMe.Data;
 using FollowMe.Utils;
@@ -15,12 +11,10 @@ namespace FollowMe.Controllers
     {
         private static List<Car> cars = new List<Car>
         {
-            new Car { Id = Guid.NewGuid(), Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
-            new Car { Id = Guid.NewGuid(), Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
-            new Car { Id = Guid.NewGuid(), Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
-            new Car { Id = Guid.NewGuid(), Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
-            new Car { Id = Guid.NewGuid(), Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
-            new Car { Id = Guid.NewGuid(), Status = CarStatusEnum.Available, AccompanimentsCount = 0 }
+            new Car { Id = "", Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
+            new Car { Id = "", Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
+            new Car { Id = "", Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
+            new Car { Id = "", Status = CarStatusEnum.Available, AccompanimentsCount = 0 }
         };
 
         private readonly IGroundControlService _groundControlService;
@@ -71,14 +65,14 @@ namespace FollowMe.Controllers
             var registrationResponse = await _groundControlService.RegisterVehicle("follow-me");
 
             // Проверяем формат VehicleId
-            if (Guid.TryParse(registrationResponse.VehicleId, out var vehicleId))
+            if (!string.IsNullOrEmpty(registrationResponse.VehicleId))
             {
-                car.Id = vehicleId;
+                car.Id = registrationResponse.VehicleId;
             }
             else
             {
                 Logger.Log("FollowMeController", "ERROR", $"Неверный формат VehicleId: {registrationResponse.VehicleId}");
-                return StatusCode(500, new ErrorResponseDto { ErrorCode = 500, Message = $"Неверный формат VehicleId: {registrationResponse.VehicleId}" });
+                return await HandleInvalidVehicleId(request);
             }
 
             Logger.Log("FollowMeController", "INFO", $"Машина зарегистрирована. ID: {car.Id}");
@@ -165,5 +159,37 @@ namespace FollowMe.Controllers
                 return false; // Перемещение не удалось
             }
         }
+
+        private async Task<IActionResult> HandleInvalidVehicleId(WeNeedFollowMeRequestDto request)
+        {
+            const int maxAttempts = 3;
+            const int delaySeconds = 30;
+
+            for (int attempt = 1; attempt <= maxAttempts; attempt++)
+            {
+                // Логика для обработки невалидного VehicleId
+                Logger.Log("FollowMeController", "WARNING", "Попытка повторной регистрации машины...");
+
+                // Повторный запрос
+                var registrationResponse = await _groundControlService.RegisterVehicle("follow-me");
+
+                if (!string.IsNullOrEmpty(registrationResponse.VehicleId))
+                {
+                    // Если получили валидный VehicleId, то возвращаем успешный ответ
+                    var car = cars.FirstOrDefault(c => c.Status == CarStatusEnum.Busy);
+                    if (car != null)
+                    {
+                        car.Id = registrationResponse.VehicleId;
+                        return Ok(new { CarId = car.Id, Message = "Машина успешно зарегистрирована после повторной попытки." });
+                    }
+                }
+
+                // Если после повторного запроса VehicleId все еще невалиден, возвращаем ошибку
+                Logger.Log("FollowMeController", "ERROR", "Не удалось зарегистрировать машину после повторной попытки.");
+                await Task.Delay(TimeSpan.FromSeconds(delaySeconds)); // Задержка между попытками
+            }
+            return StatusCode(500, new ErrorResponseDto { ErrorCode = 500, Message = "Не удалось зарегистрировать машину." });
+        }
+
     }
 }
