@@ -13,7 +13,7 @@ namespace FollowMe.Services
             var response = new VehicleRegistrationResponse
             {
                 GarrageNodeId = "garrage_follow-me_1",
-                VehicleId = "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                VehicleId = "000a5f64-5717-4562-b3fc-2c963f66afa6",
                 ServiceSpots = new Dictionary<string, string>
                 {
                     { "airplane_parking_1", "airplane_parking_1_follow-me_1" },
@@ -29,7 +29,13 @@ namespace FollowMe.Services
         {
             Logger.Log("GroundControlStub", "INFO", $"Запрос маршрута из {from} в {to}.");
 
-            var route = new[] { "node_1", "node_2", "node_3" };
+            string[] route;
+            if (from == "garage-node")
+                route = new[]{ "garage-node", "node_1", "from-node" };
+            else if (to == "garage-node")
+                route = new[] { "to-node", "node_3", "garage-node" };
+            else
+                route = new[] { "from-node", "node_2", "to-node" };
             Logger.Log("GroundControlStub", "INFO", $"Заглушка: Маршрут: {string.Join(" -> ", route)}.");
             return Task.FromResult(route);
         }

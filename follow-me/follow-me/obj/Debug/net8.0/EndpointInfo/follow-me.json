@@ -88,17 +88,13 @@
             "type": "string",
             "format": "uuid"
           },
-          "followType": {
-            "type": "integer",
-            "format": "int32"
+          "nodeFrom": {
+            "type": "string",
+            "nullable": true
           },
-          "gateNumber": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "runawayNumber": {
-            "type": "integer",
-            "format": "int32"
+          "nodeTo": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

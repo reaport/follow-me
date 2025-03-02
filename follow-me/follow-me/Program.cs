@@ -26,12 +26,18 @@ var useStubs = builder.Configuration.GetValue<bool>("UseStubs");
 if (useStubs)
 {
     builder.Services.AddScoped<IGroundControlService, GroundControlStubService>();
+    builder.Services.AddScoped<IOrchestratorService, OrchestratorStubService>();
 }
 else
 {
     builder.Services.AddHttpClient<IGroundControlService, GroundControlService>(client =>
     {
         client.BaseAddress = new Uri(builder.Configuration["GroundControlSettings:BaseUrl"]);
+    });
+
+    builder.Services.AddHttpClient<IOrchestratorService, OrchestratorService>(client =>
+    {
+        client.BaseAddress = new Uri(builder.Configuration["OrchestratorSettings:BaseUrl"]);
     });
 }
 

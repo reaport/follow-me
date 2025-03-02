@@ -102,3 +102,325 @@
 27.02.2025 19:11:21 | FollowMeController | INFO | Маршрут для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6 успешно завершен.
 27.02.2025 19:12:47 | FollowMeController | INFO | Запрос на получение машины сопровождения.
 27.02.2025 19:12:47 | FollowMeController | ERROR | Неверный тип FollowType.
+02.03.2025 15:51:32 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+02.03.2025 15:51:32 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+02.03.2025 15:51:32 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:51:32 | FollowMeController | INFO | Машина зарегистрирована. ID: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+02.03.2025 15:51:32 | FollowMeController | INFO | Ответ отправлен: {"CarId":"3fa85f64-5717-4562-b3fc-2c963f66afa6","TimeToWait":false}
+02.03.2025 15:51:32 | FollowMeController | INFO | Начало пути для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:51:32 | FollowMeController | INFO | Движение из гаража до NodeFrom 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:51:32 | FollowMeController | INFO | Начало обработки маршрута для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:51:32 | GroundControlStub | INFO | Запрос маршрута из garage-node в node-1.
+02.03.2025 15:51:32 | GroundControlStub | INFO | Заглушка: Маршрут: node_1 -> node_2 -> node_3.
+02.03.2025 15:51:32 | FollowMeController | INFO | Маршрут получен: node_1 -> node_2 -> node_3
+02.03.2025 15:51:32 | FollowMeController | INFO | Обработка перемещения из garage-node в node-1.
+02.03.2025 15:51:32 | FollowMeController | INFO | Запрос на перемещение из garage-node в node-1.
+02.03.2025 15:51:32 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из garage-node в node-1.
+02.03.2025 15:51:32 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 15:51:32 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 15:51:32 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:51:32 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 15:51:42 | FollowMeController | INFO | Обработка перемещения из garage-node в node-1.
+02.03.2025 15:51:42 | FollowMeController | INFO | Запрос на перемещение из garage-node в node-1.
+02.03.2025 15:51:42 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из garage-node в node-1.
+02.03.2025 15:51:42 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 15:51:42 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 15:51:42 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:51:42 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 15:51:52 | OrchestratorStubService | INFO | Заглушка: Запрос на начало движения для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:51:52 | FollowMeController | INFO | Движение из NodeFrom до NodeTo 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:51:52 | FollowMeController | INFO | Начало обработки маршрута для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:51:52 | GroundControlStub | INFO | Запрос маршрута из node-1 в node-3.
+02.03.2025 15:51:52 | GroundControlStub | INFO | Заглушка: Маршрут: node_1 -> node_2 -> node_3.
+02.03.2025 15:51:52 | FollowMeController | INFO | Маршрут получен: node_1 -> node_2 -> node_3
+02.03.2025 15:51:52 | FollowMeController | INFO | Обработка перемещения из node-1 в node-3.
+02.03.2025 15:51:52 | FollowMeController | INFO | Запрос на перемещение из node-1 в node-3.
+02.03.2025 15:51:52 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из node-1 в node-3.
+02.03.2025 15:51:52 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 15:51:52 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 15:51:52 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:51:52 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 15:52:02 | FollowMeController | INFO | Обработка перемещения из node-1 в node-3.
+02.03.2025 15:52:02 | FollowMeController | INFO | Запрос на перемещение из node-1 в node-3.
+02.03.2025 15:52:02 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из node-1 в node-3.
+02.03.2025 15:52:02 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 15:52:02 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 15:52:02 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:52:02 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 15:52:12 | OrchestratorStubService | INFO | Заглушка: Запрос на окончание движения для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:52:12 | FollowMeController | INFO | Движение из NodeTo до гаража3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:52:12 | FollowMeController | INFO | Начало обработки маршрута для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:52:12 | GroundControlStub | INFO | Запрос маршрута из node-3 в garage-node.
+02.03.2025 15:52:12 | GroundControlStub | INFO | Заглушка: Маршрут: node_1 -> node_2 -> node_3.
+02.03.2025 15:52:12 | FollowMeController | INFO | Маршрут получен: node_1 -> node_2 -> node_3
+02.03.2025 15:52:12 | FollowMeController | INFO | Обработка перемещения из node-3 в garage-node.
+02.03.2025 15:52:12 | FollowMeController | INFO | Запрос на перемещение из node-3 в garage-node.
+02.03.2025 15:52:12 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из node-3 в garage-node.
+02.03.2025 15:52:12 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 15:52:12 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 15:52:12 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:52:12 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 15:52:22 | FollowMeController | INFO | Обработка перемещения из node-3 в garage-node.
+02.03.2025 15:52:22 | FollowMeController | INFO | Запрос на перемещение из node-3 в garage-node.
+02.03.2025 15:52:22 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из node-3 в garage-node.
+02.03.2025 15:52:22 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 15:52:22 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 15:52:22 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 15:52:22 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 15:52:32 | FollowMeController | INFO | Маршрут для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6 успешно завершен.
+02.03.2025 16:05:50 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+02.03.2025 16:05:50 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+02.03.2025 16:05:50 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:05:50 | FollowMeController | INFO | Машина зарегистрирована. ID: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+02.03.2025 16:05:50 | FollowMeController | INFO | Ответ отправлен: {"CarId":"3fa85f64-5717-4562-b3fc-2c963f66afa6","TimeToWait":false}
+02.03.2025 16:05:50 | FollowMeController | INFO | Начало пути для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:05:50 | FollowMeController | INFO | Движение из гаража до NodeFrom 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:05:50 | FollowMeController | INFO | Начало обработки маршрута для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:05:50 | GroundControlStub | INFO | Запрос маршрута из garage-node в FROM.
+02.03.2025 16:05:50 | GroundControlStub | INFO | Заглушка: Маршрут: garage-node -> node_2 -> node_3.
+02.03.2025 16:05:50 | FollowMeController | INFO | Маршрут получен: garage-node -> node_2 -> node_3
+02.03.2025 16:05:50 | FollowMeController | INFO | Обработка перемещения из garage-node в FROM.
+02.03.2025 16:05:50 | FollowMeController | INFO | Запрос на перемещение из garage-node в FROM.
+02.03.2025 16:05:50 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из garage-node в FROM.
+02.03.2025 16:05:50 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:05:50 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:05:50 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:05:50 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:06:00 | FollowMeController | INFO | Обработка перемещения из garage-node в FROM.
+02.03.2025 16:06:00 | FollowMeController | INFO | Запрос на перемещение из garage-node в FROM.
+02.03.2025 16:06:00 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из garage-node в FROM.
+02.03.2025 16:06:00 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:06:00 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:06:00 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:06:00 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:06:10 | OrchestratorStubService | INFO | Заглушка: Запрос на начало движения для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:06:10 | FollowMeController | INFO | Движение из NodeFrom до NodeTo 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:06:10 | FollowMeController | INFO | Начало обработки маршрута для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:06:10 | GroundControlStub | INFO | Запрос маршрута из FROM в TO.
+02.03.2025 16:06:10 | GroundControlStub | INFO | Заглушка: Маршрут: node_3 -> node_4 -> node_5.
+02.03.2025 16:06:10 | FollowMeController | INFO | Маршрут получен: node_3 -> node_4 -> node_5
+02.03.2025 16:06:10 | FollowMeController | INFO | Обработка перемещения из FROM в TO.
+02.03.2025 16:06:10 | FollowMeController | INFO | Запрос на перемещение из FROM в TO.
+02.03.2025 16:06:10 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из FROM в TO.
+02.03.2025 16:06:10 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:06:10 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:06:10 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:06:10 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:06:20 | FollowMeController | INFO | Обработка перемещения из FROM в TO.
+02.03.2025 16:06:20 | FollowMeController | INFO | Запрос на перемещение из FROM в TO.
+02.03.2025 16:06:20 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из FROM в TO.
+02.03.2025 16:06:20 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:06:20 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:06:20 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:06:20 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:06:30 | OrchestratorStubService | INFO | Заглушка: Запрос на окончание движения для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:06:30 | FollowMeController | INFO | Движение из NodeTo до гаража3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:06:30 | FollowMeController | INFO | Начало обработки маршрута для машины 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:06:30 | GroundControlStub | INFO | Запрос маршрута из TO в garage-node.
+02.03.2025 16:06:30 | GroundControlStub | INFO | Заглушка: Маршрут: node_5 -> node_6 -> garage-node.
+02.03.2025 16:06:30 | FollowMeController | INFO | Маршрут получен: node_5 -> node_6 -> garage-node
+02.03.2025 16:06:30 | FollowMeController | INFO | Обработка перемещения из TO в garage-node.
+02.03.2025 16:06:30 | FollowMeController | INFO | Запрос на перемещение из TO в garage-node.
+02.03.2025 16:06:30 | GroundControlStub | INFO | Запрос на перемещение транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6 из TO в garage-node.
+02.03.2025 16:06:30 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:06:30 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:06:30 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 3fa85f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:06:30 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:08:55 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+02.03.2025 16:08:55 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+02.03.2025 16:08:55 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:08:55 | FollowMeController | INFO | Машина зарегистрирована. ID: 000a5f64-5717-4562-b3fc-2c963f66afa6
+02.03.2025 16:08:55 | FollowMeController | INFO | Ответ отправлен: {"CarId":"000a5f64-5717-4562-b3fc-2c963f66afa6","TimeToWait":false}
+02.03.2025 16:08:55 | FollowMeController | INFO | Начало пути для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:08:55 | FollowMeController | INFO | Движение из гаража до NodeFrom 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:08:55 | FollowMeController | INFO | Начало обработки маршрута для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:08:55 | GroundControlStub | INFO | Запрос маршрута из garage-node в FROM.
+02.03.2025 16:08:55 | GroundControlStub | INFO | Заглушка: Маршрут: garage-node -> node_2 -> node_3.
+02.03.2025 16:08:55 | FollowMeController | INFO | Маршрут получен: garage-node -> node_2 -> node_3
+02.03.2025 16:08:55 | FollowMeController | INFO | Обработка перемещения из garage-node в FROM.
+02.03.2025 16:08:55 | FollowMeController | INFO | Запрос на перемещение из garage-node в FROM.
+02.03.2025 16:08:55 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из garage-node в FROM.
+02.03.2025 16:08:55 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:08:55 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:08:55 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:08:55 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:09:05 | FollowMeController | INFO | Обработка перемещения из garage-node в FROM.
+02.03.2025 16:09:05 | FollowMeController | INFO | Запрос на перемещение из garage-node в FROM.
+02.03.2025 16:09:05 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из garage-node в FROM.
+02.03.2025 16:09:05 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:09:05 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:09:05 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:05 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:09:15 | OrchestratorStubService | INFO | Заглушка: Запрос на начало движения для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:15 | FollowMeController | INFO | Движение из NodeFrom до NodeTo 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:15 | FollowMeController | INFO | Начало обработки маршрута для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:15 | GroundControlStub | INFO | Запрос маршрута из FROM в TO.
+02.03.2025 16:09:15 | GroundControlStub | INFO | Заглушка: Маршрут: node_3 -> node_4 -> node_5.
+02.03.2025 16:09:15 | FollowMeController | INFO | Маршрут получен: node_3 -> node_4 -> node_5
+02.03.2025 16:09:15 | FollowMeController | INFO | Обработка перемещения из FROM в TO.
+02.03.2025 16:09:15 | FollowMeController | INFO | Запрос на перемещение из FROM в TO.
+02.03.2025 16:09:15 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из FROM в TO.
+02.03.2025 16:09:15 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:09:15 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:09:15 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:15 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:09:25 | FollowMeController | INFO | Обработка перемещения из FROM в TO.
+02.03.2025 16:09:25 | FollowMeController | INFO | Запрос на перемещение из FROM в TO.
+02.03.2025 16:09:25 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из FROM в TO.
+02.03.2025 16:09:25 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:09:25 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:09:25 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:25 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:09:35 | OrchestratorStubService | INFO | Заглушка: Запрос на окончание движения для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:35 | FollowMeController | INFO | Движение из NodeTo до гаража000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:35 | FollowMeController | INFO | Начало обработки маршрута для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:35 | GroundControlStub | INFO | Запрос маршрута из TO в garage-node.
+02.03.2025 16:09:35 | GroundControlStub | INFO | Заглушка: Маршрут: node_5 -> node_6 -> garage-node.
+02.03.2025 16:09:35 | FollowMeController | INFO | Маршрут получен: node_5 -> node_6 -> garage-node
+02.03.2025 16:09:35 | FollowMeController | INFO | Обработка перемещения из TO в garage-node.
+02.03.2025 16:09:35 | FollowMeController | INFO | Запрос на перемещение из TO в garage-node.
+02.03.2025 16:09:35 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из TO в garage-node.
+02.03.2025 16:09:35 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:09:35 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:09:35 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:35 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:09:45 | FollowMeController | INFO | Обработка перемещения из TO в garage-node.
+02.03.2025 16:09:45 | FollowMeController | INFO | Запрос на перемещение из TO в garage-node.
+02.03.2025 16:09:45 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из TO в garage-node.
+02.03.2025 16:09:45 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:09:45 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:09:45 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:09:45 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:09:55 | FollowMeController | INFO | Маршрут для машины 000a5f64-5717-4562-b3fc-2c963f66afa6 успешно завершен.
+02.03.2025 16:14:57 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+02.03.2025 16:14:57 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+02.03.2025 16:14:57 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:14:57 | FollowMeController | INFO | Машина зарегистрирована. ID: 000a5f64-5717-4562-b3fc-2c963f66afa6
+02.03.2025 16:14:57 | FollowMeController | INFO | Ответ отправлен: {"CarId":"000a5f64-5717-4562-b3fc-2c963f66afa6","TimeToWait":false}
+02.03.2025 16:14:57 | FollowMeController | INFO | Начало пути для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:14:57 | FollowMeController | INFO | Движение из гаража до NodeFrom 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:14:57 | FollowMeController | INFO | Начало обработки маршрута для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:14:57 | GroundControlStub | INFO | Запрос маршрута из garage-node в FROM.
+02.03.2025 16:14:57 | GroundControlStub | INFO | Заглушка: Маршрут: garage-node -> node_2 -> node_3.
+02.03.2025 16:14:57 | FollowMeController | INFO | Маршрут получен: garage-node -> node_2 -> node_3
+02.03.2025 16:14:57 | FollowMeController | INFO | Обработка перемещения из garage-node в node_2.
+02.03.2025 16:14:57 | FollowMeController | INFO | Запрос на перемещение из garage-node в FROM.
+02.03.2025 16:14:57 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из garage-node в FROM.
+02.03.2025 16:14:57 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:14:57 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:14:57 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:14:57 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:15:07 | FollowMeController | INFO | Обработка перемещения из node_2 в node_3.
+02.03.2025 16:15:07 | FollowMeController | INFO | Запрос на перемещение из garage-node в FROM.
+02.03.2025 16:15:07 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из garage-node в FROM.
+02.03.2025 16:15:07 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:15:07 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:15:07 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:07 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:15:17 | OrchestratorStubService | INFO | Заглушка: Запрос на начало движения для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:17 | FollowMeController | INFO | Движение из NodeFrom до NodeTo 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:17 | FollowMeController | INFO | Начало обработки маршрута для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:17 | GroundControlStub | INFO | Запрос маршрута из FROM в TO.
+02.03.2025 16:15:17 | GroundControlStub | INFO | Заглушка: Маршрут: node_3 -> node_4 -> node_5.
+02.03.2025 16:15:17 | FollowMeController | INFO | Маршрут получен: node_3 -> node_4 -> node_5
+02.03.2025 16:15:17 | FollowMeController | INFO | Обработка перемещения из node_3 в node_4.
+02.03.2025 16:15:17 | FollowMeController | INFO | Запрос на перемещение из FROM в TO.
+02.03.2025 16:15:17 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из FROM в TO.
+02.03.2025 16:15:17 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:15:17 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:15:17 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:17 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:15:27 | FollowMeController | INFO | Обработка перемещения из node_4 в node_5.
+02.03.2025 16:15:27 | FollowMeController | INFO | Запрос на перемещение из FROM в TO.
+02.03.2025 16:15:27 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из FROM в TO.
+02.03.2025 16:15:27 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:15:27 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:15:27 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:27 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:15:37 | OrchestratorStubService | INFO | Заглушка: Запрос на окончание движения для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:37 | FollowMeController | INFO | Движение из NodeTo до гаража000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:37 | FollowMeController | INFO | Начало обработки маршрута для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:37 | GroundControlStub | INFO | Запрос маршрута из TO в garage-node.
+02.03.2025 16:15:37 | GroundControlStub | INFO | Заглушка: Маршрут: node_5 -> node_6 -> garage-node.
+02.03.2025 16:15:37 | FollowMeController | INFO | Маршрут получен: node_5 -> node_6 -> garage-node
+02.03.2025 16:15:37 | FollowMeController | INFO | Обработка перемещения из node_5 в node_6.
+02.03.2025 16:15:37 | FollowMeController | INFO | Запрос на перемещение из TO в garage-node.
+02.03.2025 16:15:37 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из TO в garage-node.
+02.03.2025 16:15:37 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:15:37 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:15:37 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:37 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:15:47 | FollowMeController | INFO | Обработка перемещения из node_6 в garage-node.
+02.03.2025 16:15:47 | FollowMeController | INFO | Запрос на перемещение из TO в garage-node.
+02.03.2025 16:15:47 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из TO в garage-node.
+02.03.2025 16:15:47 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:15:47 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:15:47 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:15:47 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:15:57 | FollowMeController | INFO | Маршрут для машины 000a5f64-5717-4562-b3fc-2c963f66afa6 успешно завершен.
+02.03.2025 16:19:44 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+02.03.2025 16:19:44 | GroundControlStubService | INFO | Регистрация транспорта типа follow-me.
+02.03.2025 16:19:44 | GroundControlStub | INFO | Заглушка: Зарегистрирован транспорт с ID 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:19:44 | FollowMeController | INFO | Машина зарегистрирована. ID: 000a5f64-5717-4562-b3fc-2c963f66afa6
+02.03.2025 16:19:44 | FollowMeController | INFO | Ответ отправлен: {"CarId":"000a5f64-5717-4562-b3fc-2c963f66afa6","TimeToWait":false}
+02.03.2025 16:19:44 | FollowMeController | INFO | Начало пути для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:19:44 | FollowMeController | INFO | Движение из гаража до NodeFrom 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:19:44 | FollowMeController | INFO | Начало обработки маршрута для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:19:44 | GroundControlStub | INFO | Запрос маршрута из garage-node в FROM.
+02.03.2025 16:19:44 | GroundControlStub | INFO | Заглушка: Маршрут: garage-node -> node_1 -> from-node.
+02.03.2025 16:19:44 | FollowMeController | INFO | Маршрут получен: garage-node -> node_1 -> from-node
+02.03.2025 16:19:44 | FollowMeController | INFO | Обработка перемещения из garage-node в node_1.
+02.03.2025 16:19:44 | FollowMeController | INFO | Запрос на перемещение из garage-node в node_1.
+02.03.2025 16:19:44 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из garage-node в node_1.
+02.03.2025 16:19:44 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:19:44 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:19:44 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:19:44 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:19:54 | FollowMeController | INFO | Обработка перемещения из node_1 в from-node.
+02.03.2025 16:19:54 | FollowMeController | INFO | Запрос на перемещение из node_1 в from-node.
+02.03.2025 16:19:54 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из node_1 в from-node.
+02.03.2025 16:19:54 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:19:54 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:19:54 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:19:54 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:20:04 | OrchestratorStubService | INFO | Заглушка: Запрос на начало движения для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:20:04 | FollowMeController | INFO | Движение из NodeFrom до NodeTo 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:20:04 | FollowMeController | INFO | Начало обработки маршрута для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:20:04 | GroundControlStub | INFO | Запрос маршрута из FROM в TO.
+02.03.2025 16:20:04 | GroundControlStub | INFO | Заглушка: Маршрут: from-node -> node_2 -> to-node.
+02.03.2025 16:20:04 | FollowMeController | INFO | Маршрут получен: from-node -> node_2 -> to-node
+02.03.2025 16:20:04 | FollowMeController | INFO | Обработка перемещения из from-node в node_2.
+02.03.2025 16:20:04 | FollowMeController | INFO | Запрос на перемещение из from-node в node_2.
+02.03.2025 16:20:04 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из from-node в node_2.
+02.03.2025 16:20:04 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:20:04 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:20:04 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:20:04 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:20:14 | FollowMeController | INFO | Обработка перемещения из node_2 в to-node.
+02.03.2025 16:20:14 | FollowMeController | INFO | Запрос на перемещение из node_2 в to-node.
+02.03.2025 16:20:14 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из node_2 в to-node.
+02.03.2025 16:20:14 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:20:14 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:20:14 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:20:14 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:20:24 | OrchestratorStubService | INFO | Заглушка: Запрос на окончание движения для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:20:24 | FollowMeController | INFO | Движение из NodeTo до гаража000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:20:24 | FollowMeController | INFO | Начало обработки маршрута для машины 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:20:24 | GroundControlStub | INFO | Запрос маршрута из TO в garage-node.
+02.03.2025 16:20:24 | GroundControlStub | INFO | Заглушка: Маршрут: to-node -> node_3 -> garage-node.
+02.03.2025 16:20:24 | FollowMeController | INFO | Маршрут получен: to-node -> node_3 -> garage-node
+02.03.2025 16:20:24 | FollowMeController | INFO | Обработка перемещения из to-node в node_3.
+02.03.2025 16:20:24 | FollowMeController | INFO | Запрос на перемещение из to-node в node_3.
+02.03.2025 16:20:24 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из to-node в node_3.
+02.03.2025 16:20:24 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:20:24 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:20:24 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:20:24 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:20:34 | FollowMeController | INFO | Обработка перемещения из node_3 в garage-node.
+02.03.2025 16:20:34 | FollowMeController | INFO | Запрос на перемещение из node_3 в garage-node.
+02.03.2025 16:20:34 | GroundControlStub | INFO | Запрос на перемещение транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6 из node_3 в garage-node.
+02.03.2025 16:20:34 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+02.03.2025 16:20:34 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+02.03.2025 16:20:34 | GroundControlStub | INFO | Отправка сигнала навигации follow для транспорта 000a5f64-5717-4562-b3fc-2c963f66afa6.
+02.03.2025 16:20:34 | GroundControlStub | INFO | Заглушка: Сигнал навигации успешно отправлен.
+02.03.2025 16:20:44 | FollowMeController | INFO | Маршрут для машины 000a5f64-5717-4562-b3fc-2c963f66afa6 успешно завершен.

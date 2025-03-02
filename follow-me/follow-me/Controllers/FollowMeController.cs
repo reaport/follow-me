@@ -3,6 +3,8 @@ using FollowMe.Services;
 using FollowMe.Data;
 using FollowMe.Utils;
 using System.Text.Json;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Routing;
 
 namespace FollowMe.Controllers
 {
@@ -17,11 +19,15 @@ namespace FollowMe.Controllers
             new Car { Id = "", Status = CarStatusEnum.Available, AccompanimentsCount = 0 }
         };
 
-        private readonly IGroundControlService _groundControlService;
+        private readonly string GarageNode = "garage-node";
 
-        public FollowMeController(IGroundControlService groundControlService)
+        private readonly IGroundControlService _groundControlService;
+        private readonly IOrchestratorService _orchestratorService;
+
+        public FollowMeController(IGroundControlService groundControlService, IOrchestratorService orchestratorService)
         {
             _groundControlService = groundControlService;
+            _orchestratorService = orchestratorService;
         }
 
         [HttpPost("get_car")]
@@ -33,12 +39,6 @@ namespace FollowMe.Controllers
             {
                 Logger.Log("FollowMeController", "ERROR", "Неверный формат AirplaneId.");
                 return BadRequest(new ErrorResponseDto { ErrorCode = 10, Message = "Invalid AirplaneId" });
-            }
-
-            if (request.FollowType < 1 || request.FollowType > 2)
-            {
-                Logger.Log("FollowMeController", "ERROR", "Неверный тип FollowType.");
-                return BadRequest(new ErrorResponseDto { ErrorCode = 21, Message = "Wrong FollowType. It should be [1, 2]" });
             }
 
             var car = cars.FirstOrDefault(c => c.Status == CarStatusEnum.Available);
@@ -55,10 +55,10 @@ namespace FollowMe.Controllers
             car.Status = CarStatusEnum.Busy;
             car.AccompanimentsCount++;
 
-            double timeToWait = 10; // Default time to wait
+            var timeToWait = false; // Default time to wait
             if (car.Status == CarStatusEnum.InGarage)
             {
-                timeToWait += 8; // Additional time for refueling
+                timeToWait = true; // Additional time for refueling
             }
 
             // Регистрируем транспорт
@@ -77,57 +77,79 @@ namespace FollowMe.Controllers
 
             Logger.Log("FollowMeController", "INFO", $"Машина зарегистрирована. ID: {car.Id}");
 
-            // Получаем маршрут от Вышки наземного движения
-            var route = await _groundControlService.GetRoute(request.GateNumber.ToString(), request.RunawayNumber.ToString());
-            if (route == null || route.Length == 0)
-            {
-                Logger.Log("FollowMeController", "ERROR", "Маршрут не найден.");
-                return StatusCode(404, new ErrorResponseDto { ErrorCode = 404, Message = "Route not found" });
-            }
-
-            Logger.Log("FollowMeController", "INFO", $"Маршрут получен: {string.Join(" -> ", route)}");
-
             // Отправляем OK с данными о машине и временем ожидания
             var response = new { CarId = car.Id, TimeToWait = timeToWait };
             Logger.Log("FollowMeController", "INFO", $"Ответ отправлен: {JsonSerializer.Serialize(response)}");
 
             // Запускаем асинхронную задачу для обработки маршрута
-            _ = ProcessRouteAsync(car.Id.ToString(), "follow-me", route);
+            _ = ProcessRouteAsync(car.Id.ToString(), "follow-me", request.NodeFrom.ToString(), request.NodeTo.ToString(), GarageNode);
 
             return Ok(response);
         }
 
-        private async Task ProcessRouteAsync(string vehicleId, string vehicleType, string[] route)
+        private async Task ProcessRouteAsync(string vehicleId, string vehicleType, string nodeFrom, string nodeTo, string garrageNodeId)
         {
             try
             {
-                Logger.Log("FollowMeController", "INFO", $"Начало обработки маршрута для машины {vehicleId}.");
+                Logger.Log("FollowMeController", "INFO", $"Начало пути для машины {vehicleId}.");
 
-                for (int i = 0; i < route.Length - 1; i++)
-                {
-                    string from = route[i];
-                    string to = route[i + 1];
+                // Отправляем запрос на начало движения в Orchestrator
+                await _orchestratorService.StartMovementAsync(vehicleId);
 
-                    Logger.Log("FollowMeController", "INFO", $"Обработка перемещения из {from} в {to}.");
+                Logger.Log("FollowMeController", "INFO", $"Движение из гаража до NodeFrom {vehicleId}.");
 
-                    bool movementSuccessful = await ProcessMovementAsync(vehicleId, vehicleType, from, to);
-                    if (!movementSuccessful)
-                    {
-                        Logger.Log("FollowMeController", "WARNING", $"Перемещение из {from} в {to} не удалось. Повторная попытка.");
-                        i--; // Повторяем текущий шаг
-                    }
-                }
+                // Движение из гаража до NodeFrom
+                await MoveBetweenNodesAsync(vehicleId, vehicleType, garrageNodeId, nodeFrom);
 
-                Logger.Log("FollowMeController", "INFO", $"Уведомление о прибытии в узел {route.Last()}.");
+                Logger.Log("FollowMeController", "INFO", $"Движение из NodeFrom до NodeTo {vehicleId}.");
 
-                // Уведомляем о прибытии в конечную точку
-                await _groundControlService.NotifyArrival(vehicleId, vehicleType, route.Last());
+                // Движение из NodeFrom до NodeTo
+                await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeFrom, nodeTo);
+
+                // Отправляем запрос на окончание движения в Orchestrator
+                await _orchestratorService.EndMovementAsync(vehicleId);
+
+                Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража{vehicleId}.");
+
+                // Движение из NodeTo до гаража
+                await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeTo, garrageNodeId);
 
                 Logger.Log("FollowMeController", "INFO", $"Маршрут для машины {vehicleId} успешно завершен.");
             }
             catch (Exception ex)
             {
                 Logger.Log("FollowMeController", "ERROR", $"Ошибка при обработке маршрута: {ex.Message}");
+            }
+        }
+
+        private async Task MoveBetweenNodesAsync(string vehicleId, string vehicleType, string from, string to)
+        {
+            Logger.Log("FollowMeController", "INFO", $"Начало обработки маршрута для машины {vehicleId}.");
+
+            // Получаем маршрут от Вышки наземного движения
+            var route = await _groundControlService.GetRoute(from, to);
+            if (route == null || route.Length == 0)
+            {
+                Logger.Log("FollowMeController", "ERROR", "Маршрут не найден.");
+                //return StatusCode(404, new ErrorResponseDto { ErrorCode = 404, Message = "Route not found" });
+            }
+
+            Logger.Log("FollowMeController", "INFO", $"Маршрут получен: {string.Join(" -> ", route)}");
+
+            // Движение из NodeFrom до NodeTo
+            for (int i = 0; i < route.Length - 1; i++)
+            {            
+                string fromNode = route[i];
+                string toNode = route[i + 1];
+
+                Logger.Log("FollowMeController", "INFO", $"Обработка перемещения из {fromNode} в {toNode}.");
+
+                bool movementSuccessful = await ProcessMovementAsync(vehicleId, vehicleType, fromNode, toNode);
+                if (!movementSuccessful)
+                {
+                    Logger.Log("FollowMeController", "WARNING", $"Перемещение из {fromNode} в {toNode} не удалось. Повторная попытка.");
+                    i--; // Повторяем текущий шаг
+                }
             }
         }
 
@@ -190,6 +212,5 @@ namespace FollowMe.Controllers
             }
             return StatusCode(500, new ErrorResponseDto { ErrorCode = 500, Message = "Не удалось зарегистрировать машину." });
         }
-
     }
 }
