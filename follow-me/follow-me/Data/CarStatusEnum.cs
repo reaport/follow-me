@@ -3,7 +3,6 @@
     public enum CarStatusEnum
     {
         Available,
-        Busy,
-        InGarage
+        Busy
     }
 }

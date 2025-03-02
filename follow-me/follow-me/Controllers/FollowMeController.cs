@@ -13,10 +13,10 @@ namespace FollowMe.Controllers
     {
         private static List<Car> cars = new List<Car>
         {
-            new Car { Id = "", Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
-            new Car { Id = "", Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
-            new Car { Id = "", Status = CarStatusEnum.Available, AccompanimentsCount = 0 },
-            new Car { Id = "", Status = CarStatusEnum.Available, AccompanimentsCount = 0 }
+            new Car { Id = "", Status = CarStatusEnum.Available },
+            new Car { Id = "", Status = CarStatusEnum.Available },
+            new Car { Id = "", Status = CarStatusEnum.Available },
+            new Car { Id = "", Status = CarStatusEnum.Available }
         };
 
         private readonly string GarageNode = "garage-node";
@@ -41,10 +41,18 @@ namespace FollowMe.Controllers
                 return BadRequest(new ErrorResponseDto { ErrorCode = 10, Message = "Invalid AirplaneId" });
             }
 
+            // Поиск доступной машины
             var car = cars.FirstOrDefault(c => c.Status == CarStatusEnum.Available);
+
+            // Если все машины заняты, ждем первую освободившуюся
+            var timeToWait = false;
             if (car == null)
             {
-                car = cars.FirstOrDefault(c => c.Status == CarStatusEnum.InGarage && c.AccompanimentsCount < 5);
+                Logger.Log("FollowMeController", "INFO", "Все машины заняты. Ожидание освобождения.");
+                timeToWait = true;
+
+                // Ожидаем первую машину, которая вернется в гараж
+                car = await WaitForAvailableCarAsync();
                 if (car == null)
                 {
                     Logger.Log("FollowMeController", "ERROR", "Нет доступных машин.");
@@ -52,14 +60,8 @@ namespace FollowMe.Controllers
                 }
             }
 
+            // Помечаем машину как занятую
             car.Status = CarStatusEnum.Busy;
-            car.AccompanimentsCount++;
-
-            var timeToWait = false; // Default time to wait
-            if (car.Status == CarStatusEnum.InGarage)
-            {
-                timeToWait = true; // Additional time for refueling
-            }
 
             // Регистрируем транспорт
             var registrationResponse = await _groundControlService.RegisterVehicle("follow-me");
@@ -85,6 +87,21 @@ namespace FollowMe.Controllers
             _ = ProcessRouteAsync(car.Id.ToString(), "follow-me", request.NodeFrom.ToString(), request.NodeTo.ToString(), GarageNode);
 
             return Ok(response);
+        }
+
+        private async Task<Car> WaitForAvailableCarAsync()
+        {
+            // Ожидаем, пока одна из машин не станет доступной
+            while (true)
+            {
+                var car = cars.FirstOrDefault(c => c.Status == CarStatusEnum.Available);
+                if (car != null)
+                {
+                    return car;
+                }
+
+                await Task.Delay(TimeSpan.FromSeconds(5)); // Проверяем каждые 5 секунд
+            }
         }
 
         private async Task ProcessRouteAsync(string vehicleId, string vehicleType, string nodeFrom, string nodeTo, string garrageNodeId)
