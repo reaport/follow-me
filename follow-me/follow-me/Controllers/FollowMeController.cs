@@ -4,30 +4,27 @@ using FollowMe.Data;
 using FollowMe.Utils;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Routing;
+using FollowMe.Utils;
 
 namespace FollowMe.Controllers
 {
     [ApiController]
     public class FollowMeController : ControllerBase
     {
-        private static List<Car> cars = new List<Car>
-        {
-            new Car { Id = "", Status = CarStatusEnum.Available },
-            new Car { Id = "", Status = CarStatusEnum.Available },
-            new Car { Id = "", Status = CarStatusEnum.Available },
-            new Car { Id = "", Status = CarStatusEnum.Available }
-        };
-
         private readonly string GarageNode = "garage-node";
 
         private readonly IGroundControlService _groundControlService;
         private readonly IOrchestratorService _orchestratorService;
+        private readonly CarRepository _carRepository;
 
-        public FollowMeController(IGroundControlService groundControlService, IOrchestratorService orchestratorService)
+        public FollowMeController(
+            IGroundControlService groundControlService,
+            IOrchestratorService orchestratorService,
+            CarRepository carRepository)
         {
             _groundControlService = groundControlService;
             _orchestratorService = orchestratorService;
+            _carRepository = carRepository;
         }
 
         [HttpPost("get_car")]
@@ -41,6 +38,9 @@ namespace FollowMe.Controllers
                 return BadRequest(new ErrorResponseDto { ErrorCode = 10, Message = "Invalid AirplaneId" });
             }
 
+            // Получаем список машин из файла
+            var cars = _carRepository.GetAllCars();
+
             // Поиск доступной машины
             var car = cars.FirstOrDefault(c => c.Status == CarStatusEnum.Available);
 
@@ -52,7 +52,7 @@ namespace FollowMe.Controllers
                 timeToWait = true;
 
                 // Ожидаем первую машину, которая вернется в гараж
-                car = await WaitForAvailableCarAsync();
+                car = await WaitForAvailableCarAsync(cars);
                 if (car == null)
                 {
                     Logger.Log("FollowMeController", "ERROR", "Нет доступных машин.");
@@ -69,7 +69,7 @@ namespace FollowMe.Controllers
             // Проверяем формат VehicleId
             if (!string.IsNullOrEmpty(registrationResponse.VehicleId))
             {
-                car.Id = registrationResponse.VehicleId;
+                car.ExternalId = registrationResponse.VehicleId;
             }
             else
             {
@@ -77,19 +77,22 @@ namespace FollowMe.Controllers
                 return await HandleInvalidVehicleId(request);
             }
 
-            Logger.Log("FollowMeController", "INFO", $"Машина зарегистрирована. ID: {car.Id}");
+            Logger.Log("FollowMeController", "INFO", $"Машина зарегистрирована. Внешний ID: {car.ExternalId}");
+
+            // Сохраняем обновленные данные о машине в файл
+            _carRepository.SaveAllCars(cars);
 
             // Отправляем OK с данными о машине и временем ожидания
-            var response = new { CarId = car.Id, TimeToWait = timeToWait };
+            var response = new { CarId = car.ExternalId, TimeToWait = timeToWait };
             Logger.Log("FollowMeController", "INFO", $"Ответ отправлен: {JsonSerializer.Serialize(response)}");
 
             // Запускаем асинхронную задачу для обработки маршрута
-            _ = ProcessRouteAsync(car.Id.ToString(), "follow-me", request.NodeFrom.ToString(), request.NodeTo.ToString(), GarageNode);
+            _ = ProcessRouteAsync(car.ExternalId, "follow-me", request.NodeFrom.ToString(), request.NodeTo.ToString(), GarageNode);
 
             return Ok(response);
         }
 
-        private async Task<Car> WaitForAvailableCarAsync()
+        private async Task<Car> WaitForAvailableCarAsync(List<Car> cars)
         {
             // Ожидаем, пока одна из машин не станет доступной
             while (true)
@@ -108,7 +111,8 @@ namespace FollowMe.Controllers
         {
             try
             {
-                Logger.Log("FollowMeController", "INFO", $"Начало пути для машины {vehicleId}.");
+                // Логируем начало движения
+                Logger.LogAudit(vehicleId, $"Начало движения из {nodeFrom} в {nodeTo}.");
 
                 // Отправляем запрос на начало движения в Orchestrator
                 await _orchestratorService.StartMovementAsync(vehicleId);
@@ -126,15 +130,19 @@ namespace FollowMe.Controllers
                 // Отправляем запрос на окончание движения в Orchestrator
                 await _orchestratorService.EndMovementAsync(vehicleId);
 
-                Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража{vehicleId}.");
+                Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража {vehicleId}.");
 
                 // Движение из NodeTo до гаража
                 await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeTo, garrageNodeId);
 
                 Logger.Log("FollowMeController", "INFO", $"Маршрут для машины {vehicleId} успешно завершен.");
+
+                // Логируем завершение движения
+                Logger.LogAudit(vehicleId, $"Завершение движения в {nodeTo}.");
             }
             catch (Exception ex)
             {
+                // Логируем ошибку
                 Logger.Log("FollowMeController", "ERROR", $"Ошибка при обработке маршрута: {ex.Message}");
             }
         }
@@ -148,14 +156,13 @@ namespace FollowMe.Controllers
             if (route == null || route.Length == 0)
             {
                 Logger.Log("FollowMeController", "ERROR", "Маршрут не найден.");
-                //return StatusCode(404, new ErrorResponseDto { ErrorCode = 404, Message = "Route not found" });
             }
 
             Logger.Log("FollowMeController", "INFO", $"Маршрут получен: {string.Join(" -> ", route)}");
 
             // Движение из NodeFrom до NodeTo
             for (int i = 0; i < route.Length - 1; i++)
-            {            
+            {
                 string fromNode = route[i];
                 string toNode = route[i + 1];
 
@@ -215,11 +222,13 @@ namespace FollowMe.Controllers
                 if (!string.IsNullOrEmpty(registrationResponse.VehicleId))
                 {
                     // Если получили валидный VehicleId, то возвращаем успешный ответ
+                    var cars = _carRepository.GetAllCars();
                     var car = cars.FirstOrDefault(c => c.Status == CarStatusEnum.Busy);
                     if (car != null)
                     {
-                        car.Id = registrationResponse.VehicleId;
-                        return Ok(new { CarId = car.Id, Message = "Машина успешно зарегистрирована после повторной попытки." });
+                        car.ExternalId = registrationResponse.VehicleId;
+                        _carRepository.SaveAllCars(cars); // Сохраняем изменения в файл
+                        return Ok(new { CarId = car.ExternalId, Message = "Машина успешно зарегистрирована после повторной попытки." });
                     }
                 }
 

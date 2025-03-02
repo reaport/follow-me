@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Добавляем сервисы в контейнер
 builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 // Добавляем Swagger
 builder.Services.AddSwaggerGen(c =>
@@ -19,28 +21,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Загружаем конфигурацию
-var useStubs = builder.Configuration.GetValue<bool>("UseStubs");
-
-// Регистрируем сервис в зависимости от конфигурации
-if (useStubs)
-{
-    builder.Services.AddScoped<IGroundControlService, GroundControlStubService>();
-    builder.Services.AddScoped<IOrchestratorService, OrchestratorStubService>();
-}
-else
-{
-    builder.Services.AddHttpClient<IGroundControlService, GroundControlService>(client =>
-    {
-        client.BaseAddress = new Uri(builder.Configuration["GroundControlSettings:BaseUrl"]);
-    });
-
-    builder.Services.AddHttpClient<IOrchestratorService, OrchestratorService>(client =>
-    {
-        client.BaseAddress = new Uri(builder.Configuration["OrchestratorSettings:BaseUrl"]);
-    });
-}
-
 var app = builder.Build();
 
 // Настраиваем конвейер обработки HTTP-запросов
@@ -52,6 +32,11 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Follow Me API v1");
     });
 }
+
+// Настройка маршрутов для MVC
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Admin}/{action=Index}/{id?}");
 
 app.UseHttpsRedirection();
 app.UseAuthorization();

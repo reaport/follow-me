@@ -5,9 +5,22 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>follow_me</RootNamespace>
+  <EnableDefaultContentItems>false</EnableDefaultContentItems>
   </PropertyGroup>
+	
+    <ItemGroup>
+      <Content Include="Views\Admin\Audit.cshtml" />
+      <Content Include="Views\Admin\Index.cshtml" />
+      <Content Include="Views\Admin\Logs.cshtml" />
+    </ItemGroup>
 
-  <ItemGroup>	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+    <ItemGroup>
+      <Content Include="Views\**\*.cshtml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+  <ItemGroup>	  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />	  <PackageReference Include="Microsoft.VisualStudio.UnitTesting" Version="11.0.50727.1" />
 
     <PackageReference Include="Moq" Version="4.20.72" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
