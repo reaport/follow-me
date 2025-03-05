@@ -1,4 +1,4 @@
-@follow_me_HostAddress = http://localhost:5139
+@follow_me_HostAddress = http://localhost:8080
 
 GET {{follow_me_HostAddress}}/weatherforecast/
 Accept: application/json

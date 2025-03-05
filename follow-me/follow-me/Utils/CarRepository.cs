@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace FollowMe.Services
 {
@@ -44,8 +45,17 @@ namespace FollowMe.Services
         // Сохранение всех машин в файл
         public void SaveAllCars(List<Car> cars)
         {
-            var lines = cars.Select(car => $"{car.InternalId}|{car.ExternalId}|{car.Status}");
-            File.WriteAllLines(_filePath, lines);
+            try
+            {
+                var lines = cars.Select(car => $"{car.InternalId}|{car.ExternalId}|{car.Status}");
+                File.WriteAllLines(_filePath, lines, Encoding.UTF8);
+                Console.WriteLine("Файл успешно записан.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при записи в файл: {ex.Message}");
+            }
         }
+
     }
 }

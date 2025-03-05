@@ -115,10 +115,10 @@ C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.follow-me.props
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.follow-me.props
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\follow-me.csproj.Up2Date
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\follow-me.dll
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\refint\follow-me.dll
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\follow-me.pdb
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\follow-me.genruntimeconfig.cache
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\ref\follow-me.dll
+C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

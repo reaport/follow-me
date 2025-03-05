@@ -1,16 +1,24 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using FollowMe.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Настраиваем Kestrel для работы с HTTP (8080) и HTTPS (8081)
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(8080); // HTTP
+    options.ListenAnyIP(8081, listenOptions => listenOptions.UseHttps()); // HTTPS
+});
 
 // Добавляем сервисы в контейнер
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-// Добавляем Swagger
+// Настраиваем Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -21,9 +29,22 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+// Настраиваем CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .WithExposedHeaders("Content-Disposition"); // Разрешает скачивание файлов
+        });
+});
+
 var app = builder.Build();
 
-// Настраиваем конвейер обработки HTTP-запросов
+// Включаем Swagger только в режиме разработки
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -33,13 +54,19 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// Настройка маршрутов для MVC
+// ОТКЛЮЧАЕМ редирект с HTTP на HTTPS
+// app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+app.UseDeveloperExceptionPage(); // Показывает ошибки в разработке
+app.UseRouting();
+app.UseCors("AllowAll");
+
+// Настройка маршрутов
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Admin}/{action=Index}/{id?}");
+    pattern: "admin/{controller=Admin}/{action=Index}/{id?}");
 
-app.UseHttpsRedirection();
-app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

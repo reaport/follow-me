@@ -1,4 +1,4 @@
-﻿@model List<FollowMe.Data.Car>
+﻿@* @model List<FollowMe.Data.Car>
 
     <h1>Управление машинами</h1>
 
@@ -18,12 +18,42 @@
                 <td>@car.InternalId</td>
                 <td>@car.ExternalId</td>
                 <td>@car.Status</td>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.querySelectorAll("form").forEach(form => {
+                            form.addEventListener("submit", function(event) {
+                                event.preventDefault(); // Останавливаем стандартную отправку формы
+                                let id = this.querySelector("input[name='internalId']").value;
+                                console.log("Попытка отправки запроса на удаление ID:", id);
+
+                                fetch(this.action, {
+                                    method: "POST",
+                                    body: new FormData(this),
+                                    headers: {
+                                        "X-Requested-With": "XMLHttpRequest"
+                                    }
+                                })
+                                .then(response => {
+                                    console.log("Ответ сервера:", response);
+                                    if (response.ok) {
+                                        console.log("Машина успешно удалена!");
+                                        window.location.reload();
+                                    } else {
+                                        console.error("Ошибка при удалении машины:", response.status);
+                                    }
+                                })
+                                .catch(error => console.error("Ошибка запроса:", error));
+                            });
+                        });
+                    });
+                </script>
                 <td>
-                    <form asp-action="RemoveCar" method="post" onsubmit="return confirm('Вы уверены, что хотите удалить эту машину?');">
+                    <form asp-action="RemoveCar" method="post">
+                        @Html.AntiForgeryToken()
                         <input type="hidden" name="internalId" value="@car.InternalId" />
-                        @Html.AntiForgeryToken() <!-- Антифорджерный токен -->
-                        <button type="submit" class="btn btn-danger">Удалить</button>
+                        <button type="submit">Удалить</button>
                     </form>
+
                 </td>
             </tr>
             }
@@ -31,9 +61,9 @@
     </table>
 
     <form asp-action="AddCar" method="post">
-        @Html.AntiForgeryToken() <!-- Антифорджерный токен -->
         <button type="submit" class="btn btn-primary">Добавить машину</button>
     </form>
 
     <a asp-action="Audit" class="btn btn-secondary">Аудит</a>
     <a asp-action="Logs" class="btn btn-secondary">Логи</a>
+ *@
