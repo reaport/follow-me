@@ -121,7 +121,7 @@
     "/navigate": {
       "post": {
         "tags": [
-          "Navigation"
+          "FollowMe"
         ],
         "requestBody": {
           "content": {

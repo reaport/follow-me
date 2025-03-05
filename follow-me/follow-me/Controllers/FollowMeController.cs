@@ -51,13 +51,19 @@ namespace FollowMe.Controllers
                 Logger.Log("FollowMeController", "INFO", "Все машины заняты. Ожидание освобождения.");
                 timeToWait = true;
 
-                // Ожидаем первую машину, которая вернется в гараж
-                car = await WaitForAvailableCarAsync(cars);
-                if (car == null)
-                {
-                    Logger.Log("FollowMeController", "ERROR", "Нет доступных машин.");
-                    return StatusCode(500, new ErrorResponseDto { ErrorCode = 500, Message = "Нет доступных машин." });
-                }
+                // Возвращаем ответ сразу, не дожидаясь освобождения машины - ТУТ УМЫШЛЕННЫЙ БАГ - ЕСЛИ ВСЕ МАШИНЫ ЗАНЯТЫ И ВЫЗЫВАЕТСЯ НОВАЯ, ТО ХУЙ НА РЫЛО ВАМ А НЕ МАШИНА. НЕ ЗНАЮ КАК ОБРАБОТАТЬ ПОЭТОМУ ПОКА БУДЕТ ТАКАЯ, ИНАЧЕ ПОЛУЧИТСЯ ЗАГОГУЛИНА ИЗ ЗАПРОСОВ В ВЫШКУ НАХУЙ НЕ НУЖНЫХ ИЛИ НУЖНО ГДЕ-ТО ХРАНИТЬ ЭТУ ПОЕБЕНЬ ЧТО Я СЧИТАЮ НЕНУЖНЫМ
+                car = cars.FirstOrDefault();
+                var immediateResponse = new { CarId = car.ExternalId, TimeToWait = timeToWait };
+                Logger.Log("FollowMeController", "INFO", $"Ответ отправлен: {JsonSerializer.Serialize(immediateResponse)}");
+                return Ok(immediateResponse);
+            }
+
+            // Ожидаем первую машину, которая вернется в гараж
+            car = await WaitForAvailableCarAsync(cars);
+            if (car == null)
+            {
+                Logger.Log("FollowMeController", "ERROR", "Нет доступных машин.");
+                return StatusCode(500, new ErrorResponseDto { ErrorCode = 500, Message = "Нет доступных машин." });
             }
 
             // Помечаем машину как занятую
@@ -108,44 +114,56 @@ namespace FollowMe.Controllers
         }
 
         private async Task ProcessRouteAsync(string vehicleId, string vehicleType, string nodeFrom, string nodeTo, string garrageNodeId)
+{
+    try
+    {
+        // Логируем начало движения
+        Logger.LogAudit(vehicleId, $"Начало движения из {nodeFrom} в {nodeTo}.");
+
+        // Отправляем запрос на начало движения в Orchestrator
+        await _orchestratorService.StartMovementAsync(vehicleId);
+
+        Logger.Log("FollowMeController", "INFO", $"Движение из гаража до NodeFrom {vehicleId}.");
+
+        // Движение из гаража до NodeFrom
+        await MoveBetweenNodesAsync(vehicleId, vehicleType, garrageNodeId, nodeFrom);
+
+        Logger.Log("FollowMeController", "INFO", $"Движение из NodeFrom до NodeTo {vehicleId}.");
+
+        // Движение из NodeFrom до NodeTo
+        await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeFrom, nodeTo);
+
+        // Отправляем запрос на окончание движения в Orchestrator
+        await _orchestratorService.EndMovementAsync(vehicleId);
+
+        Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража {vehicleId}.");
+
+        // Движение из NodeTo до гаража
+        await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeTo, garrageNodeId);
+
+        Logger.Log("FollowMeController", "INFO", $"Маршрут для машины {vehicleId} успешно завершен.");
+
+        // Логируем завершение движения
+        Logger.LogAudit(vehicleId, $"Завершение движения в {nodeTo}.");
+
+        // Возвращаем машину в гараж и сбрасываем её состояние
+        var cars = _carRepository.GetAllCars();
+        var car = cars.FirstOrDefault(c => c.ExternalId == vehicleId);
+        if (car != null)
         {
-            try
-            {
-                // Логируем начало движения
-                Logger.LogAudit(vehicleId, $"Начало движения из {nodeFrom} в {nodeTo}.");
-
-                // Отправляем запрос на начало движения в Orchestrator
-                await _orchestratorService.StartMovementAsync(vehicleId);
-
-                Logger.Log("FollowMeController", "INFO", $"Движение из гаража до NodeFrom {vehicleId}.");
-
-                // Движение из гаража до NodeFrom
-                await MoveBetweenNodesAsync(vehicleId, vehicleType, garrageNodeId, nodeFrom);
-
-                Logger.Log("FollowMeController", "INFO", $"Движение из NodeFrom до NodeTo {vehicleId}.");
-
-                // Движение из NodeFrom до NodeTo
-                await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeFrom, nodeTo);
-
-                // Отправляем запрос на окончание движения в Orchestrator
-                await _orchestratorService.EndMovementAsync(vehicleId);
-
-                Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража {vehicleId}.");
-
-                // Движение из NodeTo до гаража
-                await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeTo, garrageNodeId);
-
-                Logger.Log("FollowMeController", "INFO", $"Маршрут для машины {vehicleId} успешно завершен.");
-
-                // Логируем завершение движения
-                Logger.LogAudit(vehicleId, $"Завершение движения в {nodeTo}.");
-            }
-            catch (Exception ex)
-            {
-                // Логируем ошибку
-                Logger.Log("FollowMeController", "ERROR", $"Ошибка при обработке маршрута: {ex.Message}");
-            }
+            car.Status = CarStatusEnum.Available; // Делаем машину доступной
+            car.ExternalId = ""; // Сбрасываем ExternalId
+            car.CurrentNode = garrageNodeId; // Устанавливаем текущее местоположение в гараж
+            _carRepository.SaveAllCars(cars); // Сохраняем изменения
+            Logger.Log("FollowMeController", "INFO", $"Машина {vehicleId} возвращена в гараж и доступна для новых задач.");
         }
+    }
+    catch (Exception ex)
+    {
+        // Логируем ошибку
+        Logger.Log("FollowMeController", "ERROR", $"Ошибка при обработке маршрута: {ex.Message}");
+    }
+}
 
         private async Task MoveBetweenNodesAsync(string vehicleId, string vehicleType, string from, string to)
         {
@@ -173,6 +191,17 @@ namespace FollowMe.Controllers
                 {
                     Logger.Log("FollowMeController", "WARNING", $"Перемещение из {fromNode} в {toNode} не удалось. Повторная попытка.");
                     i--; // Повторяем текущий шаг
+                }
+                else
+                {
+                    // Обновляем текущее местоположение машины
+                    var cars = _carRepository.GetAllCars();
+                    var car = cars.FirstOrDefault(c => c.ExternalId == vehicleId);
+                    if (car != null)
+                    {
+                        car.CurrentNode = toNode; // Обновляем текущий узел
+                        _carRepository.SaveAllCars(cars); // Сохраняем изменения
+                    }
                 }
             }
         }
@@ -237,6 +266,31 @@ namespace FollowMe.Controllers
                 await Task.Delay(TimeSpan.FromSeconds(delaySeconds)); // Задержка между попытками
             }
             return StatusCode(500, new ErrorResponseDto { ErrorCode = 500, Message = "Не удалось зарегистрировать машину." });
+        }
+
+        [HttpPost("navigate")]
+        public IActionResult Navigate([FromBody] NavigationRequestDto request)
+        {
+            Logger.Log("NavigationController", "INFO", $"Запрос на навигацию: {request.Navigate}.");
+
+            if (!ModelState.IsValid)
+            {
+                Logger.Log("NavigationController", "ERROR", "Неверный формат запроса.");
+                return BadRequest(new ErrorResponseDto { ErrorCode = 30, Message = "Invalid Navigate" });
+            }
+
+            if (request.Navigate != "follow" && request.Navigate != "right" && request.Navigate != "left" && request.Navigate != "stop")
+            {
+                Logger.Log("NavigationController", "ERROR", "Неверное значение Navigate.");
+                return BadRequest(new ErrorResponseDto { ErrorCode = 31, Message = "Wrong Navigate. It should be [follow, right, left, stop]" });
+            }
+
+            // Здесь логика отправки сигналов в самолет
+            // Например, отправка через MQ или другой механизм
+
+            Logger.Log("NavigationController", "INFO", "Сигнал навигации успешно обработан.");
+
+            return NoContent();
         }
     }
 }

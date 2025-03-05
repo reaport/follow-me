@@ -2,9 +2,11 @@
 using FollowMe.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using FollowMe.Utils;
 
 [Route("/admin")]
-public class AdminController : Controller
+[ApiController] // Указываем, что это API-контроллер
+public class AdminController : ControllerBase
 {
     private readonly CarRepository _carRepository;
 
@@ -17,14 +19,14 @@ public class AdminController : Controller
     public IActionResult Index()
     {
         var cars = _carRepository.GetAllCars();
-        return View(cars);
+        return Ok(cars); // Возвращаем JSON
     }
 
     [HttpGet("cars")] // Доступно по /admin/admin/cars
     public IActionResult GetCars()
     {
         var cars = _carRepository.GetAllCars();
-        return Ok(cars);
+        return Ok(cars); // Возвращаем JSON
     }
 
     [HttpPost("cars/add")] // Доступно по /admin/admin/cars/add
@@ -32,13 +34,29 @@ public class AdminController : Controller
     {
         Debug.WriteLine("AddCar method called.");
         var cars = _carRepository.GetAllCars();
-        var newInternalId = (cars.Count + 1).ToString();
-        var newCar = new Car { InternalId = newInternalId, ExternalId = "", Status = CarStatusEnum.Available };
+
+        // Генерация нового GUID для InternalId
+        var newInternalId = Guid.NewGuid().ToString();
+
+        // Создание новой машины с GUID в качестве InternalId
+        var newCar = new Car
+        {
+            InternalId = newInternalId,
+            ExternalId = "",
+            Status = CarStatusEnum.Available
+        };
+
+        // Добавление новой машины в список
         cars.Add(newCar);
 
+        // Сохранение обновленного списка машин
         _carRepository.SaveAllCars(cars);
-        TempData["Message"] = $"Машина {newInternalId} добавлена!";
-        return RedirectToAction("Index");
+
+        // Логирование в аудит
+        Logger.LogAudit(newInternalId, "Машина добавлена");
+
+        // Возвращаем JSON с сообщением
+        return Ok(new { Message = $"Машина {newInternalId} добавлена!" });
     }
 
     [HttpPost("cars/remove")] // Доступно по /admin/admin/cars/remove
@@ -55,13 +73,18 @@ public class AdminController : Controller
             cars.Remove(car);
             Debug.WriteLine($"Car found and removed: {car.InternalId}");
             _carRepository.SaveAllCars(cars);
+
+            // Логирование в аудит
+            Logger.LogAudit(internalId, "Машина удалена");
+
+            // Возвращаем JSON с сообщением
+            return Ok(new { Message = $"Машина {internalId} удалена!" });
         }
         else
         {
             Debug.WriteLine($"Car with ID {internalId} not found!");
+            return NotFound(new { Message = $"Машина с ID {internalId} не найдена!" });
         }
-
-        return RedirectToAction("Index");
     }
 
     [HttpGet("logs")] // Доступно по /admin/admin/logs
@@ -80,7 +103,7 @@ public class AdminController : Controller
         catch (Exception ex)
         {
             Debug.WriteLine($"Ошибка при чтении логов: {ex.Message}");
-            return StatusCode(500, "Произошла ошибка при получении логов.");
+            return StatusCode(500, new { Message = "Произошла ошибка при получении логов." });
         }
     }
 
@@ -111,7 +134,7 @@ public class AdminController : Controller
         catch (Exception ex)
         {
             Debug.WriteLine($"Ошибка при чтении аудита: {ex.Message}");
-            return StatusCode(500, "Произошла ошибка при получении аудита.");
+            return StatusCode(500, new { Message = "Произошла ошибка при получении аудита." });
         }
     }
 }

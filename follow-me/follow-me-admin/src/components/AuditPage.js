@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./TableView.css"
 
 const API_BASE = window.location.hostname.includes("localhost")
   ? "http://localhost:8080/admin"

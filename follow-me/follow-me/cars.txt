@@ -1,3 +1,6 @@
-﻿2||Available
-3||Available
-4||Available
+﻿0000000-60bc-464d-8759-c04b79c25b25||Available|garage-node
+1111111-60bc-464d-8759-c04b79c25b25||Available|garage-node
+65dc6675-dea0-493b-82f2-cafbcc72eea1||Available|garage-node
+49162fe4-0cc7-4955-b0f2-eb654e1a97ce||Available|garage-node
+30b9e99a-5f82-4d9e-a937-6391f3d3a176||Available|garage-node
+de583855-bc1b-41da-9d70-82f8c99d282e||Available|garage-node

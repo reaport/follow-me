@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import "./TableView.css";
 
 const API_BASE = window.location.hostname.includes("localhost")
   ? "https://localhost:8081/admin"
@@ -9,7 +10,15 @@ export default function CarsPage() {
   const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    axios.get(`${API_BASE}/cars`).then((res) => setCars(res.data));
+    axios.get(`${API_BASE}/cars`).then((res) => {
+      // Преобразуем статус в строку
+      const formattedCars = res.data.map(car => ({
+        ...car,
+        status: car.status === 0 ? "available" : "busy",
+        currentNode: car.currentNode || "Unknown" // Если местоположение не задано, отображаем "Unknown"
+      }));
+      setCars(formattedCars);
+    });
   }, []);
 
   const addCar = () => {
@@ -23,13 +32,13 @@ export default function CarsPage() {
   return (
     <div>
       <h1>Машины</h1>
-      <button onClick={addCar}>Добавить машину</button>
       <table>
         <thead>
           <tr>
             <th>Внутренний ID</th>
             <th>Внешний ID</th>
             <th>Статус</th>
+            <th>Текущее местоположение</th>
             <th>Действия</th>
           </tr>
         </thead>
@@ -39,6 +48,7 @@ export default function CarsPage() {
               <td>{car.internalId}</td>
               <td>{car.externalId}</td>
               <td>{car.status}</td>
+              <td>{car.currentNode}</td>
               <td>
                 <button onClick={() => removeCar(car.internalId)}>Удалить</button>
               </td>
@@ -46,6 +56,7 @@ export default function CarsPage() {
           ))}
         </tbody>
       </table>
+      <button onClick={addCar}>Добавить машину</button>
     </div>
   );
 }

@@ -18,10 +18,10 @@ namespace FollowMe.Services
                 // Если файл не существует, создаем его с начальными данными
                 var defaultCars = new List<Car>
                 {
-                    new Car { InternalId = "1", ExternalId = "", Status = CarStatusEnum.Available },
-                    new Car { InternalId = "2", ExternalId = "", Status = CarStatusEnum.Available },
-                    new Car { InternalId = "3", ExternalId = "", Status = CarStatusEnum.Available },
-                    new Car { InternalId = "4", ExternalId = "", Status = CarStatusEnum.Available }
+                    new Car { InternalId = "0000000-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "Garage" },
+                    new Car { InternalId = "1111111-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "Garage" },
+                    new Car { InternalId = "2222222-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "Garage" },
+                    new Car { InternalId = "3333333-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "Garage" }
                 };
                 SaveAllCars(defaultCars);
                 return defaultCars;
@@ -35,19 +35,19 @@ namespace FollowMe.Services
                 {
                     InternalId = parts[0],
                     ExternalId = parts[1],
-                    Status = (CarStatusEnum)Enum.Parse(typeof(CarStatusEnum), parts[2])
+                    Status = (CarStatusEnum)Enum.Parse(typeof(CarStatusEnum), parts[2]),
+                    CurrentNode = parts.Length > 3 ? parts[3] : "Garage" // Если поле отсутствует, используем "Garage"
                 };
             }).ToList();
 
             return cars;
         }
 
-        // Сохранение всех машин в файл
         public void SaveAllCars(List<Car> cars)
         {
             try
             {
-                var lines = cars.Select(car => $"{car.InternalId}|{car.ExternalId}|{car.Status}");
+                var lines = cars.Select(car => $"{car.InternalId}|{car.ExternalId}|{car.Status}|{car.CurrentNode}");
                 File.WriteAllLines(_filePath, lines, Encoding.UTF8);
                 Console.WriteLine("Файл успешно записан.");
             }

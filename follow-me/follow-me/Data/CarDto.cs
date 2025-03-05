@@ -2,8 +2,9 @@
 {
     public class Car
     {
-        public string InternalId { get; set; } // Внутренний ID (от 1 до n)
-        public string ExternalId { get; set; } // Внешний ID (выдаваемый вышкой)
+        public string InternalId { get; set; }
+        public string ExternalId { get; set; }
         public CarStatusEnum Status { get; set; }
+        public string CurrentNode { get; set; }
     }
 }

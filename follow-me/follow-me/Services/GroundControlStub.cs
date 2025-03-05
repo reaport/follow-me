@@ -10,10 +10,12 @@ namespace FollowMe.Services
         {
             Logger.Log("GroundControlStubService", "INFO", $"Регистрация транспорта типа {vehicleType}.");
 
+            var vehicleId = Guid.NewGuid().ToString();
+
             var response = new VehicleRegistrationResponse
             {
                 GarrageNodeId = "garrage_follow-me_1",
-                VehicleId = "000a5f64-5717-4562-b3fc-2c963f66afa6",
+                VehicleId = vehicleId,
                 ServiceSpots = new Dictionary<string, string>
                 {
                     { "airplane_parking_1", "airplane_parking_1_follow-me_1" },

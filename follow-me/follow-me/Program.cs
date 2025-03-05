@@ -1,7 +1,6 @@
+using FollowMe.Services;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +11,33 @@ builder.WebHost.ConfigureKestrel(options =>
     options.ListenAnyIP(8080); // HTTP
     options.ListenAnyIP(8081, listenOptions => listenOptions.UseHttps()); // HTTPS
 });
+
+// Загружаем конфигурацию из appsettings.json
+var configuration = builder.Configuration;
+
+// Регистрация HttpClient для сервисов
+if (configuration.GetValue<bool>("UseStubs"))
+{
+    // Используем мок-реализации
+    builder.Services.AddScoped<IGroundControlService, GroundControlStubService>();
+    builder.Services.AddScoped<IOrchestratorService, OrchestratorStubService>();
+}
+else
+{
+    // Используем реальные реализации с BaseAddress из конфигурации
+    builder.Services.AddHttpClient<IGroundControlService, GroundControlService>(client =>
+    {
+        client.BaseAddress = new Uri(configuration["GroundControlSettings:BaseUrl"]);
+    });
+
+    builder.Services.AddHttpClient<IOrchestratorService, OrchestratorService>(client =>
+    {
+        client.BaseAddress = new Uri(configuration["OrchestratorSettings:BaseUrl"]);
+    });
+}
+
+// Регистрация других сервисов
+builder.Services.AddSingleton<CarRepository>();
 
 // Добавляем сервисы в контейнер
 builder.Services.AddControllers();
@@ -61,11 +87,6 @@ app.UseStaticFiles();
 app.UseDeveloperExceptionPage(); // Показывает ошибки в разработке
 app.UseRouting();
 app.UseCors("AllowAll");
-
-// Настройка маршрутов
-app.MapControllerRoute(
-    name: "default",
-    pattern: "admin/{controller=Admin}/{action=Index}/{id?}");
 
 app.MapControllers();
 

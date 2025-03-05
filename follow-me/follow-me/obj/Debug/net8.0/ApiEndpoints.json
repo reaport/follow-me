@@ -82,7 +82,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "FollowMeM.Controllers.NavigationController",
+    "ContainingType": "FollowMe.Controllers.FollowMeController",
     "Method": "Navigate",
     "RelativePath": "navigate",
     "HttpMethod": "POST",
