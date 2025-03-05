@@ -4,8 +4,8 @@
 
 ## 📄 Документация
 
-- [API Documentation]([https://follow-me.reaport.ru/swagger](https://docs.reaport.ru/?urls.primaryName=follow_me)) — документация API в формате Swagger.
-- [Specification]([https://ground-control.reaport.ru/docs](https://docs.google.com/document/d/1-A99pLnf-T3KJgUowspAIestsUUSzbDQ0Sfr5KvSmdI/edit?tab=t.xxby8r33la9d#heading=h.3v223f63vv4o)) — спецификация работы модуля.
+- [API Documentation](https://docs.reaport.ru/?urls.primaryName=follow_me) — документация API в формате Swagger.
+- [Specification](https://docs.google.com/document/d/1-A99pLnf-T3KJgUowspAIestsUUSzbDQ0Sfr5KvSmdI/edit?tab=t.xxby8r33la9d#heading=h.3v223f63vv4o) — спецификация работы модуля.
 
 ## 🚀 Как это работает?
 
