@@ -32,58 +32,37 @@ public class AdminController : ControllerBase
     [HttpPost("cars/add")] // Доступно по /admin/admin/cars/add
     public IActionResult AddCar()
     {
-        Debug.WriteLine("AddCar method called.");
         var cars = _carRepository.GetAllCars();
 
-        // Генерация нового GUID для InternalId
-        var newInternalId = Guid.NewGuid().ToString();
-
-        // Создание новой машины с GUID в качестве InternalId
-        var newCar = new Car
+        if (cars.Count < 10)
         {
-            InternalId = newInternalId,
-            ExternalId = "",
-            Status = CarStatusEnum.Available
-        };
+            // Генерация нового GUID для InternalId
+            var newInternalId = Guid.NewGuid().ToString();
 
-        // Добавление новой машины в список
-        cars.Add(newCar);
+            // Создание новой машины с GUID в качестве InternalId
+            var newCar = new Car
+            {
+                InternalId = newInternalId,
+                ExternalId = "",
+                Status = CarStatusEnum.Available
+            };
 
-        // Сохранение обновленного списка машин
-        _carRepository.SaveAllCars(cars);
+            // Добавление новой машины в список
+            cars.Add(newCar);
 
-        // Логирование в аудит
-        Logger.LogAudit(newInternalId, "Машина добавлена");
-
-        // Возвращаем JSON с сообщением
-        return Ok(new { Message = $"Машина {newInternalId} добавлена!" });
-    }
-
-    [HttpPost("cars/remove")] // Доступно по /admin/admin/cars/remove
-    public IActionResult RemoveCar(string internalId)
-    {
-        Debug.WriteLine($"RemoveCar method called for internalId: {internalId}");
-
-        var cars = _carRepository.GetAllCars();
-        Debug.WriteLine($"Current cars count before removal: {cars.Count}");
-
-        var car = cars.FirstOrDefault(c => c.InternalId == internalId);
-        if (car != null)
-        {
-            cars.Remove(car);
-            Debug.WriteLine($"Car found and removed: {car.InternalId}");
+            // Сохранение обновленного списка машин
             _carRepository.SaveAllCars(cars);
 
             // Логирование в аудит
-            Logger.LogAudit(internalId, "Машина удалена");
+            Logger.LogAudit(newInternalId, "Машина добавлена");
 
             // Возвращаем JSON с сообщением
-            return Ok(new { Message = $"Машина {internalId} удалена!" });
+            return Ok(new { Message = $"Машина {newInternalId} добавлена!" });
         }
         else
         {
-            Debug.WriteLine($"Car with ID {internalId} not found!");
-            return NotFound(new { Message = $"Машина с ID {internalId} не найдена!" });
+            // Возвращаем ошибку, если достигнут лимит машин
+            return BadRequest(new { Message = "Невозможно добавить машину. Достигнут лимит в 10 машин." });
         }
     }
 

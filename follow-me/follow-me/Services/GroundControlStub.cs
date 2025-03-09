@@ -57,12 +57,5 @@ namespace FollowMe.Services
             Logger.Log("GroundControlStub", "INFO", "Заглушка: Уведомление успешно отправлено.");
             return Task.CompletedTask;
         }
-
-        public Task SendNavigationSignal(string vehicleId, string signal)
-        {
-            Logger.Log("GroundControlStub", "INFO", $"Отправка сигнала навигации {signal} для транспорта {vehicleId}.");
-            Logger.Log("GroundControlStub", "INFO", "Заглушка: Сигнал навигации успешно отправлен.");
-            return Task.CompletedTask;
-        }
     }
 }

@@ -93,7 +93,7 @@ namespace FollowMe.Controllers
             Logger.Log("FollowMeController", "INFO", $"Ответ отправлен: {JsonSerializer.Serialize(response)}");
 
             // Запускаем асинхронную задачу для обработки маршрута
-            _ = ProcessRouteAsync(car.ExternalId, "follow-me", request.NodeFrom.ToString(), request.NodeTo.ToString(), GarageNode);
+            _ = ProcessRouteAsync(car.ExternalId, "follow-me", request.NodeFrom.ToString(), request.NodeTo.ToString(), GarageNode, request.AirplaneId.ToString());
 
             return Ok(response);
         }
@@ -113,57 +113,57 @@ namespace FollowMe.Controllers
             }
         }
 
-        private async Task ProcessRouteAsync(string vehicleId, string vehicleType, string nodeFrom, string nodeTo, string garrageNodeId)
-{
-    try
-    {
-        // Логируем начало движения
-        Logger.LogAudit(vehicleId, $"Начало движения из {nodeFrom} в {nodeTo}.");
-
-        // Отправляем запрос на начало движения в Orchestrator
-        await _orchestratorService.StartMovementAsync(vehicleId);
-
-        Logger.Log("FollowMeController", "INFO", $"Движение из гаража до NodeFrom {vehicleId}.");
-
-        // Движение из гаража до NodeFrom
-        await MoveBetweenNodesAsync(vehicleId, vehicleType, garrageNodeId, nodeFrom);
-
-        Logger.Log("FollowMeController", "INFO", $"Движение из NodeFrom до NodeTo {vehicleId}.");
-
-        // Движение из NodeFrom до NodeTo
-        await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeFrom, nodeTo);
-
-        // Отправляем запрос на окончание движения в Orchestrator
-        await _orchestratorService.EndMovementAsync(vehicleId);
-
-        Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража {vehicleId}.");
-
-        // Движение из NodeTo до гаража
-        await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeTo, garrageNodeId);
-
-        Logger.Log("FollowMeController", "INFO", $"Маршрут для машины {vehicleId} успешно завершен.");
-
-        // Логируем завершение движения
-        Logger.LogAudit(vehicleId, $"Завершение движения в {nodeTo}.");
-
-        // Возвращаем машину в гараж и сбрасываем её состояние
-        var cars = _carRepository.GetAllCars();
-        var car = cars.FirstOrDefault(c => c.ExternalId == vehicleId);
-        if (car != null)
+        private async Task ProcessRouteAsync(string vehicleId, string vehicleType, string nodeFrom, string nodeTo, string garrageNodeId, string aircraftId)
         {
-            car.Status = CarStatusEnum.Available; // Делаем машину доступной
-            car.ExternalId = ""; // Сбрасываем ExternalId
-            car.CurrentNode = garrageNodeId; // Устанавливаем текущее местоположение в гараж
-            _carRepository.SaveAllCars(cars); // Сохраняем изменения
-            Logger.Log("FollowMeController", "INFO", $"Машина {vehicleId} возвращена в гараж и доступна для новых задач.");
+            try
+            {
+                // Логируем начало движения
+                Logger.LogAudit(vehicleId, $"Начало движения из {nodeFrom} в {nodeTo}.");
+
+                // Отправляем запрос на начало движения в Orchestrator с aircraftId
+                await _orchestratorService.StartMovementAsync(vehicleId, aircraftId);
+
+                Logger.Log("FollowMeController", "INFO", $"Движение из гаража до NodeFrom {vehicleId}.");
+
+                // Движение из гаража до NodeFrom
+                await MoveBetweenNodesAsync(vehicleId, vehicleType, garrageNodeId, nodeFrom);
+
+                Logger.Log("FollowMeController", "INFO", $"Движение из NodeFrom до NodeTo {vehicleId}.");
+
+                // Движение из NodeFrom до NodeTo
+                await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeFrom, nodeTo);
+
+                // Отправляем запрос на окончание движения в Orchestrator с aircraftId
+                await _orchestratorService.EndMovementAsync(vehicleId, aircraftId);
+
+                Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража {vehicleId}.");
+
+                // Движение из NodeTo до гаража
+                await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeTo, garrageNodeId);
+
+                Logger.Log("FollowMeController", "INFO", $"Маршрут для машины {vehicleId} успешно завершен.");
+
+                // Логируем завершение движения
+                Logger.LogAudit(vehicleId, $"Завершение движения в {nodeTo}.");
+
+                // Возвращаем машину в гараж и сбрасываем её состояние
+                var cars = _carRepository.GetAllCars();
+                var car = cars.FirstOrDefault(c => c.ExternalId == vehicleId);
+                if (car != null)
+                {
+                    car.Status = CarStatusEnum.Available; // Делаем машину доступной
+                    car.ExternalId = ""; // Сбрасываем ExternalId
+                    car.CurrentNode = garrageNodeId; // Устанавливаем текущее местоположение в гараж
+                    _carRepository.SaveAllCars(cars); // Сохраняем изменения
+                    Logger.Log("FollowMeController", "INFO", $"Машина {vehicleId} возвращена в гараж и доступна для новых задач.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Логируем ошибку
+                Logger.Log("FollowMeController", "ERROR", $"Ошибка при обработке маршрута: {ex.Message}");
+            }
         }
-    }
-    catch (Exception ex)
-    {
-        // Логируем ошибку
-        Logger.Log("FollowMeController", "ERROR", $"Ошибка при обработке маршрута: {ex.Message}");
-    }
-}
 
         private async Task MoveBetweenNodesAsync(string vehicleId, string vehicleType, string from, string to)
         {
@@ -216,9 +216,6 @@ namespace FollowMe.Controllers
             if (distance > 0)
             {
                 Logger.Log("FollowMeController", "INFO", $"Разрешение получено. Расстояние: {distance}.");
-
-                // Если разрешение получено, отправляем сигналы навигации
-                await _groundControlService.SendNavigationSignal(vehicleId, "follow");
 
                 // Имитируем движение (например, задержку)
                 await Task.Delay(TimeSpan.FromSeconds(distance / 10)); // Примерная задержка

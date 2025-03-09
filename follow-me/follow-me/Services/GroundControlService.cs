@@ -89,18 +89,6 @@ namespace FollowMe.Services
             Logger.Log("GroundControlService", "INFO", "Уведомление успешно отправлено.");
         }
 
-        public async Task SendNavigationSignal(string vehicleId, string signal)
-        {
-            Logger.Log("GroundControlService", "INFO", $"Отправка сигнала навигации {signal} для транспорта {vehicleId}.");
-
-            var request = new { Navigate = signal };
-            var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PostAsync("/navigate", content);
-            response.EnsureSuccessStatusCode();
-            Logger.Log("GroundControlService", "INFO", "Сигнал навигации успешно отправлен.");
-        }
-
         private class MoveResponse
         {
             public double Distance { get; set; }

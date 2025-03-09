@@ -9,7 +9,6 @@ namespace FollowMe.Services
         Task<string[]> GetRoute(string from, string to);
         Task<double> RequestMove(string vehicleId, string vehicleType, string from, string to);
         Task NotifyArrival(string vehicleId, string vehicleType, string nodeId);
-        Task SendNavigationSignal(string vehicleId, string signal);
     }
 
     public class VehicleRegistrationResponse

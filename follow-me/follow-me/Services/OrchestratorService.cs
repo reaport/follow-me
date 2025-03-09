@@ -15,21 +15,39 @@ namespace FollowMe.Services
             _httpClient = httpClient;
         }
 
-        public async Task StartMovementAsync(string carId)
+        public async Task StartMovementAsync(string carId, string aircraftId)
         {
             Logger.Log("OrchestratorService", "INFO", $"Отправка запроса на начало движения для машины {carId}.");
 
-            var response = await _httpClient.PostAsync($"/follow-me/{carId}/start", null);
+            // Создаем тело запроса с aircraftId
+            var requestBody = new { aircraftId };
+            var jsonContent = new StringContent(
+                JsonSerializer.Serialize(requestBody),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            // Отправляем запрос с телом
+            var response = await _httpClient.PostAsync($"/follow-me/{carId}/start", jsonContent);
             response.EnsureSuccessStatusCode();
 
             Logger.Log("OrchestratorService", "INFO", $"Запрос на начало движения для машины {carId} успешно отправлен.");
         }
 
-        public async Task EndMovementAsync(string carId)
+        public async Task EndMovementAsync(string carId, string aircraftId)
         {
             Logger.Log("OrchestratorService", "INFO", $"Отправка запроса на окончание движения для машины {carId}.");
 
-            var response = await _httpClient.PostAsync($"/follow-me/{carId}/end", null);
+            // Создаем тело запроса с aircraftId
+            var requestBody = new { aircraftId };
+            var jsonContent = new StringContent(
+                JsonSerializer.Serialize(requestBody),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            // Отправляем запрос с телом
+            var response = await _httpClient.PostAsync($"/follow-me/{carId}/end", jsonContent);
             response.EnsureSuccessStatusCode();
 
             Logger.Log("OrchestratorService", "INFO", $"Запрос на окончание движения для машины {carId} успешно отправлен.");

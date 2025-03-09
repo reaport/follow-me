@@ -8,6 +8,7 @@ const API_BASE = window.location.hostname.includes("localhost")
 
 export default function CarsPage() {
   const [cars, setCars] = useState([]);
+  const [error, setError] = useState(null); // Состояние для хранения ошибки
 
   useEffect(() => {
     axios.get(`${API_BASE}/cars`).then((res) => {
@@ -22,16 +23,25 @@ export default function CarsPage() {
   }, []);
 
   const addCar = () => {
-    axios.post(`${API_BASE}/cars/add`).then(() => window.location.reload());
-  };
-
-  const removeCar = (internalId) => {
-    axios.post(`${API_BASE}/cars/remove`, null, { params: { internalId } }).then(() => window.location.reload());
+    axios
+      .post(`${API_BASE}/cars/add`)
+      .then(() => {
+        window.location.reload(); // Перезагружаем страницу после успешного добавления
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 400) {
+          // Обрабатываем ошибку BadRequest
+          setError("Невозможно добавить машину. Достигнут лимит в 10 машин.");
+        } else {
+          setError("Произошла ошибка при добавлении машины.");
+        }
+      });
   };
 
   return (
     <div>
       <h1>Машины</h1>
+      {error && <div className="error-message">{error}</div>} {/* Отображаем сообщение об ошибке */}
       <table>
         <thead>
           <tr>
@@ -39,7 +49,6 @@ export default function CarsPage() {
             <th>Внешний ID</th>
             <th>Статус</th>
             <th>Текущее местоположение</th>
-            <th>Действия</th>
           </tr>
         </thead>
         <tbody>
@@ -49,9 +58,6 @@ export default function CarsPage() {
               <td>{car.externalId}</td>
               <td>{car.status}</td>
               <td>{car.currentNode}</td>
-              <td>
-                <button onClick={() => removeCar(car.internalId)}>Удалить</button>
-              </td>
             </tr>
           ))}
         </tbody>
