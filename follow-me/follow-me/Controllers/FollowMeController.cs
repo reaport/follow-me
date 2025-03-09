@@ -217,8 +217,12 @@ namespace FollowMe.Controllers
             {
                 Logger.Log("FollowMeController", "INFO", $"Разрешение получено. Расстояние: {distance}.");
 
-                // Имитируем движение (например, задержку)
-                await Task.Delay(TimeSpan.FromSeconds(distance / 10)); // Примерная задержка
+                // Рассчитываем время ожидания в зависимости от расстояния
+                int delayMilliseconds = (int)(distance / 25 * 1000); // Скорость 25 ед/с
+                Logger.Log("FollowMeController", "INFO", $"Машина {vehicleId} движется из {from} в {to}. Время в пути: {delayMilliseconds / 1000} сек.");
+
+                // Имитируем движение (ожидание)
+                await Task.Delay(delayMilliseconds);
 
                 return true; // Перемещение успешно
             }

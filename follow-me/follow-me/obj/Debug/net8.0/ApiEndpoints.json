@@ -41,22 +41,6 @@
   },
   {
     "ContainingType": "AdminController",
-    "Method": "RemoveCar",
-    "RelativePath": "admin/cars/remove",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "internalId",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AdminController",
     "Method": "GetLogs",
     "RelativePath": "admin/logs",
     "HttpMethod": "GET",

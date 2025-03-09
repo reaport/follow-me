@@ -42,27 +42,6 @@
         }
       }
     },
-    "/admin/cars/remove": {
-      "post": {
-        "tags": [
-          "Admin"
-        ],
-        "parameters": [
-          {
-            "name": "internalId",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/admin/logs": {
       "get": {
         "tags": [
