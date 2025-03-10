@@ -5,57 +5,56 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Настраиваем Kestrel для работы с HTTP (8080) и HTTPS (8081)
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Kestrel пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ HTTP (8080) пїЅ HTTPS (8081)
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(8080); // HTTP
-    options.ListenAnyIP(8081, listenOptions => listenOptions.UseHttps()); // HTTPS
 });
 
-// Загружаем конфигурацию из appsettings.json
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ appsettings.json
 var configuration = builder.Configuration;
 
-// Регистрация HttpClient для сервисов
-if (configuration.GetValue<bool>("UseStubs"))
-{
-    // Используем мок-реализации
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ HttpClient пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+// if (configuration.GetValue<bool>("UseStubs"))
+// {
+    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
     builder.Services.AddScoped<IGroundControlService, GroundControlStubService>();
     builder.Services.AddScoped<IOrchestratorService, OrchestratorStubService>();
-}
-else
-{
-    // Используем реальные реализации с BaseAddress из конфигурации
-    builder.Services.AddHttpClient<IGroundControlService, GroundControlService>(client =>
-    {
-        client.BaseAddress = new Uri(configuration["GroundControlSettings:BaseUrl"]);
-    });
+// }
+// else
+// {
+//     // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ BaseAddress пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//     builder.Services.AddHttpClient<IGroundControlService, GroundControlService>(client =>
+//     {
+//         client.BaseAddress = new Uri(configuration["GroundControlSettings:BaseUrl"]);
+//     });
 
-    builder.Services.AddHttpClient<IOrchestratorService, OrchestratorService>(client =>
-    {
-        client.BaseAddress = new Uri(configuration["OrchestratorSettings:BaseUrl"]);
-    });
-}
+//     builder.Services.AddHttpClient<IOrchestratorService, OrchestratorService>(client =>
+//     {
+//         client.BaseAddress = new Uri(configuration["OrchestratorSettings:BaseUrl"]);
+//     });
+// }
 
-// Регистрация других сервисов
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 builder.Services.AddSingleton<CarRepository>();
 
-// Добавляем сервисы в контейнер
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-// Настраиваем Swagger
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "Follow Me API",
         Version = "v1",
-        Description = "API для управления машинами сопровождения самолетов."
+        Description = "API пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ."
     });
 });
 
-// Настраиваем CORS
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -64,13 +63,13 @@ builder.Services.AddCors(options =>
             policy.AllowAnyOrigin()
                   .AllowAnyMethod()
                   .AllowAnyHeader()
-                  .WithExposedHeaders("Content-Disposition"); // Разрешает скачивание файлов
+                  .WithExposedHeaders("Content-Disposition"); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         });
 });
 
 var app = builder.Build();
 
-// Включаем Swagger только в режиме разработки
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Swagger пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -80,11 +79,11 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-// ОТКЛЮЧАЕМ редирект с HTTP на HTTPS
+// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ HTTP пїЅпїЅ HTTPS
 // app.UseHttpsRedirection();
 
 app.UseStaticFiles();
-app.UseDeveloperExceptionPage(); // Показывает ошибки в разработке
+app.UseDeveloperExceptionPage(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 app.UseRouting();
 app.UseCors("AllowAll");
 
