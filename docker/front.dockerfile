@@ -3,13 +3,13 @@ FROM node:18-alpine AS build
 WORKDIR /app
 
 # Копируем файлы зависимостей
-COPY follow-me/follo-me-admin/package.json follow-me/follo-me-admin/package-lock.json* ./
+COPY follow-me/follow-me-admin/package.json follow-me/follow-me-admin/package-lock.json* ./
 
 # Устанавливаем зависимости
 RUN npm install
 
 # Копируем файлы исходного кода
-COPY follow-me/follo-me-admin/ ./
+COPY follow-me/follow-me-admin/ ./
 
 # Собираем приложение
 RUN npm run build
