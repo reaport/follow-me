@@ -12,7 +12,7 @@ RUN npm install
 COPY ./follow-me/follow-me-admin/ ./
 
 # Собираем приложение
-RUN npm run build
+RUN PUBLIC_URL=/panel npm run build
 
 # Этап продакшена
 FROM nginx:stable-alpine
