@@ -7,7 +7,7 @@ services:
       dockerfile: docker/dockerfile
     restart: unless-stopped
     ports:
-      - "8080:80"  # Пробрасываем порт 80 контейнера на порт 8080 хоста
+      - "8080:8080"  # Пробрасываем порт 80 контейнера на порт 8080 хоста
 
   frontend:
     build:
