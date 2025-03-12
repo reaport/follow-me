@@ -15,25 +15,25 @@ builder.WebHost.ConfigureKestrel(options =>
 var configuration = builder.Configuration;
 
 // ����������� HttpClient ��� ��������
-// if (configuration.GetValue<bool>("UseStubs"))
-// {
+if (configuration.GetValue<bool>("UseStubs"))
+{
     // ���������� ���-����������
     builder.Services.AddScoped<IGroundControlService, GroundControlStubService>();
     builder.Services.AddScoped<IOrchestratorService, OrchestratorStubService>();
-// }
-// else
-// {
-//     // ���������� �������� ���������� � BaseAddress �� ������������
-//     builder.Services.AddHttpClient<IGroundControlService, GroundControlService>(client =>
-//     {
-//         client.BaseAddress = new Uri(configuration["GroundControlSettings:BaseUrl"]);
-//     });
+ }
+ else
+{
+    // ���������� �������� ���������� � BaseAddress �� ������������
+    builder.Services.AddHttpClient<IGroundControlService, GroundControlService>(client =>
+    {
+        client.BaseAddress = new Uri(configuration["GroundControlSettings:BaseUrl"]);
+    });
 
-//     builder.Services.AddHttpClient<IOrchestratorService, OrchestratorService>(client =>
-//     {
-//         client.BaseAddress = new Uri(configuration["OrchestratorSettings:BaseUrl"]);
-//     });
-// }
+    builder.Services.AddHttpClient<IOrchestratorService, OrchestratorService>(client =>
+    {
+        client.BaseAddress = new Uri(configuration["OrchestratorSettings:BaseUrl"]);
+    });
+}
 
 // ����������� ������ ��������
 builder.Services.AddSingleton<CarRepository>();

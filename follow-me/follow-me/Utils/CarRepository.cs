@@ -34,7 +34,7 @@ namespace FollowMe.Services
                     InternalId = parts[0],
                     ExternalId = parts[1],
                     Status = (CarStatusEnum)Enum.Parse(typeof(CarStatusEnum), parts[2]),
-                    CurrentNode = parts.Length > 3 ? parts[3] : "Garage" // Если поле отсутствует, используем "Garage"
+                    CurrentNode = parts.Length > 3 ? parts[3] : "garage-node" // Если поле отсутствует, используем "Garage"
                 };
             }).ToList();
 
