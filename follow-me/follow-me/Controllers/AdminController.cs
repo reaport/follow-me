@@ -44,7 +44,8 @@ public class AdminController : ControllerBase
             {
                 InternalId = newInternalId,
                 ExternalId = "",
-                Status = CarStatusEnum.Available
+                Status = CarStatusEnum.Available,
+                CurrentNode = "garage-node"
             };
 
             // Добавление новой машины в список
