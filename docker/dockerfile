@@ -15,7 +15,6 @@ WORKDIR /app
 
 # Копируем файлы конфигурации
 COPY --from=build /app/out .
-COPY ./follow-me/follow-me/appsettings.json ./appsettings.json
-COPY ./follow-me/follow-me/appsettings.Production.json ./appsettings.Production.json
+COPY ./follow-me/follow-me/appsettings*.json ./
 
 ENTRYPOINT ["dotnet", "follow-me.dll"]
