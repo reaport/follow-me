@@ -2,7 +2,7 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Follow Me API",
-    "description": "API для управления машинами сопровождения самолетов.",
+    "description": "API для управления машинами сопровождения.",
     "version": "v1"
   },
   "paths": {
