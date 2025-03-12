@@ -18,10 +18,8 @@ namespace FollowMe.Services
                 // Если файл не существует, создаем его с начальными данными
                 var defaultCars = new List<Car>
                 {
-                    new Car { InternalId = "0000000-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "Garage" },
-                    new Car { InternalId = "1111111-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "Garage" },
-                    new Car { InternalId = "2222222-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "Garage" },
-                    new Car { InternalId = "3333333-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "Garage" }
+                    new Car { InternalId = "0000000-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "garage-node" },
+                    new Car { InternalId = "1111111-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "garage-node" }
                 };
                 SaveAllCars(defaultCars);
                 return defaultCars;
