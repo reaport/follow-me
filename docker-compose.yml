@@ -5,9 +5,9 @@ services:
     build:
       context: .
       dockerfile: docker/dockerfile
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Production
     restart: unless-stopped
+    ports:
+      - "8080:80"  # Пробрасываем порт 80 контейнера на порт 8080 хоста
 
   frontend:
     build:
@@ -16,3 +16,5 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+    ports:
+      - "8081:80"  # Пробрасываем порт 80 контейнера на порт 8081 хоста

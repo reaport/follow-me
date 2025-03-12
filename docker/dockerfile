@@ -12,5 +12,10 @@ RUN dotnet publish -c Release -o out ./follow-me.csproj
 # Собираем финальный образ
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
+
+# Копируем файлы конфигурации
 COPY --from=build /app/out .
+COPY ./follow-me/follow-me/appsettings.json ./appsettings.json
+COPY ./follow-me/follow-me/appsettings.Production.json ./appsettings.Production.json
+
 ENTRYPOINT ["dotnet", "follow-me.dll"]

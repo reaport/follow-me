@@ -6,7 +6,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Загрузка конфигурации из appsettings.json и переменных среды
+// Загрузка конфигурации из appsettings.json и appsettings.Production.json
 var configuration = builder.Configuration;
 
 // Логирование значений конфигурации
