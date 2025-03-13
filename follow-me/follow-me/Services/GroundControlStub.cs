@@ -42,7 +42,7 @@ namespace FollowMe.Services
             return Task.FromResult(route);
         }
 
-        public Task<double> RequestMove(string vehicleId, string vehicleType, string from, string to)
+        public Task<double> RequestMove(string vehicleId, string vehicleType, string from, string to, bool withAirplane)
         {
             Logger.Log("GroundControlStub", "INFO", $"Запрос на перемещение транспорта {vehicleId} из {from} в {to}.");
 
