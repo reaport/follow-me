@@ -98,16 +98,16 @@ namespace FollowMe.Controllers
         {
             try
             {
-                // Логируем начало движения
-                Logger.LogAudit(vehicleId, $"Начало движения из {nodeFrom} в {nodeTo}.");
-
-                // Отправляем запрос на начало движения в Orchestrator с aircraftId
-                await _orchestratorService.StartMovementAsync(vehicleId, aircraftId);
-
                 Logger.Log("FollowMeController", "INFO", $"Движение из гаража до NodeFrom {vehicleId}.");
 
                 // Движение из гаража до NodeFrom
                 await MoveBetweenNodesAsync(vehicleId, vehicleType, garrageNodeId, nodeFrom);
+
+                // Логируем начало перемещения самолета
+                Logger.LogAudit(vehicleId, $"Начало движения из {nodeFrom} в {nodeTo}.");
+
+                // Отправляем запрос на начало движения в Orchestrator с aircraftId
+                await _orchestratorService.StartMovementAsync(vehicleId, aircraftId);
 
                 Logger.Log("FollowMeController", "INFO", $"Движение из NodeFrom до NodeTo {vehicleId}.");
 

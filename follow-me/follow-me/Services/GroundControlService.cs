@@ -31,7 +31,7 @@ namespace FollowMe.Services
         {
             Logger.Log("GroundControlService", "INFO", $"Запрос маршрута из {from} в {to}.");
 
-            var request = new { from, to };
+            var request = new { from, to, type = "follow-me" };
             var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
 
             var response = await _httpClient.PostAsync("/route", content);

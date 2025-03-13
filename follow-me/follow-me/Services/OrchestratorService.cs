@@ -39,7 +39,7 @@ namespace FollowMe.Services
             Logger.Log("OrchestratorService", "INFO", $"Отправка запроса на окончание движения для машины {carId}.");
 
             // Создаем тело запроса с aircraftId и isTakeoff
-            var requestBody = new { aircraftId, isTakeoff };
+            var requestBody = new { aircraft_id = aircraftId, is_takeoff = isTakeoff };
             var jsonContent = new StringContent(
                 JsonSerializer.Serialize(requestBody),
                 Encoding.UTF8,
