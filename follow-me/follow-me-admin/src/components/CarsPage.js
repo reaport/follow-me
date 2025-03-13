@@ -88,7 +88,7 @@ export default function CarsPage() {
         </tbody>
       </table>
       <button onClick={addCar}>Добавить машину</button>
-      <button onClick={reloadCars} style={{ marginLeft: "10px" }}>Перезагрузить машины</button>
+      <button onClick={reloadCars}>Перезагрузить машины</button>
     </div>
   );
 }
