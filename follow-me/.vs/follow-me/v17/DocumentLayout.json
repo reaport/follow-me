@@ -207,7 +207,7 @@
               "RelativeDocumentMoniker": "follow-me\\Controllers\\FollowMeController.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\FollowMeController.cs",
               "RelativeToolTip": "follow-me\\Controllers\\FollowMeController.cs",
-              "ViewState": "AgIAAL0AAAAAAAAAAAAqwP4AAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAHYAAAAAAAAAAAAkwI0AAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-23T15:20:04.911Z",
               "EditorCaption": ""
@@ -234,8 +234,7 @@
               "RelativeToolTip": "follow-me\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T15:26:16.059Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T15:26:16.059Z"
             },
             {
               "$type": "Document",
@@ -247,8 +246,7 @@
               "RelativeToolTip": "follow-me\\Services\\GroundControlService.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAASwCoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T15:18:44.019Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T15:18:44.019Z"
             },
             {
               "$type": "Document",
@@ -260,8 +258,7 @@
               "RelativeToolTip": "follow-me\\Utils\\CarRepository.cs",
               "ViewState": "AgIAAFUAAAAAAAAAAAAAAIUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T17:24:11.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T17:24:11.142Z"
             },
             {
               "$type": "Document",
@@ -273,8 +270,7 @@
               "RelativeToolTip": "follow-me\\Controllers\\AdminController.cs",
               "ViewState": "AgIAAIgAAAAAAAAAAAAwwGMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T16:15:41.966Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T16:15:41.966Z"
             },
             {
               "$type": "Document",
