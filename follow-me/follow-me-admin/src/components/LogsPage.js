@@ -13,16 +13,36 @@ export default function LogsPage() {
     direction: "asc", // Направление сортировки (asc или desc)
   });
 
+  // Загрузка логов
   useEffect(() => {
-    axios.get(`${API_BASE}/logs`).then((res) => {
-      // Парсим логи
-      const parsedLogs = res.data.map((log) => {
-        const [timestamp, controller, code, message] = log.split(" | ");
-        return { timestamp, controller, code, message };
-      });
-      setLogs(parsedLogs);
-    });
+    fetchLogs();
   }, []);
+
+  // Функция для загрузки логов
+  const fetchLogs = () => {
+    axios.get(`${API_BASE}/logs`)
+      .then((res) => {
+        const parsedLogs = res.data.map((log) => {
+          const [timestamp, controller, code, message] = log.split(" | ");
+          return { timestamp, controller, code, message };
+        });
+        setLogs(parsedLogs);
+      })
+      .catch((error) => {
+        console.error("Ошибка при загрузке логов:", error);
+      });
+  };
+
+  // Функция для очистки логов
+  const clearLogs = () => {
+    axios.post(`${API_BASE}/logs/clear`)
+      .then(() => {
+        fetchLogs(); // Перезагружаем логи после очистки
+      })
+      .catch((error) => {
+        console.error("Ошибка при очистке логов:", error);
+      });
+  };
 
   // Функция для сортировки логов
   const sortedLogs = [...logs].sort((a, b) => {
@@ -49,6 +69,7 @@ export default function LogsPage() {
   return (
     <div>
       <h1>Логи</h1>
+      <button onClick={clearLogs}>Очистить логи</button>
       <table>
         <thead>
           <tr>

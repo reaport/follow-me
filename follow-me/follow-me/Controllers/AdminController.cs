@@ -149,4 +149,40 @@ public class AdminController : ControllerBase
             return StatusCode(500, new { Message = "Произошла ошибка при получении аудита." });
         }
     }
+
+    [HttpPost("logs/clear")] // Доступно по /admin/admin/logs/clear
+    public IActionResult ClearLogs()
+    {
+        try
+        {
+            if (System.IO.File.Exists("logs.txt"))
+            {
+                System.IO.File.WriteAllText("logs.txt", string.Empty); // Очищаем файл логов
+            }
+            return Ok(new { Message = "Логи успешно очищены." });
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Ошибка при очистке логов: {ex.Message}");
+            return StatusCode(500, new { Message = "Произошла ошибка при очистке логов." });
+        }
+    }
+
+    [HttpPost("audit/clear")] // Доступно по /admin/admin/audit/clear
+    public IActionResult ClearAudit()
+    {
+        try
+        {
+            if (System.IO.File.Exists("audit.txt"))
+            {
+                System.IO.File.WriteAllText("audit.txt", string.Empty); // Очищаем файл аудита
+            }
+            return Ok(new { Message = "Аудит успешно очищен." });
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Ошибка при очистке аудита: {ex.Message}");
+            return StatusCode(500, new { Message = "Произошла ошибка при очистке аудита." });
+        }
+    }
 }
