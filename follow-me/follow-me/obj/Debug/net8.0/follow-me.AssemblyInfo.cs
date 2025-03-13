@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("follow-me")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ea4984c7d886c2c18a29091243304a59c481e35")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+241efa0b59fba9983109c82c98bae9112fbbbfdc")]
 [assembly: System.Reflection.AssemblyProductAttribute("follow-me")]
 [assembly: System.Reflection.AssemblyTitleAttribute("follow-me")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

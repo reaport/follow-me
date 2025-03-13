@@ -133,7 +133,6 @@ namespace FollowMe.Controllers
                 if (car != null)
                 {
                     car.Status = CarStatusEnum.Available; // Делаем машину доступной
-                    car.ExternalId = ""; // Сбрасываем ExternalId
                     car.CurrentNode = garrageNodeId; // Устанавливаем текущее местоположение в гараж
                     _carRepository.SaveAllCars(cars); // Сохраняем изменения
                     Logger.Log("FollowMeController", "INFO", $"Машина {vehicleId} возвращена в гараж и доступна для новых задач.");

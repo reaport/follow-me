@@ -146,7 +146,7 @@
         "properties": {
           "airplaneId": {
             "type": "string",
-            "format": "uuid"
+            "nullable": true
           },
           "nodeFrom": {
             "type": "string",
@@ -155,6 +155,9 @@
           "nodeTo": {
             "type": "string",
             "nullable": true
+          },
+          "isTakeoff": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false

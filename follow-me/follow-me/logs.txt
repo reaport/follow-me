@@ -136,3 +136,10 @@
 13.03.2025 19:08:09 | FollowMeController | INFO | Машина follow-me_6 движется из node_3 в garage-node. Время в пути: 4 сек.
 13.03.2025 19:08:13 | FollowMeController | INFO | Маршрут для машины follow-me_6 успешно завершен.
 13.03.2025 19:08:13 | FollowMeController | INFO | Машина follow-me_6 возвращена в гараж и доступна для новых задач.
+13.03.2025 19:27:29 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+13.03.2025 19:27:29 | FollowMeController | INFO | Ответ отправлен: {"CarId":"","TimeToWait":false}
+13.03.2025 19:27:29 | OrchestratorService | INFO | Отправка запроса на начало движения для машины .
+13.03.2025 19:27:30 | FollowMeController | ERROR | Ошибка при обработке маршрута: Response status code does not indicate success: 404 (Not Found).
+13.03.2025 19:28:54 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+13.03.2025 19:28:54 | FollowMeController | INFO | Все машины заняты. Ожидание освобождения.
+13.03.2025 19:28:54 | FollowMeController | INFO | Ответ отправлен: {"CarId":"follow-me_4","TimeToWait":true}
