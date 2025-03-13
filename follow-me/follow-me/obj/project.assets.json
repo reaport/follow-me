@@ -324,19 +324,6 @@
           "build/netcoreapp3.1/Microsoft.TestPlatform.TestHost.props": {}
         }
       },
-      "Microsoft.VisualStudio.UnitTesting/11.0.50727.1": {
-        "type": "package",
-        "compile": {
-          "lib/net45/Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net45/Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "Moq/4.20.72": {
         "type": "package",
         "dependencies": {
@@ -1089,24 +1076,6 @@
         "microsoft.testplatform.testhost.nuspec"
       ]
     },
-    "Microsoft.VisualStudio.UnitTesting/11.0.50727.1": {
-      "sha512": "DoqQ6Zl7GcytRa1isWv20MyV1znFRDje6k/y3edbew3Qx/Z1r5Cf6rBktD7lGxN97d2VVC5RzdFHw+dci9lsMw==",
-      "type": "package",
-      "path": "microsoft.visualstudio.unittesting/11.0.50727.1",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "THIRD-PARTY-LICENSE.txt",
-        "lib/net45/Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll",
-        "lib/net45/Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml",
-        "microsoft.visualstudio.unittesting.11.0.50727.1.nupkg.sha512",
-        "microsoft.visualstudio.unittesting.nuspec",
-        "tools/net45/MSTest.exe",
-        "tools/net45/MSTest.exe.config"
-      ]
-    },
     "Moq/4.20.72": {
       "sha512": "EA55cjyNn8eTNWrgrdZJH5QLFp2L43oxl1tlkoYUKIE9pRwL784OWiTXeCV5ApS+AMYEAlt7Fo03A2XfouvHmQ==",
       "type": "package",
@@ -1452,7 +1421,6 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Microsoft.NET.Test.Sdk >= 17.13.0",
-      "Microsoft.VisualStudio.UnitTesting >= 11.0.50727.1",
       "Moq >= 4.20.72",
       "Newtonsoft.Json >= 13.0.3",
       "Swashbuckle.AspNetCore >= 6.6.2",
@@ -1515,10 +1483,6 @@
             "target": "Package",
             "version": "[17.13.0, )"
           },
-          "Microsoft.VisualStudio.UnitTesting": {
-            "target": "Package",
-            "version": "[11.0.50727.1, )"
-          },
           "Moq": {
             "target": "Package",
             "version": "[4.20.72, )"
@@ -1564,17 +1528,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Пакет \"Microsoft.VisualStudio.UnitTesting 11.0.50727.1\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1\", а не целевой платформы проекта \"net8.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
-      "libraryId": "Microsoft.VisualStudio.UnitTesting",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

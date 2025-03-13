@@ -4,7 +4,6 @@ using FollowMe.Data;
 using FollowMe.Utils;
 using System.Text.Json;
 using System.Threading.Tasks;
-using FollowMe.Utils;
 
 namespace FollowMe.Controllers
 {

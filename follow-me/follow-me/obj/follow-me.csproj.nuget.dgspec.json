@@ -55,10 +55,6 @@
               "target": "Package",
               "version": "[17.13.0, )"
             },
-            "Microsoft.VisualStudio.UnitTesting": {
-              "target": "Package",
-              "version": "[11.0.50727.1, )"
-            },
             "Moq": {
               "target": "Package",
               "version": "[4.20.72, )"

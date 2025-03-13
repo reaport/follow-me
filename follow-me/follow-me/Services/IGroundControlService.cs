@@ -26,7 +26,7 @@ public class VehicleRegistrationResponse
     }
 
 
-    private class MoveResponse
+    public class MoveResponse
     {
         [JsonPropertyName("distance")]
         public double Distance { get; set; }

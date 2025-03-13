@@ -88,6 +88,5 @@ namespace FollowMe.Services
             response.EnsureSuccessStatusCode();
             Logger.Log("GroundControlService", "INFO", "Уведомление успешно отправлено.");
         }
-
     }
 }
