@@ -1,12 +1,24 @@
 version: '3.8'
-
 services:
   backend:
     build:
       context: .
       dockerfile: docker/dockerfile
     restart: unless-stopped
-
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.airport-follow-me-jxye2q-37-web.rule=Host(`follow-me.reaport.ru`)
+      - traefik.http.routers.airport-follow-me-jxye2q-37-web.entrypoints=web
+      - traefik.http.services.airport-follow-me-jxye2q-37-web.loadbalancer.server.port=8080
+      - traefik.http.routers.airport-follow-me-jxye2q-37-web.service=airport-follow-me-jxye2q-37-web
+      - traefik.http.routers.airport-follow-me-jxye2q-37-web.middlewares=redirect-to-https@file
+      - traefik.http.routers.airport-follow-me-jxye2q-37-websecure.rule=Host(`follow-me.reaport.ru`)
+      - traefik.http.routers.airport-follow-me-jxye2q-37-websecure.entrypoints=websecure
+      - traefik.http.services.airport-follow-me-jxye2q-37-websecure.loadbalancer.server.port=8080
+      - traefik.http.routers.airport-follow-me-jxye2q-37-websecure.service=airport-follow-me-jxye2q-37-websecure
+      - traefik.http.routers.airport-follow-me-jxye2q-37-websecure.tls.certresolver=letsencrypt
+    networks:
+      - dokploy-network
   frontend:
     build:
       context: .
@@ -14,3 +26,20 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.airport-follow-me-jxye2q-38-web.rule=Host(`follow-me.reaport.ru`) && PathPrefix(`/panel`)
+      - traefik.http.routers.airport-follow-me-jxye2q-38-web.entrypoints=web
+      - traefik.http.services.airport-follow-me-jxye2q-38-web.loadbalancer.server.port=80
+      - traefik.http.routers.airport-follow-me-jxye2q-38-web.service=airport-follow-me-jxye2q-38-web
+      - traefik.http.routers.airport-follow-me-jxye2q-38-web.middlewares=redirect-to-https@file
+      - traefik.http.routers.airport-follow-me-jxye2q-38-websecure.rule=Host(`follow-me.reaport.ru`) && PathPrefix(`/panel`)
+      - traefik.http.routers.airport-follow-me-jxye2q-38-websecure.entrypoints=websecure
+      - traefik.http.services.airport-follow-me-jxye2q-38-websecure.loadbalancer.server.port=80
+      - traefik.http.routers.airport-follow-me-jxye2q-38-websecure.service=airport-follow-me-jxye2q-38-websecure
+      - traefik.http.routers.airport-follow-me-jxye2q-38-websecure.tls.certresolver=letsencrypt
+    networks:
+      - dokploy-network
+networks:
+  dokploy-network:
+    external: true
