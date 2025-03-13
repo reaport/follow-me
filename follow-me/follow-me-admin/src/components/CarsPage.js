@@ -10,18 +10,29 @@ export default function CarsPage() {
   const [cars, setCars] = useState([]);
   const [error, setError] = useState(null); // Состояние для хранения ошибки
 
+  // Загрузка списка машин
   useEffect(() => {
-    axios.get(`${API_BASE}/cars`).then((res) => {
-      // Преобразуем статус в строку
-      const formattedCars = res.data.map(car => ({
-        ...car,
-        status: car.status === 0 ? "available" : "busy",
-        currentNode: car.currentNode || "Unknown" // Если местоположение не задано, отображаем "Unknown"
-      }));
-      setCars(formattedCars);
-    });
+    fetchCars();
   }, []);
 
+  // Функция для загрузки машин
+  const fetchCars = () => {
+    axios.get(`${API_BASE}/cars`)
+      .then((res) => {
+        // Преобразуем статус в строку
+        const formattedCars = res.data.map(car => ({
+          ...car,
+          status: car.status === 0 ? "available" : "busy",
+          currentNode: car.currentNode || "Unknown" // Если местоположение не задано, отображаем "Unknown"
+        }));
+        setCars(formattedCars);
+      })
+      .catch((error) => {
+        setError("Произошла ошибка при загрузке машин.");
+      });
+  };
+
+  // Функция для добавления машины
   const addCar = () => {
     axios
       .post(`${API_BASE}/cars/add`)
@@ -35,6 +46,20 @@ export default function CarsPage() {
         } else {
           setError("Произошла ошибка при добавлении машины.");
         }
+      });
+  };
+
+  // Функция для перезагрузки машин
+  const reloadCars = () => {
+    axios
+      .post(`${API_BASE}/cars/reload`)
+      .then(() => {
+        // После успешной перезагрузки обновляем список машин
+        fetchCars();
+        setError(null); // Сбрасываем ошибку
+      })
+      .catch((error) => {
+        setError("Произошла ошибка при перезагрузке машин.");
       });
   };
 
@@ -63,6 +88,7 @@ export default function CarsPage() {
         </tbody>
       </table>
       <button onClick={addCar}>Добавить машину</button>
+      <button onClick={reloadCars} style={{ marginLeft: "10px" }}>Перезагрузить машины</button>
     </div>
   );
 }

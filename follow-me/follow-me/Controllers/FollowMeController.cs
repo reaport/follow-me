@@ -107,7 +107,10 @@ namespace FollowMe.Controllers
                 Logger.LogAudit(vehicleId, $"Начало движения из {nodeFrom} в {nodeTo}.");
 
                 // Отправляем запрос на начало движения в Orchestrator с aircraftId
-                await _orchestratorService.StartMovementAsync(vehicleId, aircraftId);
+                await RetryAsync(async () =>
+                {
+                    await _orchestratorService.StartMovementAsync(vehicleId, aircraftId);
+                });
 
                 Logger.Log("FollowMeController", "INFO", $"Движение из NodeFrom до NodeTo {vehicleId}.");
 
@@ -115,7 +118,10 @@ namespace FollowMe.Controllers
                 await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeFrom, nodeTo);
 
                 // Отправляем запрос на окончание движения в Orchestrator с aircraftId и isTakeoff
-                await _orchestratorService.EndMovementAsync(vehicleId, aircraftId, isTakeoff);
+                await RetryAsync(async () =>
+                {
+                    await _orchestratorService.EndMovementAsync(vehicleId, aircraftId, isTakeoff);
+                });
 
                 Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража {vehicleId}.");
 
@@ -213,6 +219,29 @@ namespace FollowMe.Controllers
                 // Если разрешение не получено, ждем и повторяем запрос
                 await Task.Delay(TimeSpan.FromSeconds(5));
                 return false; // Перемещение не удалось
+            }
+        }
+
+        private async Task RetryAsync(Func<Task> action, int maxAttempts = 3, int delaySeconds = 10)
+        {
+            for (int attempt = 1; attempt <= maxAttempts; attempt++)
+            {
+                try
+                {
+                    await action();
+                    return; // Успешно выполнили операцию
+                }
+                catch (Exception ex)
+                {
+                    if (attempt == maxAttempts)
+                    {
+                        Logger.Log("FollowMeController", "ERROR", $"Ошибка после {maxAttempts} попыток: {ex.Message}");
+                        throw; // Если попытки исчерпаны, пробрасываем исключение
+                    }
+
+                    Logger.Log("FollowMeController", "WARNING", $"Попытка {attempt} не удалась. Ошибка: {ex.Message}. Повтор через {delaySeconds} секунд.");
+                    await Task.Delay(TimeSpan.FromSeconds(delaySeconds));
+                }
             }
         }
 

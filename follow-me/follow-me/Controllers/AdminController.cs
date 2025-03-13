@@ -79,6 +79,26 @@ public class AdminController : ControllerBase
         }
     }
 
+    [HttpPost("cars/reload")]
+    public async Task<IActionResult> ReloadCars()
+    {
+        Logger.Log("AdminController", "INFO", "Запрос на перезагрузку всех машин.");
+
+        try
+        {
+            // Перезагружаем машины
+            await _carRepository.ReloadCars();
+
+            Logger.Log("AdminController", "INFO", "Все машины успешно перезагружены.");
+            return Ok(new { Message = "Все машины успешно перезагружены." });
+        }
+        catch (Exception ex)
+        {
+            Logger.Log("AdminController", "ERROR", $"Ошибка при перезагрузке машин: {ex.Message}");
+            return StatusCode(500, new { Message = "Произошла ошибка при перезагрузке машин." });
+        }
+    }
+
     [HttpGet("logs")] // Доступно по /admin/admin/logs
     public IActionResult GetLogs()
     {

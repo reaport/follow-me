@@ -1,4 +1,5 @@
 ﻿using FollowMe.Data;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace FollowMe.Services
                     InternalId = parts[0],
                     ExternalId = parts[1],
                     Status = (CarStatusEnum)Enum.Parse(typeof(CarStatusEnum), parts[2]),
-                    CurrentNode = parts.Length > 3 ? parts[3] : "garage-node" // Если поле отсутствует, используем "Garage"
+                    CurrentNode = parts.Length > 3 ? parts[3] : "garrage" // Если поле отсутствует, используем "Garage"
                 };
             }).ToList();
 
@@ -86,6 +87,36 @@ namespace FollowMe.Services
             return defaultCars;
         }
 
+        // Перезагрузка всех машин
+        public async Task ReloadCars()
+        {
+            var cars = GetAllCars();
+
+            // Сбрасываем состояние каждой машины
+            foreach (var car in cars)
+            {
+                car.ExternalId = ""; // Очищаем ExternalId
+                car.Status = CarStatusEnum.Available; // Устанавливаем статус "Available"
+                car.CurrentNode = "garrage"; // Устанавливаем текущий узел в "garrage"
+
+                // Регистрируем машину заново
+                var registrationResponse = await _groundControlService.RegisterVehicle("follow-me");
+                if (!string.IsNullOrEmpty(registrationResponse.VehicleId))
+                {
+                    car.ExternalId = registrationResponse.VehicleId;
+                    car.CurrentNode = registrationResponse.GarrageNodeId; // Обновляем текущий узел
+                }
+                else
+                {
+                    throw new InvalidOperationException($"Не удалось зарегистрировать машину {car.InternalId}.");
+                }
+            }
+
+            // Сохраняем обновленные данные
+            SaveAllCars(cars);
+        }
+
+        // Сохранение всех машин в файл
         public void SaveAllCars(List<Car> cars)
         {
             try
