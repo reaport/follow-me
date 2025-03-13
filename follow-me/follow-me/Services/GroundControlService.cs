@@ -89,9 +89,5 @@ namespace FollowMe.Services
             Logger.Log("GroundControlService", "INFO", "Уведомление успешно отправлено.");
         }
 
-        private class MoveResponse
-        {
-            public double Distance { get; set; }
-        }
     }
 }

@@ -58,3 +58,13 @@
 09.03.2025 20:44:59 | FollowMeController | INFO | Машина 51db391e-3d52-4b2e-a9b6-bd236fd38b2b движется из node_3 в garage-node. Время в пути: 4 сек.
 09.03.2025 20:45:03 | FollowMeController | INFO | Маршрут для машины 51db391e-3d52-4b2e-a9b6-bd236fd38b2b успешно завершен.
 09.03.2025 20:45:03 | FollowMeController | INFO | Машина 51db391e-3d52-4b2e-a9b6-bd236fd38b2b возвращена в гараж и доступна для новых задач.
+13.03.2025 18:29:41 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+13.03.2025 18:30:36 | GroundControlService | INFO | Регистрация транспорта типа follow-me.
+13.03.2025 18:31:37 | GroundControlService | INFO | Транспорт зарегистрирован. Ответ: {"garrageNodeId":"garrage_follow-me_5","vehicleId":"follow-me_5","serviceSpots":{"parking_1":"parking_1_follow-me_5","parking_2":"parking_2_follow-me_5"}}.
+13.03.2025 18:34:41 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+13.03.2025 18:34:44 | GroundControlService | INFO | Регистрация транспорта типа follow-me.
+13.03.2025 18:34:44 | GroundControlService | INFO | Транспорт зарегистрирован. Ответ: {"garrageNodeId":"garrage_follow-me_6","vehicleId":"follow-me_6","serviceSpots":{"parking_1":"parking_1_follow-me_6","parking_2":"parking_2_follow-me_6"}}.
+13.03.2025 18:34:48 | FollowMeController | INFO | Машина зарегистрирована. Внешний ID: follow-me_6
+13.03.2025 18:34:48 | FollowMeController | INFO | Ответ отправлен: {"CarId":"follow-me_6","TimeToWait":false}
+13.03.2025 18:34:48 | OrchestratorService | INFO | Отправка запроса на начало движения для машины follow-me_6.
+13.03.2025 18:34:48 | FollowMeController | ERROR | Ошибка при обработке маршрута: Response status code does not indicate success: 404 (Not Found).
