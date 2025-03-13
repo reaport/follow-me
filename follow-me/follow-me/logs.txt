@@ -68,3 +68,11 @@
 13.03.2025 18:34:48 | FollowMeController | INFO | Ответ отправлен: {"CarId":"follow-me_6","TimeToWait":false}
 13.03.2025 18:34:48 | OrchestratorService | INFO | Отправка запроса на начало движения для машины follow-me_6.
 13.03.2025 18:34:48 | FollowMeController | ERROR | Ошибка при обработке маршрута: Response status code does not indicate success: 404 (Not Found).
+13.03.2025 18:54:30 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+13.03.2025 18:54:30 | FollowMeController | INFO | Ответ отправлен: {"CarId":"follow-me_6","TimeToWait":false}
+13.03.2025 18:54:30 | OrchestratorService | INFO | Отправка запроса на начало движения для машины follow-me_6.
+13.03.2025 18:54:31 | FollowMeController | ERROR | Ошибка при обработке маршрута: Response status code does not indicate success: 404 (Not Found).
+13.03.2025 18:54:35 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+13.03.2025 18:54:35 | FollowMeController | INFO | Ответ отправлен: {"CarId":"follow-me_5","TimeToWait":false}
+13.03.2025 18:54:35 | OrchestratorService | INFO | Отправка запроса на начало движения для машины follow-me_5.
+13.03.2025 18:54:36 | FollowMeController | ERROR | Ошибка при обработке маршрута: Response status code does not indicate success: 404 (Not Found).

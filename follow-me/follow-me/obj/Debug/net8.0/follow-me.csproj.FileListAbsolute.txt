@@ -18,7 +18,6 @@ C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\bin\Debug\net8.
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\bin\Debug\net8.0\Microsoft.TestPlatform.CrossPlatEngine.dll
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\bin\Debug\net8.0\Microsoft.TestPlatform.Utilities.dll
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\bin\Debug\net8.0\Microsoft.VisualStudio.TestPlatform.Common.dll
-C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\bin\Debug\net8.0\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\bin\Debug\net8.0\Moq.dll
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\user\source\repos\Reaport\follow-me\follow-me\follow-me\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll

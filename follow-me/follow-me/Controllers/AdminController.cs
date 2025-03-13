@@ -9,10 +9,12 @@ using FollowMe.Utils;
 public class AdminController : ControllerBase
 {
     private readonly CarRepository _carRepository;
+    private readonly IGroundControlService _groundControlService;
 
-    public AdminController()
+    public AdminController(CarRepository carRepository, IGroundControlService groundControlService)
     {
-        _carRepository = new CarRepository();
+        _carRepository = carRepository;
+        _groundControlService = groundControlService;
     }
 
     [HttpGet("")] // Доступно по /admin/admin
@@ -30,7 +32,7 @@ public class AdminController : ControllerBase
     }
 
     [HttpPost("cars/add")] // Доступно по /admin/admin/cars/add
-    public IActionResult AddCar()
+    public async Task<IActionResult> AddCar()
     {
         var cars = _carRepository.GetAllCars();
 
@@ -39,13 +41,23 @@ public class AdminController : ControllerBase
             // Генерация нового GUID для InternalId
             var newInternalId = Guid.NewGuid().ToString();
 
+            // Регистрируем транспорт
+            var registrationResponse = await _groundControlService.RegisterVehicle("follow-me");
+
+            // Проверяем формат VehicleId
+            if (string.IsNullOrEmpty(registrationResponse.VehicleId))
+            {
+                Logger.Log("AdminController", "ERROR", "Не удалось зарегистрировать машину.");
+                return StatusCode(500, new { Message = "Не удалось зарегистрировать машину." });
+            }
+
             // Создание новой машины с GUID в качестве InternalId
             var newCar = new Car
             {
                 InternalId = newInternalId,
-                ExternalId = "",
+                ExternalId = registrationResponse.VehicleId, // Используем VehicleId из регистрации
                 Status = CarStatusEnum.Available,
-                CurrentNode = "garage-node"
+                CurrentNode = registrationResponse.GarrageNodeId
             };
 
             // Добавление новой машины в список
@@ -55,10 +67,10 @@ public class AdminController : ControllerBase
             _carRepository.SaveAllCars(cars);
 
             // Логирование в аудит
-            Logger.LogAudit(newInternalId, "Машина добавлена");
+            Logger.LogAudit(newInternalId, "Машина добавлена и зарегистрирована");
 
             // Возвращаем JSON с сообщением
-            return Ok(new { Message = $"Машина {newInternalId} добавлена!" });
+            return Ok(new { Message = $"Машина {newInternalId} добавлена и зарегистрирована с ExternalId: {registrationResponse.VehicleId}!" });
         }
         else
         {

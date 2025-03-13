@@ -49,7 +49,11 @@ else
 }
 
 // Настройка репозитория машин
-builder.Services.AddSingleton<CarRepository>();
+builder.Services.AddSingleton<CarRepository>(provider =>
+{
+    var groundControlService = provider.GetRequiredService<IGroundControlService>();
+    return new CarRepository(groundControlService);
+});
 
 // Добавление контроллеров и представлений
 builder.Services.AddControllers();

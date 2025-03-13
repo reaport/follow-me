@@ -10,8 +10,6 @@ namespace FollowMe.Controllers
     [ApiController]
     public class FollowMeController : ControllerBase
     {
-        private readonly string GarageNode = "garage-node";
-
         private readonly IGroundControlService _groundControlService;
         private readonly IOrchestratorService _orchestratorService;
         private readonly CarRepository _carRepository;
@@ -50,7 +48,7 @@ namespace FollowMe.Controllers
                 Logger.Log("FollowMeController", "INFO", "Все машины заняты. Ожидание освобождения.");
                 timeToWait = true;
 
-                // Возвращаем ответ сразу, не дожидаясь освобождения машины - ТУТ УМЫШЛЕННЫЙ БАГ - ЕСЛИ ВСЕ МАШИНЫ ЗАНЯТЫ И ВЫЗЫВАЕТСЯ НОВАЯ, ТО ХУЙ НА РЫЛО ВАМ А НЕ МАШИНА. НЕ ЗНАЮ КАК ОБРАБОТАТЬ ПОЭТОМУ ПОКА БУДЕТ ТАКАЯ, ИНАЧЕ ПОЛУЧИТСЯ ЗАГОГУЛИНА ИЗ ЗАПРОСОВ В ВЫШКУ НАХУЙ НЕ НУЖНЫХ ИЛИ НУЖНО ГДЕ-ТО ХРАНИТЬ ЭТУ ПОЕБЕНЬ ЧТО Я СЧИТАЮ НЕНУЖНЫМ
+                // Возвращаем ответ сразу, не дожидаясь освобождения машины
                 car = cars.FirstOrDefault();
                 var immediateResponse = new { CarId = car.ExternalId, TimeToWait = timeToWait };
                 Logger.Log("FollowMeController", "INFO", $"Ответ отправлен: {JsonSerializer.Serialize(immediateResponse)}");
@@ -68,22 +66,6 @@ namespace FollowMe.Controllers
             // Помечаем машину как занятую
             car.Status = CarStatusEnum.Busy;
 
-            // Регистрируем транспорт
-            var registrationResponse = await _groundControlService.RegisterVehicle("follow-me");
-
-            // Проверяем формат VehicleId
-            if (!string.IsNullOrEmpty(registrationResponse.VehicleId))
-            {
-                car.ExternalId = registrationResponse.VehicleId;
-            }
-            else
-            {
-                Logger.Log("FollowMeController", "ERROR", $"Неверный формат VehicleId: {registrationResponse.VehicleId}");
-                return await HandleInvalidVehicleId(request);
-            }
-
-            Logger.Log("FollowMeController", "INFO", $"Машина зарегистрирована. Внешний ID: {car.ExternalId}");
-
             // Сохраняем обновленные данные о машине в файл
             _carRepository.SaveAllCars(cars);
 
@@ -92,7 +74,7 @@ namespace FollowMe.Controllers
             Logger.Log("FollowMeController", "INFO", $"Ответ отправлен: {JsonSerializer.Serialize(response)}");
 
             // Запускаем асинхронную задачу для обработки маршрута
-            _ = ProcessRouteAsync(car.ExternalId, "follow-me", request.NodeFrom.ToString(), request.NodeTo.ToString(), GarageNode, request.AirplaneId.ToString());
+            _ = ProcessRouteAsync(car.ExternalId, "follow-me", request.NodeFrom.ToString(), request.NodeTo.ToString(), car.CurrentNode, request.AirplaneId.ToString());
 
             return Ok(response);
         }

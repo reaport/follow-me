@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace FollowMe.Services
 {
     public class CarRepository
     {
         private readonly string _filePath = "cars.txt";
+        private readonly IGroundControlService _groundControlService;
+
+        public CarRepository(IGroundControlService groundControlService)
+        {
+            _groundControlService = groundControlService;
+        }
 
         // Чтение всех машин из файла
         public List<Car> GetAllCars()
@@ -16,11 +23,7 @@ namespace FollowMe.Services
             if (!File.Exists(_filePath))
             {
                 // Если файл не существует, создаем его с начальными данными
-                var defaultCars = new List<Car>
-                {
-                    new Car { InternalId = "0000000-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "garage-node" },
-                    new Car { InternalId = "1111111-60bc-464d-8759-c04b79c25b25", ExternalId = "", Status = CarStatusEnum.Available, CurrentNode = "garage-node" }
-                };
+                var defaultCars = CreateDefaultCars().Result; // Регистрируем дефолтные машины
                 SaveAllCars(defaultCars);
                 return defaultCars;
             }
@@ -41,6 +44,48 @@ namespace FollowMe.Services
             return cars;
         }
 
+        // Создание дефолтных машин с регистрацией
+        private async Task<List<Car>> CreateDefaultCars()
+        {
+            var defaultCars = new List<Car>();
+
+            // Создаем первую машину
+            var registrationResponse1 = await _groundControlService.RegisterVehicle("follow-me");
+            if (!string.IsNullOrEmpty(registrationResponse1.VehicleId))
+            {
+                defaultCars.Add(new Car
+                {
+                    InternalId = "0000000-60bc-464d-8759-c04b79c25b25",
+                    ExternalId = registrationResponse1.VehicleId,
+                    Status = CarStatusEnum.Available,
+                    CurrentNode = registrationResponse1.GarrageNodeId
+                });
+            }
+            else
+            {
+                throw new InvalidOperationException("Не удалось зарегистрировать первую дефолтную машину.");
+            }
+
+            // Создаем вторую машину
+            var registrationResponse2 = await _groundControlService.RegisterVehicle("follow-me");
+            if (!string.IsNullOrEmpty(registrationResponse2.VehicleId))
+            {
+                defaultCars.Add(new Car
+                {
+                    InternalId = "1111111-60bc-464d-8759-c04b79c25b25",
+                    ExternalId = registrationResponse2.VehicleId,
+                    Status = CarStatusEnum.Available,
+                    CurrentNode = registrationResponse2.GarrageNodeId
+                });
+            }
+            else
+            {
+                throw new InvalidOperationException("Не удалось зарегистрировать вторую дефолтную машину.");
+            }
+
+            return defaultCars;
+        }
+
         public void SaveAllCars(List<Car> cars)
         {
             try
@@ -54,6 +99,5 @@ namespace FollowMe.Services
                 Console.WriteLine($"Ошибка при записи в файл: {ex.Message}");
             }
         }
-
     }
 }
