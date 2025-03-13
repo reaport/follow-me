@@ -74,7 +74,7 @@ namespace FollowMe.Controllers
             Logger.Log("FollowMeController", "INFO", $"Ответ отправлен: {JsonSerializer.Serialize(response)}");
 
             // Запускаем асинхронную задачу для обработки маршрута
-            _ = ProcessRouteAsync(car.ExternalId, "follow-me", request.NodeFrom.ToString(), request.NodeTo.ToString(), car.CurrentNode, request.AirplaneId.ToString());
+            _ = ProcessRouteAsync(car.ExternalId, "follow-me", request.NodeFrom.ToString(), request.NodeTo.ToString(), car.CurrentNode, request.AirplaneId.ToString(), request.IsTakeoff);
 
             return Ok(response);
         }
@@ -94,7 +94,7 @@ namespace FollowMe.Controllers
             }
         }
 
-        private async Task ProcessRouteAsync(string vehicleId, string vehicleType, string nodeFrom, string nodeTo, string garrageNodeId, string aircraftId)
+        private async Task ProcessRouteAsync(string vehicleId, string vehicleType, string nodeFrom, string nodeTo, string garrageNodeId, string aircraftId, bool isTakeoff)
         {
             try
             {
@@ -114,8 +114,8 @@ namespace FollowMe.Controllers
                 // Движение из NodeFrom до NodeTo
                 await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeFrom, nodeTo);
 
-                // Отправляем запрос на окончание движения в Orchestrator с aircraftId
-                await _orchestratorService.EndMovementAsync(vehicleId, aircraftId);
+                // Отправляем запрос на окончание движения в Orchestrator с aircraftId и isTakeoff
+                await _orchestratorService.EndMovementAsync(vehicleId, aircraftId, isTakeoff);
 
                 Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража {vehicleId}.");
 
@@ -215,39 +215,6 @@ namespace FollowMe.Controllers
                 await Task.Delay(TimeSpan.FromSeconds(5));
                 return false; // Перемещение не удалось
             }
-        }
-
-        private async Task<IActionResult> HandleInvalidVehicleId(WeNeedFollowMeRequestDto request)
-        {
-            const int maxAttempts = 3;
-            const int delaySeconds = 30;
-
-            for (int attempt = 1; attempt <= maxAttempts; attempt++)
-            {
-                // Логика для обработки невалидного VehicleId
-                Logger.Log("FollowMeController", "WARNING", "Попытка повторной регистрации машины...");
-
-                // Повторный запрос
-                var registrationResponse = await _groundControlService.RegisterVehicle("follow-me");
-
-                if (!string.IsNullOrEmpty(registrationResponse.VehicleId))
-                {
-                    // Если получили валидный VehicleId, то возвращаем успешный ответ
-                    var cars = _carRepository.GetAllCars();
-                    var car = cars.FirstOrDefault(c => c.Status == CarStatusEnum.Busy);
-                    if (car != null)
-                    {
-                        car.ExternalId = registrationResponse.VehicleId;
-                        _carRepository.SaveAllCars(cars); // Сохраняем изменения в файл
-                        return Ok(new { CarId = car.ExternalId, Message = "Машина успешно зарегистрирована после повторной попытки." });
-                    }
-                }
-
-                // Если после повторного запроса VehicleId все еще невалиден, возвращаем ошибку
-                Logger.Log("FollowMeController", "ERROR", "Не удалось зарегистрировать машину после повторной попытки.");
-                await Task.Delay(TimeSpan.FromSeconds(delaySeconds)); // Задержка между попытками
-            }
-            return StatusCode(500, new ErrorResponseDto { ErrorCode = 500, Message = "Не удалось зарегистрировать машину." });
         }
 
         [HttpPost("navigate")]

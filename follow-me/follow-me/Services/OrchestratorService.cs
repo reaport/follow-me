@@ -34,12 +34,12 @@ namespace FollowMe.Services
             Logger.Log("OrchestratorService", "INFO", $"Запрос на начало движения для машины {carId} успешно отправлен.");
         }
 
-        public async Task EndMovementAsync(string carId, string aircraftId)
+        public async Task EndMovementAsync(string carId, string aircraftId, bool isTakeoff)
         {
             Logger.Log("OrchestratorService", "INFO", $"Отправка запроса на окончание движения для машины {carId}.");
 
-            // Создаем тело запроса с aircraftId
-            var requestBody = new { aircraftId };
+            // Создаем тело запроса с aircraftId и isTakeoff
+            var requestBody = new { aircraftId, isTakeoff };
             var jsonContent = new StringContent(
                 JsonSerializer.Serialize(requestBody),
                 Encoding.UTF8,
@@ -47,7 +47,7 @@ namespace FollowMe.Services
             );
 
             // Отправляем запрос с телом
-            var response = await _httpClient.PostAsync($"/follow-me/finish", jsonContent);
+            var response = await _httpClient.PostAsync($"/followme/finish", jsonContent);
             response.EnsureSuccessStatusCode();
 
             Logger.Log("OrchestratorService", "INFO", $"Запрос на окончание движения для машины {carId} успешно отправлен.");

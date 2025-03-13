@@ -76,3 +76,63 @@
 13.03.2025 18:54:35 | FollowMeController | INFO | Ответ отправлен: {"CarId":"follow-me_5","TimeToWait":false}
 13.03.2025 18:54:35 | OrchestratorService | INFO | Отправка запроса на начало движения для машины follow-me_5.
 13.03.2025 18:54:36 | FollowMeController | ERROR | Ошибка при обработке маршрута: Response status code does not indicate success: 404 (Not Found).
+13.03.2025 19:06:50 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+13.03.2025 19:06:50 | FollowMeController | INFO | Все машины заняты. Ожидание освобождения.
+13.03.2025 19:06:50 | FollowMeController | INFO | Ответ отправлен: {"CarId":"follow-me_6","TimeToWait":true}
+13.03.2025 19:07:49 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+13.03.2025 19:07:49 | FollowMeController | INFO | Ответ отправлен: {"CarId":"follow-me_6","TimeToWait":false}
+13.03.2025 19:07:49 | OrchestratorStubService | INFO | Заглушка: Запрос на начало движения для машины follow-me_6.
+13.03.2025 19:07:49 | FollowMeController | INFO | Движение из гаража до NodeFrom follow-me_6.
+13.03.2025 19:07:49 | FollowMeController | INFO | Начало обработки маршрута для машины follow-me_6.
+13.03.2025 19:07:49 | GroundControlStub | INFO | Запрос маршрута из garage-node в string.
+13.03.2025 19:07:49 | GroundControlStub | INFO | Заглушка: Маршрут: garage-node -> node_1 -> from-node.
+13.03.2025 19:07:49 | FollowMeController | INFO | Маршрут получен: garage-node -> node_1 -> from-node
+13.03.2025 19:07:49 | FollowMeController | INFO | Обработка перемещения из garage-node в node_1.
+13.03.2025 19:07:49 | FollowMeController | INFO | Запрос на перемещение из garage-node в node_1.
+13.03.2025 19:07:49 | GroundControlStub | INFO | Запрос на перемещение транспорта follow-me_6 из garage-node в node_1.
+13.03.2025 19:07:49 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+13.03.2025 19:07:49 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+13.03.2025 19:07:49 | FollowMeController | INFO | Машина follow-me_6 движется из garage-node в node_1. Время в пути: 4 сек.
+13.03.2025 19:07:53 | FollowMeController | INFO | Обработка перемещения из node_1 в from-node.
+13.03.2025 19:07:53 | FollowMeController | INFO | Запрос на перемещение из node_1 в from-node.
+13.03.2025 19:07:53 | GroundControlStub | INFO | Запрос на перемещение транспорта follow-me_6 из node_1 в from-node.
+13.03.2025 19:07:53 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+13.03.2025 19:07:53 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+13.03.2025 19:07:53 | FollowMeController | INFO | Машина follow-me_6 движется из node_1 в from-node. Время в пути: 4 сек.
+13.03.2025 19:07:57 | FollowMeController | INFO | Движение из NodeFrom до NodeTo follow-me_6.
+13.03.2025 19:07:57 | FollowMeController | INFO | Начало обработки маршрута для машины follow-me_6.
+13.03.2025 19:07:57 | GroundControlStub | INFO | Запрос маршрута из string в string.
+13.03.2025 19:07:57 | GroundControlStub | INFO | Заглушка: Маршрут: from-node -> node_2 -> to-node.
+13.03.2025 19:07:57 | FollowMeController | INFO | Маршрут получен: from-node -> node_2 -> to-node
+13.03.2025 19:07:57 | FollowMeController | INFO | Обработка перемещения из from-node в node_2.
+13.03.2025 19:07:57 | FollowMeController | INFO | Запрос на перемещение из from-node в node_2.
+13.03.2025 19:07:57 | GroundControlStub | INFO | Запрос на перемещение транспорта follow-me_6 из from-node в node_2.
+13.03.2025 19:07:57 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+13.03.2025 19:07:57 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+13.03.2025 19:07:57 | FollowMeController | INFO | Машина follow-me_6 движется из from-node в node_2. Время в пути: 4 сек.
+13.03.2025 19:08:01 | FollowMeController | INFO | Обработка перемещения из node_2 в to-node.
+13.03.2025 19:08:01 | FollowMeController | INFO | Запрос на перемещение из node_2 в to-node.
+13.03.2025 19:08:01 | GroundControlStub | INFO | Запрос на перемещение транспорта follow-me_6 из node_2 в to-node.
+13.03.2025 19:08:01 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+13.03.2025 19:08:01 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+13.03.2025 19:08:01 | FollowMeController | INFO | Машина follow-me_6 движется из node_2 в to-node. Время в пути: 4 сек.
+13.03.2025 19:08:05 | OrchestratorStubService | INFO | Заглушка: Запрос на окончание движения для машины follow-me_6.
+13.03.2025 19:08:05 | FollowMeController | INFO | Движение из NodeTo до гаража follow-me_6.
+13.03.2025 19:08:05 | FollowMeController | INFO | Начало обработки маршрута для машины follow-me_6.
+13.03.2025 19:08:05 | GroundControlStub | INFO | Запрос маршрута из string в garage-node.
+13.03.2025 19:08:05 | GroundControlStub | INFO | Заглушка: Маршрут: to-node -> node_3 -> garage-node.
+13.03.2025 19:08:05 | FollowMeController | INFO | Маршрут получен: to-node -> node_3 -> garage-node
+13.03.2025 19:08:05 | FollowMeController | INFO | Обработка перемещения из to-node в node_3.
+13.03.2025 19:08:05 | FollowMeController | INFO | Запрос на перемещение из to-node в node_3.
+13.03.2025 19:08:05 | GroundControlStub | INFO | Запрос на перемещение транспорта follow-me_6 из to-node в node_3.
+13.03.2025 19:08:05 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+13.03.2025 19:08:05 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+13.03.2025 19:08:05 | FollowMeController | INFO | Машина follow-me_6 движется из to-node в node_3. Время в пути: 4 сек.
+13.03.2025 19:08:09 | FollowMeController | INFO | Обработка перемещения из node_3 в garage-node.
+13.03.2025 19:08:09 | FollowMeController | INFO | Запрос на перемещение из node_3 в garage-node.
+13.03.2025 19:08:09 | GroundControlStub | INFO | Запрос на перемещение транспорта follow-me_6 из node_3 в garage-node.
+13.03.2025 19:08:09 | GroundControlStub | INFO | Заглушка: Разрешение на перемещение получено. Расстояние: 100.
+13.03.2025 19:08:09 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+13.03.2025 19:08:09 | FollowMeController | INFO | Машина follow-me_6 движется из node_3 в garage-node. Время в пути: 4 сек.
+13.03.2025 19:08:13 | FollowMeController | INFO | Маршрут для машины follow-me_6 успешно завершен.
+13.03.2025 19:08:13 | FollowMeController | INFO | Машина follow-me_6 возвращена в гараж и доступна для новых задач.

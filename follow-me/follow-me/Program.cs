@@ -51,8 +51,11 @@ else
 // Настройка репозитория машин
 builder.Services.AddSingleton<CarRepository>(provider =>
 {
-    var groundControlService = provider.GetRequiredService<IGroundControlService>();
-    return new CarRepository(groundControlService);
+    using (var scope = provider.CreateScope())
+    {
+        var groundControlService = scope.ServiceProvider.GetRequiredService<IGroundControlService>();
+        return new CarRepository(groundControlService);
+    }
 });
 
 // Добавление контроллеров и представлений
