@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./TableView.css";
+import "./CarsPage.css";
 
 const API_BASE = window.location.hostname.includes("localhost")
   ? "https://localhost:8081/admin"
