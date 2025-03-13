@@ -28,7 +28,7 @@ namespace FollowMe.Services
             );
 
             // Отправляем запрос с телом
-            var response = await _httpClient.PostAsync($"/follow-me/start", jsonContent);
+            var response = await _httpClient.PostAsync($"/followme/start", jsonContent);
             response.EnsureSuccessStatusCode();
 
             Logger.Log("OrchestratorService", "INFO", $"Запрос на начало движения для машины {carId} успешно отправлен.");
