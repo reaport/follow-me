@@ -42,6 +42,18 @@
         }
       }
     },
+    "/admin/cars/reload": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/admin/logs": {
       "get": {
         "tags": [
@@ -56,6 +68,30 @@
     },
     "/admin/audit": {
       "get": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/admin/logs/clear": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/admin/audit/clear": {
+      "post": {
         "tags": [
           "Admin"
         ],

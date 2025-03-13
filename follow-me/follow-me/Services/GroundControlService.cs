@@ -68,7 +68,7 @@ namespace FollowMe.Services
             else
             {
                 Logger.Log("GroundControlService", "ERROR", $"Ошибка при запросе на перемещение: {response.StatusCode}.");
-                return -1; // Ошибка или запрет на движение
+                return -1; // Ошибка или  запрет на движение
             }
         }
 

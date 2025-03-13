@@ -209,3 +209,48 @@
 13.03.2025 20:17:00 | FollowMeController | INFO | Машина follow-me_4 движется из airplane_to_parking_1 в parking_1. Время в пути: 4 сек.
 13.03.2025 20:17:04 | OrchestratorService | INFO | Отправка запроса на окончание движения для машины follow-me_4.
 13.03.2025 20:17:04 | FollowMeController | ERROR | Ошибка при обработке маршрута: Response status code does not indicate success: 500 (Internal Server Error).
+14.03.2025 1:50:20 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+14.03.2025 1:50:20 | FollowMeController | INFO | Ответ отправлен: {"CarId":"follow-me_5","TimeToWait":false}
+14.03.2025 1:50:20 | FollowMeController | INFO | Движение из гаража до NodeFrom follow-me_5.
+14.03.2025 1:50:20 | FollowMeController | INFO | Начало обработки маршрута для машины follow-me_5.
+14.03.2025 1:50:30 | GroundControlService | INFO | Запрос маршрута из garrage_follow-me_5 в parking_1.
+14.03.2025 1:50:31 | FollowMeController | ERROR | Ошибка при обработке маршрута: Response status code does not indicate success: 404 (Not Found).
+14.03.2025 1:51:31 | FollowMeController | INFO | Запрос на получение машины сопровождения.
+14.03.2025 1:51:31 | GroundControlService | INFO | Регистрация транспорта типа follow-me.
+14.03.2025 1:51:31 | GroundControlService | INFO | Транспорт зарегистрирован. Ответ: {"garrageNodeId":"garrage_follow-me_1","vehicleId":"follow-me_1","serviceSpots":{"parking_1":"parking_1_follow-me_1","parking_2":"parking_2_follow-me_1"}}.
+14.03.2025 1:51:31 | GroundControlService | INFO | Регистрация транспорта типа follow-me.
+14.03.2025 1:51:31 | GroundControlService | INFO | Транспорт зарегистрирован. Ответ: {"garrageNodeId":"garrage_follow-me_2","vehicleId":"follow-me_2","serviceSpots":{"parking_1":"parking_1_follow-me_2","parking_2":"parking_2_follow-me_2"}}.
+14.03.2025 1:51:31 | FollowMeController | INFO | Ответ отправлен: {"CarId":"follow-me_1","TimeToWait":false}
+14.03.2025 1:51:31 | FollowMeController | INFO | Движение из гаража до NodeFrom follow-me_1.
+14.03.2025 1:51:31 | FollowMeController | INFO | Начало обработки маршрута для машины follow-me_1.
+14.03.2025 1:51:37 | GroundControlService | INFO | Запрос маршрута из garrage_follow-me_1 в parking_1.
+14.03.2025 1:51:37 | GroundControlService | INFO | Маршрут получен. Ответ: ["garrage_follow-me_1","garrage","garrage_to_parking_1","parking_1"].
+14.03.2025 1:51:37 | FollowMeController | INFO | Маршрут получен: garrage_follow-me_1 -> garrage -> garrage_to_parking_1 -> parking_1
+14.03.2025 1:51:37 | FollowMeController | INFO | Обработка перемещения из garrage_follow-me_1 в garrage.
+14.03.2025 1:51:37 | FollowMeController | INFO | Запрос на перемещение из garrage_follow-me_1 в garrage.
+14.03.2025 1:51:47 | GroundControlService | INFO | Запрос на перемещение транспорта follow-me_1 из garrage_follow-me_1 в garrage.
+14.03.2025 1:51:47 | GroundControlService | INFO | Разрешение на перемещение получено. Расстояние: 10.
+14.03.2025 1:51:47 | FollowMeController | INFO | Разрешение получено. Расстояние: 10.
+14.03.2025 1:51:47 | FollowMeController | INFO | Машина follow-me_1 движется из garrage_follow-me_1 в garrage. Время в пути: 0 сек.
+14.03.2025 1:51:48 | FollowMeController | INFO | Обработка перемещения из garrage в garrage_to_parking_1.
+14.03.2025 1:51:48 | FollowMeController | INFO | Запрос на перемещение из garrage в garrage_to_parking_1.
+14.03.2025 1:51:58 | GroundControlService | INFO | Запрос на перемещение транспорта follow-me_1 из garrage в garrage_to_parking_1.
+14.03.2025 1:51:58 | GroundControlService | INFO | Разрешение на перемещение получено. Расстояние: 100.
+14.03.2025 1:51:58 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+14.03.2025 1:51:58 | FollowMeController | INFO | Машина follow-me_1 движется из garrage в garrage_to_parking_1. Время в пути: 4 сек.
+14.03.2025 1:52:02 | FollowMeController | INFO | Обработка перемещения из garrage_to_parking_1 в parking_1.
+14.03.2025 1:52:02 | FollowMeController | INFO | Запрос на перемещение из garrage_to_parking_1 в parking_1.
+14.03.2025 1:52:04 | GroundControlService | INFO | Запрос на перемещение транспорта follow-me_1 из garrage_to_parking_1 в parking_1.
+14.03.2025 1:52:04 | GroundControlService | INFO | Разрешение на перемещение получено. Расстояние: 100.
+14.03.2025 1:52:04 | FollowMeController | INFO | Разрешение получено. Расстояние: 100.
+14.03.2025 1:52:04 | FollowMeController | INFO | Машина follow-me_1 движется из garrage_to_parking_1 в parking_1. Время в пути: 4 сек.
+14.03.2025 1:52:08 | OrchestratorService | INFO | Отправка запроса на начало движения для машины follow-me_1.
+14.03.2025 1:52:09 | OrchestratorService | INFO | Запрос на начало движения для машины follow-me_1 успешно отправлен.
+14.03.2025 1:52:09 | FollowMeController | INFO | Движение из NodeFrom до NodeTo follow-me_1.
+14.03.2025 1:52:20 | FollowMeController | INFO | Начало обработки маршрута для машины follow-me_1.
+14.03.2025 1:52:33 | GroundControlService | INFO | Запрос маршрута из parking_1 в airstrip.
+14.03.2025 1:52:41 | GroundControlService | INFO | Маршрут получен. Ответ: ["parking_1","airplane_from_parking_1","airstrip"].
+14.03.2025 1:52:46 | FollowMeController | INFO | Маршрут получен: parking_1 -> airplane_from_parking_1 -> airstrip
+14.03.2025 1:52:50 | FollowMeController | INFO | Обработка перемещения из parking_1 в airplane_from_parking_1.
+14.03.2025 1:52:57 | FollowMeController | INFO | Запрос на перемещение из parking_1 в airplane_from_parking_1.
+14.03.2025 1:53:05 | GroundControlService | INFO | Запрос на перемещение транспорта follow-me_1 из parking_1 в airplane_from_parking_1.

@@ -21,6 +21,16 @@
   },
   {
     "ContainingType": "AdminController",
+    "Method": "ClearAudit",
+    "RelativePath": "admin/audit/clear",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminController",
     "Method": "GetCars",
     "RelativePath": "admin/cars",
     "HttpMethod": "GET",
@@ -41,9 +51,29 @@
   },
   {
     "ContainingType": "AdminController",
+    "Method": "ReloadCars",
+    "RelativePath": "admin/cars/reload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminController",
     "Method": "GetLogs",
     "RelativePath": "admin/logs",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AdminController",
+    "Method": "ClearLogs",
+    "RelativePath": "admin/logs/clear",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
