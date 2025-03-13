@@ -14,7 +14,7 @@ Console.WriteLine("UseStubs: " + configuration.GetValue<bool>("UseStubs"));
 Console.WriteLine("GroundControlSettings:BaseUrl: " + configuration["GroundControlSettings:BaseUrl"]);
 Console.WriteLine("OrchestratorSettings:BaseUrl: " + configuration["OrchestratorSettings:BaseUrl"]);
 
-// Проверка конфигурации
+// Проверка  конфигурации
 var groundControlBaseUrl = configuration["GroundControlSettings:BaseUrl"];
 if (string.IsNullOrEmpty(groundControlBaseUrl))
 {
