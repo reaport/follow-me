@@ -101,7 +101,7 @@ namespace FollowMe.Controllers
                 Logger.Log("FollowMeController", "INFO", $"Движение из гаража до NodeFrom {vehicleId}.");
 
                 // Движение из гаража до NodeFrom
-                await MoveBetweenNodesAsync(vehicleId, vehicleType, garrageNodeId, nodeFrom, false);
+                await MoveBetweenNodesAsync(vehicleId, vehicleType, garrageNodeId, nodeFrom, "");
 
                 // Логируем начало перемещения самолета
                 Logger.LogAudit(vehicleId, $"Начало движения из {nodeFrom} в {nodeTo}.");
@@ -115,7 +115,7 @@ namespace FollowMe.Controllers
                 Logger.Log("FollowMeController", "INFO", $"Движение из NodeFrom до NodeTo {vehicleId}.");
 
                 // Движение из NodeFrom до NodeTo
-                await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeFrom, nodeTo, true);
+                await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeFrom, nodeTo, aircraftId);
 
                 // Отправляем запрос на окончание движения в Orchestrator с aircraftId и isTakeoff
                 await RetryAsync(async () =>
@@ -126,7 +126,7 @@ namespace FollowMe.Controllers
                 Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража {vehicleId}.");
 
                 // Движение из NodeTo до гаража
-                await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeTo, garrageNodeId, false);
+                await MoveBetweenNodesAsync(vehicleId, vehicleType, nodeTo, garrageNodeId, "");
 
                 Logger.Log("FollowMeController", "INFO", $"Маршрут для машины {vehicleId} успешно завершен.");
 
@@ -151,7 +151,7 @@ namespace FollowMe.Controllers
             }
         }
 
-        private async Task MoveBetweenNodesAsync(string vehicleId, string vehicleType, string from, string to, bool withAirplane)
+        private async Task MoveBetweenNodesAsync(string vehicleId, string vehicleType, string from, string to, string withAirplane)
         {
             Logger.Log("FollowMeController", "INFO", $"Начало обработки маршрута для машины {vehicleId}.");
 
@@ -192,7 +192,7 @@ namespace FollowMe.Controllers
             }
         }
 
-        private async Task<bool> ProcessMovementAsync(string vehicleId, string vehicleType, string from, string to, bool withAirplane)
+        private async Task<bool> ProcessMovementAsync(string vehicleId, string vehicleType, string from, string to, string withAirplane)
         {
             Logger.Log("FollowMeController", "INFO", $"Запрос на перемещение из {from} в {to}.");
 

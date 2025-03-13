@@ -42,7 +42,7 @@ namespace FollowMe.Services
             return JsonSerializer.Deserialize<string[]>(responseBody);
         }
 
-        public async Task<double> RequestMove(string vehicleId, string vehicleType, string from, string to, bool withAirplane)
+        public async Task<double> RequestMove(string vehicleId, string vehicleType, string from, string to, string withAirplane)
         {
             Logger.Log("GroundControlService", "INFO", $"«апрос на перемещение транспорта {vehicleId} из {from} в {to}.");
 
