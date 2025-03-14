@@ -1,3 +1,4 @@
+using FollowMe.Data;
 using FollowMe.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +15,7 @@ Console.WriteLine("UseStubs: " + configuration.GetValue<bool>("UseStubs"));
 Console.WriteLine("GroundControlSettings:BaseUrl: " + configuration["GroundControlSettings:BaseUrl"]);
 Console.WriteLine("OrchestratorSettings:BaseUrl: " + configuration["OrchestratorSettings:BaseUrl"]);
 
-// Проверка  конфигурации
+// Проверка конфигурации
 var groundControlBaseUrl = configuration["GroundControlSettings:BaseUrl"];
 if (string.IsNullOrEmpty(groundControlBaseUrl))
 {
@@ -108,5 +109,20 @@ app.UseRouting();
 app.UseCors("AllowAll");
 
 app.MapControllers();
+
+// Перезагрузка машин при старте приложения
+using (var scope = app.Services.CreateScope())
+{
+    var carRepository = scope.ServiceProvider.GetRequiredService<CarRepository>();
+    try
+    {
+        await carRepository.ReloadCars(); // Вызов метода перезагрузки машин
+        Console.WriteLine("Машины успешно перезагружены при старте приложения.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Ошибка при перезагрузке машин: {ex.Message}");
+    }
+}
 
 app.Run();
