@@ -4,54 +4,52 @@ using System.IO;
 
 namespace FollowMe.Utils
 {
+    /// <summary>
+    /// Статический класс для логирования сообщений и аудита.
+    /// </summary>
     public static class Logger
     {
         private static readonly string LogFilePath = "logs.txt";
         private static readonly string AuditFilePath = "audit.txt";
 
-        // Метод для логирования
+        /// <summary>
+        /// Логирует сообщение с указанным контроллером, кодом и текстом сообщения.
+        /// </summary>
+        /// <param name="controller">Название контроллера или сервиса, откуда происходит логирование.</param>
+        /// <param name="code">Код или уровень логирования (например, INFO, ERROR).</param>
+        /// <param name="message">Текст сообщения для логирования.</param>
         public static void Log(string controller, string code, string message)
         {
-            // Формируем запись лога
             string logEntry = $"{DateTime.Now} | {controller} | {code} | {message}";
-
-            // Логирование в файл
             WriteToFile(LogFilePath, logEntry);
-
-            // Логирование в консоль
             Console.WriteLine(logEntry);
-
-            // Логирование в Debug Console
             Debug.WriteLine(logEntry);
         }
 
-        // Метод для логирования аудита
+        /// <summary>
+        /// Логирует аудиторскую запись с указанным идентификатором машины и действием.
+        /// </summary>
+        /// <param name="carId">Идентификатор машины.</param>
+        /// <param name="movement">Действие или движение, которое нужно залогировать.</param>
         public static void LogAudit(string carId, string movement)
         {
-            // Формируем запись аудита
             string auditEntry = $"{DateTime.Now} | {carId} | {movement}";
-
-            // Логирование в файл
             WriteToFile(AuditFilePath, auditEntry);
-
-            // Логирование в консоль
             Console.WriteLine(auditEntry);
-
-            // Логирование в Debug Console
             Debug.WriteLine(auditEntry);
         }
 
-        // Вспомогательный метод для записи в файл
+        /// <summary>
+        /// Вспомогательный метод для записи данных в файл.
+        /// </summary>
+        /// <param name="filePath">Путь к файлу, в который нужно записать данные.</param>
+        /// <param name="content">Содержимое, которое нужно записать.</param>
         private static void WriteToFile(string filePath, string content)
         {
-            // Проверяем, существует ли файл
             if (!File.Exists(filePath))
             {
-                // Создаем файл, если он не существует
-                File.Create(filePath).Close(); // Закрываем поток после создания
+                File.Create(filePath).Close();
             }
-
-            // Записываем данные в файл
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
                 writer.WriteLine(content);

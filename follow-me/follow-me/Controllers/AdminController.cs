@@ -4,80 +4,93 @@ using Microsoft.AspNetCore.Mvc;
 using FollowMe.Utils;
 
 [Route("/admin")]
-[ApiController] // Указываем, что это API-контроллер
+[ApiController]
 public class AdminController : ControllerBase
 {
     private readonly CarRepository _carRepository;
     private readonly IGroundControlService _groundControlService;
 
+    /// <summary>
+    /// Конструктор контроллера. Внедряет зависимости через DI.
+    /// </summary>
+    /// <param name="carRepository">Репозиторий для работы с машинами.</param>
+    /// <param name="groundControlService">Сервис для взаимодействия с системой управления.</param>
     public AdminController(CarRepository carRepository, IGroundControlService groundControlService)
     {
         _carRepository = carRepository;
         _groundControlService = groundControlService;
     }
 
-    [HttpGet("")] // Доступно по /admin/admin
+    /// <summary>
+    /// Получает список всех машин. Доступно по /admin/admin.
+    /// </summary>
+    /// <returns>Список машин в формате JSON.</returns>
+    [HttpGet("")]
     public IActionResult Index()
     {
         var cars = _carRepository.GetAllCars();
-        return Ok(cars); // Возвращаем JSON
+        return Ok(cars);
     }
 
-    [HttpGet("cars")] // Доступно по /admin/admin/cars
+    /// <summary>
+    /// Получает список всех машин. Доступно по /admin/admin/cars.
+    /// </summary>
+    /// <returns>Список машин в формате JSON.</returns>
+    [HttpGet("cars")]
     public IActionResult GetCars()
     {
         var cars = _carRepository.GetAllCars();
-        return Ok(cars); // Возвращаем JSON
+        return Ok(cars);
     }
 
-    [HttpPost("cars/add")] // Доступно по /admin/admin/cars/add
+    /// <summary>
+    /// Добавляет новую машину в систему. Доступно по /admin/admin/cars/add.
+    /// </summary>
+    /// <returns>Сообщение об успешном добавлении или ошибку, если лимит машин достигнут.</returns>
+    [HttpPost("cars/add")]
     public async Task<IActionResult> AddCar()
     {
         var cars = _carRepository.GetAllCars();
 
+        // Проверяем, не достигнут ли лимит машин (10 штук)
         if (cars.Count < 10)
         {
-            // Генерация нового GUID для InternalId
             var newInternalId = Guid.NewGuid().ToString();
 
-            // Регистрируем транспорт
             var registrationResponse = await _groundControlService.RegisterVehicle("follow-me");
 
-            // Проверяем формат VehicleId
             if (string.IsNullOrEmpty(registrationResponse.VehicleId))
             {
                 Logger.Log("AdminController", "ERROR", "Не удалось зарегистрировать машину.");
                 return StatusCode(500, new { Message = "Не удалось зарегистрировать машину." });
             }
 
-            // Создание новой машины с GUID в качестве InternalId
             var newCar = new Car
             {
                 InternalId = newInternalId,
-                ExternalId = registrationResponse.VehicleId, // Используем VehicleId из регистрации
+                ExternalId = registrationResponse.VehicleId,
                 Status = CarStatusEnum.Available,
                 CurrentNode = registrationResponse.GarrageNodeId
             };
 
-            // Добавление новой машины в список
             cars.Add(newCar);
 
-            // Сохранение обновленного списка машин
             _carRepository.SaveAllCars(cars);
 
-            // Логирование в аудит
             Logger.LogAudit(newInternalId, "Машина добавлена и зарегистрирована");
 
-            // Возвращаем JSON с сообщением
             return Ok(new { Message = $"Машина {newInternalId} добавлена и зарегистрирована с ExternalId: {registrationResponse.VehicleId}!" });
         }
         else
         {
-            // Возвращаем ошибку, если достигнут лимит машин
             return BadRequest(new { Message = "Невозможно добавить машину. Достигнут лимит в 10 машин." });
         }
     }
 
+    /// <summary>
+    /// Перезагружает все машины в системе. Доступно по /admin/admin/cars/reload.
+    /// </summary>
+    /// <returns>Сообщение об успешной перезагрузке или ошибку.</returns>
     [HttpPost("cars/reload")]
     public async Task<IActionResult> ReloadCars()
     {
@@ -85,7 +98,6 @@ public class AdminController : ControllerBase
 
         try
         {
-            // Перезагружаем машины
             await _carRepository.ReloadCars();
 
             Logger.Log("AdminController", "INFO", "Все машины успешно перезагружены.");
@@ -98,7 +110,11 @@ public class AdminController : ControllerBase
         }
     }
 
-    [HttpGet("logs")] // Доступно по /admin/admin/logs
+    /// <summary>
+    /// Получает логи системы. Доступно по /admin/admin/logs.
+    /// </summary>
+    /// <returns>Список логов в формате JSON или ошибку.</returns>
+    [HttpGet("logs")]
     public IActionResult GetLogs()
     {
         try
@@ -117,7 +133,11 @@ public class AdminController : ControllerBase
         }
     }
 
-    [HttpGet("audit")] // Доступно по /admin/admin/audit
+    /// <summary>
+    /// Получает записи аудита. Доступно по /admin/admin/audit.
+    /// </summary>
+    /// <returns>Список записей аудита в формате JSON или ошибку.</returns>
+    [HttpGet("audit")]
     public IActionResult GetAudit()
     {
         try
@@ -147,14 +167,18 @@ public class AdminController : ControllerBase
         }
     }
 
-    [HttpPost("logs/clear")] // Доступно по /admin/admin/logs/clear
+    /// <summary>
+    /// Очищает логи системы. Доступно по /admin/admin/logs/clear.
+    /// </summary>
+    /// <returns>Сообщение об успешной очистке или ошибку.</returns>
+    [HttpPost("logs/clear")]
     public IActionResult ClearLogs()
     {
         try
         {
             if (System.IO.File.Exists("logs.txt"))
             {
-                System.IO.File.WriteAllText("logs.txt", string.Empty); // Очищаем файл логов
+                System.IO.File.WriteAllText("logs.txt", string.Empty);
             }
             return Ok(new { Message = "Логи успешно очищены." });
         }
@@ -164,14 +188,18 @@ public class AdminController : ControllerBase
         }
     }
 
-    [HttpPost("audit/clear")] // Доступно по /admin/admin/audit/clear
+    /// <summary>
+    /// Очищает записи аудита. Доступно по /admin/admin/audit/clear.
+    /// </summary>
+    /// <returns>Сообщение об успешной очистке или ошибку.</returns>
+    [HttpPost("audit/clear")]
     public IActionResult ClearAudit()
     {
         try
         {
             if (System.IO.File.Exists("audit.txt"))
             {
-                System.IO.File.WriteAllText("audit.txt", string.Empty); // Очищаем файл аудита
+                System.IO.File.WriteAllText("audit.txt", string.Empty);
             }
             return Ok(new { Message = "Аудит успешно очищен." });
         }

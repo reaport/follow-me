@@ -7,15 +7,27 @@ using FollowMe.Data;
 
 namespace FollowMe.Services
 {
+    /// <summary>
+    /// Реализация сервиса для взаимодействия с системой управления наземным движением.
+    /// </summary>
     public class GroundControlService : IGroundControlService
     {
         private readonly HttpClient _httpClient;
 
+        /// <summary>
+        /// Конструктор сервиса. Внедряет HttpClient через DI.
+        /// </summary>
+        /// <param name="httpClient">HTTP-клиент.</param>
         public GroundControlService(HttpClient httpClient)
         {
             _httpClient = httpClient;
         }
 
+        /// <summary>
+        /// Регистрирует транспортное средство в системе.
+        /// </summary>
+        /// <param name="vehicleType">Тип транспортного средства.</param>
+        /// <returns>Ответ с данными о регистрации.</returns>
         public async Task<VehicleRegistrationResponse?> RegisterVehicle(string vehicleType)
         {
             Logger.Log("GroundControlService", "INFO", $"Регистрация машины типа {vehicleType}.");
@@ -28,6 +40,12 @@ namespace FollowMe.Services
             return JsonSerializer.Deserialize<VehicleRegistrationResponse?>(responseBody);
         }
 
+        /// <summary>
+        /// Получает маршрут между двумя узлами.
+        /// </summary>
+        /// <param name="from">Начальный узел.</param>
+        /// <param name="to">Конечный узел.</param>
+        /// <returns>Массив узлов маршрута.</returns>
         public async Task<string[]> GetRoute(string from, string to)
         {
             Logger.Log("GroundControlService", "INFO", $"Запрос маршрута из {from} в {to}.");
@@ -43,6 +61,15 @@ namespace FollowMe.Services
             return JsonSerializer.Deserialize<string[]>(responseBody);
         }
 
+        /// <summary>
+        /// Запрашивает разрешение на перемещение транспортного средства.
+        /// </summary>
+        /// <param name="vehicleId">Идентификатор транспортного средства.</param>
+        /// <param name="vehicleType">Тип транспортного средства.</param>
+        /// <param name="from">Начальный узел.</param>
+        /// <param name="to">Конечный узел.</param>
+        /// <param name="withAirplane">Идентификатор самолета (если требуется).</param>
+        /// <returns>Расстояние для перемещения.</returns>
         public async Task<double> RequestMove(string vehicleId, string vehicleType, string from, string to, string withAirplane)
         {
             Logger.Log("GroundControlService", "INFO", $"Запрос на передвижение маишны {vehicleId} из {from} в {to}.");
@@ -73,6 +100,12 @@ namespace FollowMe.Services
             }
         }
 
+        /// <summary>
+        /// Уведомляет систему о прибытии транспортного средства в узел.
+        /// </summary>
+        /// <param name="vehicleId">Идентификатор транспортного средства.</param>
+        /// <param name="vehicleType">Тип транспортного средства.</param>
+        /// <param name="nodeId">Идентификатор узла.</param>
         public async Task NotifyArrival(string vehicleId, string vehicleType, string nodeId)
         {
             Logger.Log("GroundControlService", "INFO", $"Отправка уведобления о прибытиии машины {vehicleId} в узел {nodeId}.");

@@ -14,6 +14,12 @@ namespace FollowMe.Controllers
         private readonly IOrchestratorService _orchestratorService;
         private readonly CarRepository _carRepository;
 
+        /// <summary>
+        /// Конструктор контроллера. Внедряет зависимости через DI.
+        /// </summary>
+        /// <param name="groundControlService">Сервис для взаимодействия с системой управления.</param>
+        /// <param name="orchestratorService">Сервис для взаимодействия с оркестратором.</param>
+        /// <param name="carRepository">Репозиторий для работы с машинами.</param>
         public FollowMeController(
             IGroundControlService groundControlService,
             IOrchestratorService orchestratorService,
@@ -24,6 +30,11 @@ namespace FollowMe.Controllers
             _carRepository = carRepository;
         }
 
+        /// <summary>
+        /// Обрабатывает запрос на получение машины сопровождения.
+        /// </summary>
+        /// <param name="request">Данные запроса, включая AirplaneId, NodeFrom, NodeTo и IsTakeoff.</param>
+        /// <returns>Данные о машине и времени ожидания или ошибку.</returns>
         [HttpPost("get_car")]
         public async Task<IActionResult> GetCar([FromBody] WeNeedFollowMeRequestDto request)
         {
@@ -79,6 +90,11 @@ namespace FollowMe.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Ожидает, пока одна из машин не станет доступной.
+        /// </summary>
+        /// <param name="cars">Список машин.</param>
+        /// <returns>Доступная машина или null, если все машины заняты.</returns>
         private async Task<Car> WaitForAvailableCarAsync(List<Car> cars)
         {
             // Ожидаем, пока одна из машин не станет доступной
@@ -90,10 +106,21 @@ namespace FollowMe.Controllers
                     return car;
                 }
 
-                await Task.Delay(TimeSpan.FromSeconds(5)); // Проверяем каждые 5 секунд
+                // Проверяем каждые 5 секунд
+                await Task.Delay(TimeSpan.FromSeconds(5));
             }
         }
 
+        /// <summary>
+        /// Обрабатывает маршрут для машины сопровождения.
+        /// </summary>
+        /// <param name="vehicleId">Идентификатор машины.</param>
+        /// <param name="vehicleType">Тип машины.</param>
+        /// <param name="nodeFrom">Начальный узел.</param>
+        /// <param name="nodeTo">Конечный узел.</param>
+        /// <param name="garrageNodeId">Идентификатор гаража.</param>
+        /// <param name="aircraftId">Идентификатор самолета.</param>
+        /// <param name="isTakeoff">Флаг, указывающий, является ли движение взлетом.</param>
         private async Task ProcessRouteAsync(string vehicleId, string vehicleType, string nodeFrom, string nodeTo, string garrageNodeId, string aircraftId, bool isTakeoff)
         {
             try
@@ -103,7 +130,6 @@ namespace FollowMe.Controllers
                 // Движение из гаража до NodeFrom
                 await MoveBetweenNodesAsync(vehicleId, vehicleType, garrageNodeId, nodeFrom, "");
 
-                // Логируем начало перемещения самолета
                 Logger.LogAudit(vehicleId, $"Начало движения из {nodeFrom} в {nodeTo}.");
 
                 // Отправляем запрос на начало движения в Orchestrator с aircraftId
@@ -130,7 +156,7 @@ namespace FollowMe.Controllers
 
                 Logger.Log("FollowMeController", "INFO", $"Маршрут для машины {vehicleId} успешно завершен.");
 
-                // Логируем завершение движения
+
                 Logger.LogAudit(vehicleId, $"Завершение движения в {nodeTo}.");
 
                 // Возвращаем машину в гараж и сбрасываем её состояние
@@ -138,19 +164,26 @@ namespace FollowMe.Controllers
                 var car = cars.FirstOrDefault(c => c.ExternalId == vehicleId);
                 if (car != null)
                 {
-                    car.Status = CarStatusEnum.Available; // Делаем машину доступной
-                    car.CurrentNode = garrageNodeId; // Устанавливаем  текущее местоположение в гараж
-                    _carRepository.SaveAllCars(cars); // Сохраняем изменения
+                    car.Status = CarStatusEnum.Available;
+                    car.CurrentNode = garrageNodeId;
+                    _carRepository.SaveAllCars(cars);
                     Logger.Log("FollowMeController", "INFO", $"Машина {vehicleId} возвращена в гараж и доступна для новых задач.");
                 }
             }
             catch (Exception ex)
             {
-                // Логируем ошибку
                 Logger.Log("FollowMeController", "ERROR", $"Ошибка при обработке маршрута: {ex.Message}");
             }
         }
 
+        /// <summary>
+        /// Обрабатывает перемещение машины между узлами.
+        /// </summary>
+        /// <param name="vehicleId">Идентификатор машины.</param>
+        /// <param name="vehicleType">Тип машины.</param>
+        /// <param name="from">Начальный узел.</param>
+        /// <param name="to">Конечный узел.</param>
+        /// <param name="withAirplane">Идентификатор самолета.</param>
         private async Task MoveBetweenNodesAsync(string vehicleId, string vehicleType, string from, string to, string withAirplane)
         {
             Logger.Log("FollowMeController", "INFO", $"Начало обработки маршрута для машины {vehicleId}.");
@@ -176,7 +209,7 @@ namespace FollowMe.Controllers
                 if (!movementSuccessful)
                 {
                     Logger.Log("FollowMeController", "WARNING", $"Перемещение из {fromNode} в {toNode} не удалось. Повторная попытка.");
-                    i--; // Повторяем текущий шаг
+                    i--;
                 }
                 else
                 {
@@ -185,13 +218,22 @@ namespace FollowMe.Controllers
                     var car = cars.FirstOrDefault(c => c.ExternalId == vehicleId);
                     if (car != null)
                     {
-                        car.CurrentNode = toNode; // Обновляем текущий узел
-                        _carRepository.SaveAllCars(cars); // Сохраняем изменения
+                        car.CurrentNode = toNode;
+                        _carRepository.SaveAllCars(cars);
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Обрабатывает перемещение машины между двумя узлами.
+        /// </summary>
+        /// <param name="vehicleId">Идентификатор машины.</param>
+        /// <param name="vehicleType">Тип машины.</param>
+        /// <param name="from">Начальный узел.</param>
+        /// <param name="to">Конечный узел.</param>
+        /// <param name="withAirplane">Идентификатор самолета.</param>
+        /// <returns>True, если перемещение успешно, иначе False.</returns>
         private async Task<bool> ProcessMovementAsync(string vehicleId, string vehicleType, string from, string to, string withAirplane)
         {
             Logger.Log("FollowMeController", "INFO", $"Запрос на перемещение из {from} в {to}.");
@@ -203,14 +245,13 @@ namespace FollowMe.Controllers
             {
                 Logger.Log("FollowMeController", "INFO", $"Разрешение получено. Расстояние: {distance}.");
 
-                // Рассчитываем время ожидания в зависимости от расстояния
-                int delayMilliseconds = (int)(distance / 25 * 1000); // Скорость 25 ед/с
+                // Рассчитываем время ожидания в зависимости от расстояния. Скорость 25 ед/с
+                int delayMilliseconds = (int)(distance / 25 * 1000);
                 Logger.Log("FollowMeController", "INFO", $"Машина {vehicleId} движется из {from} в {to}. Время в пути: {delayMilliseconds / 1000} сек.");
 
-                // Имитируем движение (ожидание)
                 await Task.Delay(delayMilliseconds);
 
-                return true; // Перемещение успешно
+                return true;
             }
             else
             {
@@ -218,10 +259,16 @@ namespace FollowMe.Controllers
 
                 // Если разрешение не получено, ждем и повторяем запрос
                 await Task.Delay(TimeSpan.FromSeconds(5));
-                return false; // Перемещение не удалось
+                return false;
             }
         }
 
+        /// <summary>
+        /// Повторяет выполнение асинхронной задачи в случае ошибки.
+        /// </summary>
+        /// <param name="action">Асинхронная задача.</param>
+        /// <param name="maxAttempts">Максимальное количество попыток.</param>
+        /// <param name="delaySeconds">Задержка между попытками в секундах.</param>
         private async Task RetryAsync(Func<Task> action, int maxAttempts = 3, int delaySeconds = 10)
         {
             for (int attempt = 1; attempt <= maxAttempts; attempt++)
@@ -229,14 +276,14 @@ namespace FollowMe.Controllers
                 try
                 {
                     await action();
-                    return; // Успешно выполнили операцию
+                    return;
                 }
                 catch (Exception ex)
                 {
                     if (attempt == maxAttempts)
                     {
                         Logger.Log("FollowMeController", "ERROR", $"Ошибка после {maxAttempts} попыток: {ex.Message}");
-                        throw; // Если попытки исчерпаны, пробрасываем исключение
+                        throw;
                     }
 
                     Logger.Log("FollowMeController", "WARNING", $"Попытка {attempt} не удалась. Ошибка: {ex.Message}. Повтор через {delaySeconds} секунд.");

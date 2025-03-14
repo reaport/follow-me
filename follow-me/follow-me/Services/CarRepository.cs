@@ -8,23 +8,32 @@ using System.Threading.Tasks;
 
 namespace FollowMe.Services
 {
+    /// <summary>
+    /// Репозиторий для управления данными о машинах сопровождения.
+    /// </summary>
     public class CarRepository
     {
         private readonly string _filePath = "cars.txt";
         private readonly IGroundControlService _groundControlService;
 
+        /// <summary>
+        /// Конструктор репозитория. Внедряет зависимости через DI.
+        /// </summary>
+        /// <param name="groundControlService">Сервис для взаимодействия с системой управления.</param>
         public CarRepository(IGroundControlService groundControlService)
         {
             _groundControlService = groundControlService;
         }
 
-        // Чтение всех машин из файла
+        /// <summary>
+        /// Получает список всех машин из файла.
+        /// </summary>
+        /// <returns>Список машин.</returns>
         public List<Car> GetAllCars()
         {
             if (!File.Exists(_filePath))
             {
-                // Если файл не существует, создаем его с начальными данными
-                var defaultCars = CreateDefaultCars().Result; // Регистрируем дефолтные машины
+                var defaultCars = CreateDefaultCars().Result;
                 SaveAllCars(defaultCars);
                 return defaultCars;
             }
@@ -36,16 +45,19 @@ namespace FollowMe.Services
                 return new Car
                 {
                     InternalId = parts[0],
-                    ExternalId = parts[1],
+                    ExternalId = parts[1], 
                     Status = (CarStatusEnum)Enum.Parse(typeof(CarStatusEnum), parts[2]),
-                    CurrentNode = parts.Length > 3 ? parts[3] : "garrage" // Если поле отсутствует, используем "Garage"
+                    CurrentNode = parts.Length > 3 ? parts[3] : "garrage"
                 };
             }).ToList();
 
             return cars;
         }
 
-        // Создание дефолтных машин с регистрацией
+        /// <summary>
+        /// Создает дефолтные машины и регистрирует их в системе.
+        /// </summary>
+        /// <returns>Список дефолтных машин.</returns>
         private async Task<List<Car>> CreateDefaultCars()
         {
             var defaultCars = new List<Car>();
@@ -87,7 +99,9 @@ namespace FollowMe.Services
             return defaultCars;
         }
 
-        // Перезагрузка всех машин
+        /// <summary>
+        /// Перезагружает все машины, сбрасывая их состояние и регистрируя заново.
+        /// </summary>
         public async Task ReloadCars()
         {
             var cars = GetAllCars();
@@ -95,16 +109,16 @@ namespace FollowMe.Services
             // Сбрасываем состояние каждой машины
             foreach (var car in cars)
             {
-                car.ExternalId = ""; // Очищаем ExternalId
-                car.Status = CarStatusEnum.Available; // Устанавливаем статус "Available"
-                car.CurrentNode = "garrage"; // Устанавливаем текущий узел в "garrage"
+                car.ExternalId = "";
+                car.Status = CarStatusEnum.Available;
+                car.CurrentNode = "garrage";
 
                 // Регистрируем машину заново
                 var registrationResponse = await _groundControlService.RegisterVehicle("follow-me");
                 if (!string.IsNullOrEmpty(registrationResponse.VehicleId))
                 {
                     car.ExternalId = registrationResponse.VehicleId;
-                    car.CurrentNode = registrationResponse.GarrageNodeId; // Обновляем текущий узел
+                    car.CurrentNode = registrationResponse.GarrageNodeId;
                 }
                 else
                 {
@@ -112,11 +126,13 @@ namespace FollowMe.Services
                 }
             }
 
-            // Сохраняем обновленные данные
             SaveAllCars(cars);
         }
 
-        // Сохранение всех машин в файл
+        /// <summary>
+        /// Сохраняет список машин в файл.
+        /// </summary>
+        /// <param name="cars">Список машин для сохранения.</param>
         public void SaveAllCars(List<Car> cars)
         {
             try
