@@ -50,7 +50,7 @@ namespace FollowMe.Controllers
 
                 // Возвращаем ответ сразу, не дожидаясь освобождения машины
                 car = cars.FirstOrDefault();
-                var immediateResponse = new { CarId = car.ExternalId, TimeToWait = timeToWait };
+                var immediateResponse = new { CarId = car!.ExternalId, TimeToWait = timeToWait };
                 Logger.Log("FollowMeController", "INFO", $"Ответ отправлен: {JsonSerializer.Serialize(immediateResponse)}");
                 return Ok(immediateResponse);
             }
@@ -162,10 +162,10 @@ namespace FollowMe.Controllers
                 Logger.Log("FollowMeController", "ERROR", "Маршрут не найден.");
             }
 
-            Logger.Log("FollowMeController", "INFO", $"Маршрут получен: {string.Join(" -> ", route)}");
+            Logger.Log("FollowMeController", "INFO", $"Маршрут получен: {string.Join(" -> ", route!)}");
 
             // Движение из NodeFrom до NodeTo
-            for (int i = 0; i < route.Length - 1; i++)
+            for (int i = 0; i < route!.Length - 1; i++)
             {
                 string fromNode = route[i];
                 string toNode = route[i + 1];

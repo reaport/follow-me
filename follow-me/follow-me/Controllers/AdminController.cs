@@ -1,7 +1,6 @@
-﻿using FollowMe.Data;
+using FollowMe.Data;
 using FollowMe.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using FollowMe.Utils;
 
 [Route("/admin")]

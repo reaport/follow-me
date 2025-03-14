@@ -59,6 +59,9 @@ builder.Services.AddSingleton<CarRepository>(provider =>
     }
 });
 
+// Регистрация фоновой службы для регистрации машин
+builder.Services.AddHostedService<CarRegistrationHostedService>();
+
 // Добавление контроллеров и представлений
 builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
@@ -109,20 +112,5 @@ app.UseRouting();
 app.UseCors("AllowAll");
 
 app.MapControllers();
-
-// Перезагрузка машин при старте приложения
-using (var scope = app.Services.CreateScope())
-{
-    var carRepository = scope.ServiceProvider.GetRequiredService<CarRepository>();
-    try
-    {
-        await carRepository.ReloadCars(); // Вызов метода перезагрузки машин
-        Console.WriteLine("Машины успешно перезагружены при старте приложения.");
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Ошибка при перезагрузке машин: {ex.Message}");
-    }
-}
 
 app.Run();

@@ -1,2 +1,2 @@
-﻿0000000-60bc-464d-8759-c04b79c25b25|follow-me_1|Busy|parking_1
-1111111-60bc-464d-8759-c04b79c25b25|follow-me_2|Available|garrage_follow-me_2
+﻿0000000-60bc-464d-8759-c04b79c25b25|follow-me_5|Available|garrage_follow-me_5
+1111111-60bc-464d-8759-c04b79c25b25|follow-me_6|Available|garrage_follow-me_6

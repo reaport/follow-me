@@ -132,51 +132,10 @@
           }
         }
       }
-    },
-    "/navigate": {
-      "post": {
-        "tags": [
-          "FollowMe"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NavigationRequestDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NavigationRequestDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/NavigationRequestDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
     }
   },
   "components": {
     "schemas": {
-      "NavigationRequestDto": {
-        "type": "object",
-        "properties": {
-          "navigate": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "WeNeedFollowMeRequestDto": {
         "type": "object",
         "properties": {

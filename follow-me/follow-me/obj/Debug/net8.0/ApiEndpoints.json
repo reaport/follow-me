@@ -94,21 +94,5 @@
       }
     ],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "FollowMe.Controllers.FollowMeController",
-    "Method": "Navigate",
-    "RelativePath": "navigate",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "FollowMe.Data.NavigationRequestDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
   }
 ]

@@ -3,6 +3,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FollowMe.Utils;
+using FollowMe.Data;
 
 namespace FollowMe.Services
 {
@@ -15,21 +16,21 @@ namespace FollowMe.Services
             _httpClient = httpClient;
         }
 
-        public async Task<VehicleRegistrationResponse> RegisterVehicle(string vehicleType)
+        public async Task<VehicleRegistrationResponse?> RegisterVehicle(string vehicleType)
         {
-            Logger.Log("GroundControlService", "INFO", $"Регистрация транспорта типа {vehicleType}.");
+            Logger.Log("GroundControlService", "INFO", $"Р РµРіРёСЃС‚СЂР°С†РёСЏ РјР°С€РёРЅС‹ С‚РёРїР° {vehicleType}.");
 
             var response = await _httpClient.PostAsync($"/register-vehicle/{vehicleType}", null);
             response.EnsureSuccessStatusCode();
 
             var responseBody = await response.Content.ReadAsStringAsync();
-            Logger.Log("GroundControlService", "INFO", $"Транспорт зарегистрирован. Ответ: {responseBody}.");
-            return JsonSerializer.Deserialize<VehicleRegistrationResponse>(responseBody);
+            Logger.Log("GroundControlService", "INFO", $"РњР°С€РёРЅР° Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅРЅР°. РћС‚РІРµС‚: {responseBody}.");
+            return JsonSerializer.Deserialize<VehicleRegistrationResponse?>(responseBody);
         }
 
         public async Task<string[]> GetRoute(string from, string to)
         {
-            Logger.Log("GroundControlService", "INFO", $"Запрос маршрута из {from} в {to}.");
+            Logger.Log("GroundControlService", "INFO", $"Р—Р°РїСЂРѕСЃ РјР°СЂС€СЂСѓС‚Р° РёР· {from} РІ {to}.");
 
             var request = new { from, to, type = "follow-me" };
             var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
@@ -38,13 +39,13 @@ namespace FollowMe.Services
             response.EnsureSuccessStatusCode();
 
             var responseBody = await response.Content.ReadAsStringAsync();
-            Logger.Log("GroundControlService", "INFO", $"Маршрут получен. Ответ: {responseBody}.");
+            Logger.Log("GroundControlService", "INFO", $"РњР°СЂС€СЂСѓС‚ РїРѕР»СѓС‡РµРЅ. РћС‚РІРµС‚: {responseBody}.");
             return JsonSerializer.Deserialize<string[]>(responseBody);
         }
 
         public async Task<double> RequestMove(string vehicleId, string vehicleType, string from, string to, string withAirplane)
         {
-            Logger.Log("GroundControlService", "INFO", $"Запрос на перемещение транспорта {vehicleId} из {from} в {to}.");
+            Logger.Log("GroundControlService", "INFO", $"Р—Р°РїСЂРѕСЃ РЅР° РїРµСЂРµРґРІРёР¶РµРЅРёРµ РјР°РёС€РЅС‹ {vehicleId} РёР· {from} РІ {to}.");
 
             var request = new
             {
@@ -62,19 +63,19 @@ namespace FollowMe.Services
             {
                 var responseBody = await response.Content.ReadAsStringAsync();
                 var moveResponse = JsonSerializer.Deserialize<MoveResponse>(responseBody);
-                Logger.Log("GroundControlService", "INFO", $"Разрешение на перемещение получено. Расстояние: {moveResponse.Distance}.");
+                Logger.Log("GroundControlService", "INFO", $"РџРµСЂРµРґРІРёР¶РµРЅРёРµ СЂР°Р·СЂРµС€РµРЅРѕ. Р”РёСЃС‚Р°РЅС†РёСЏ: {moveResponse!.Distance}.");
                 return moveResponse.Distance;
             }
             else
             {
-                Logger.Log("GroundControlService", "ERROR", $"Ошибка при запросе на перемещение: {response.StatusCode}.");
-                return -1; // Ошибка или  запрет на движение
+                Logger.Log("GroundControlService", "ERROR", $"Р—Р°РїСЂРѕСЃ РЅР° РїРµСЂРµРјРµС‰РµРЅРёРµ РѕС‚РєР»РѕРЅРµРЅ СЃ РѕС€РёР±РєРѕР№: {response.StatusCode}.");
+                return -1;
             }
         }
 
         public async Task NotifyArrival(string vehicleId, string vehicleType, string nodeId)
         {
-            Logger.Log("GroundControlService", "INFO", $"Уведомление о прибытии транспорта {vehicleId} в узел {nodeId}.");
+            Logger.Log("GroundControlService", "INFO", $"РћС‚РїСЂР°РІРєР° СѓРІРµРґРѕР±Р»РµРЅРёСЏ Рѕ РїСЂРёР±С‹С‚РёРёРё РјР°С€РёРЅС‹ {vehicleId} РІ СѓР·РµР» {nodeId}.");
 
             var request = new
             {
@@ -87,7 +88,7 @@ namespace FollowMe.Services
 
             var response = await _httpClient.PostAsync("/arrived", content);
             response.EnsureSuccessStatusCode();
-            Logger.Log("GroundControlService", "INFO", "Уведомление успешно отправлено.");
+            Logger.Log("GroundControlService", "INFO", "РњР°С€РёРЅР° РґРѕСЃС‚Р°РІР»РµРЅР°.");
         }
     }
 }
