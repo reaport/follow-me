@@ -20,6 +20,6 @@
         /// <param name="aircraftId">Идентификатор самолета.</param>
         /// <param name="isTakeoff">Флаг, указывающий, связан ли запрос с взлетом.</param>
         /// <returns>Задача, представляющая асинхронную операцию.</returns>
-        Task EndMovementAsync(string carId, string aircraftId, bool isTakeoff);
+        Task EndMovementAsync(string carId, string aircraftId, bool isTakeoff, string nodeTo);
     }
 }

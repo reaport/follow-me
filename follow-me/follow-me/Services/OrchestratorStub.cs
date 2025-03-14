@@ -11,7 +11,7 @@ namespace FollowMe.Services
             return Task.CompletedTask;
         }
 
-        public Task EndMovementAsync(string carId, string aircraftId, bool isTakeoff)
+        public Task EndMovementAsync(string carId, string aircraftId, bool isTakeoff, string nodeTo)
         {
             Logger.Log("OrchestratorStubService", "INFO", $"Заглушка: Запрос на окончание движения для машины {carId}.");
             return Task.CompletedTask;

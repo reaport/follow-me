@@ -3,48 +3,68 @@
   "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\carrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\carrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\carregistrationhostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\carregistrationhostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\controllers\\followmecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\controllers\\followmecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\igroundcontrolservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\igroundcontrolservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\utils\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\utils\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\orchestratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\orchestratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\iorchestratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\iorchestratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\orchestratorstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\orchestratorstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\iorchestratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\iorchestratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\orchestratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\orchestratorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\igroundcontrolservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\igroundcontrolservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\carrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\carrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\logs.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\logs.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\carregistrationhostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\carregistrationhostedservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\data\\cardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\data\\cardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\data\\carstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\data\\carstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\groundcontrolservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\services\\groundcontrolservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\utils\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\utils\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\services\\groundcontrolstub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -71,24 +91,8 @@
       "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\data\\errorresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\data\\carstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\data\\carstatusenum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\data\\cardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\data\\cardto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\data\\auditdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\data\\auditdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\utils\\carrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\utils\\carrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\logs.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\logs.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\cars.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -97,14 +101,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|c:\\users\\user\\source\\repos\\reaport\\follow-me\\follow-me\\follow-me\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B352DFA4-6C52-4DF9-B1FF-CC274C03B84F}|follow-me\\follow-me.csproj|solutionrelative:follow-me\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Views\\Admin\\Audit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -152,6 +148,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\NavigationController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:follow-me\\Controllers\\NavigationController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Utils\\CarRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:follow-me\\Utils\\CarRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -161,7 +161,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -189,130 +189,102 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Logger.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Utils\\Logger.cs",
-              "RelativeDocumentMoniker": "follow-me\\Utils\\Logger.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Utils\\Logger.cs",
-              "RelativeToolTip": "follow-me\\Utils\\Logger.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAwCoAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T16:40:57.364Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Program.cs",
-              "RelativeDocumentMoniker": "follow-me\\Program.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Program.cs",
-              "RelativeToolTip": "follow-me\\Program.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T15:26:16.059Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "follow-me\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "follow-me\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFMAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T16:15:41.966Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CarRegistrationHostedService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\CarRegistrationHostedService.cs",
-              "RelativeDocumentMoniker": "follow-me\\Services\\CarRegistrationHostedService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\CarRegistrationHostedService.cs",
-              "RelativeToolTip": "follow-me\\Services\\CarRegistrationHostedService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T19:59:49.454Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "IGroundControlService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\IGroundControlService.cs",
-              "RelativeDocumentMoniker": "follow-me\\Services\\IGroundControlService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\IGroundControlService.cs",
-              "RelativeToolTip": "follow-me\\Services\\IGroundControlService.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAA1wC4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T17:50:32.651Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CarRepository.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\CarRepository.cs",
-              "RelativeDocumentMoniker": "follow-me\\Services\\CarRepository.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\CarRepository.cs",
-              "RelativeToolTip": "follow-me\\Services\\CarRepository.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAiwBsAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T19:59:54.477Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FollowMeController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\FollowMeController.cs",
-              "RelativeDocumentMoniker": "follow-me\\Controllers\\FollowMeController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\FollowMeController.cs",
-              "RelativeToolTip": "follow-me\\Controllers\\FollowMeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0BAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T15:20:04.911Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "OrchestratorService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\OrchestratorService.cs",
               "RelativeDocumentMoniker": "follow-me\\Services\\OrchestratorService.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\OrchestratorService.cs",
               "RelativeToolTip": "follow-me\\Services\\OrchestratorService.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAYwDcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAABoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T12:12:15.24Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\appsettings.json",
+              "RelativeDocumentMoniker": "follow-me\\appsettings.json",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\appsettings.json",
+              "RelativeToolTip": "follow-me\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-26T17:09:01.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "logs.txt",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\logs.txt",
+              "RelativeDocumentMoniker": "follow-me\\logs.txt",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\logs.txt",
+              "RelativeToolTip": "follow-me\\logs.txt",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-03-02T13:06:00.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CarRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\CarRepository.cs",
+              "RelativeDocumentMoniker": "follow-me\\Services\\CarRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\CarRepository.cs",
+              "RelativeToolTip": "follow-me\\Services\\CarRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T19:59:54.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IGroundControlService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\IGroundControlService.cs",
+              "RelativeDocumentMoniker": "follow-me\\Services\\IGroundControlService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\IGroundControlService.cs",
+              "RelativeToolTip": "follow-me\\Services\\IGroundControlService.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAQwC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T17:50:32.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "IOrchestratorService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\IOrchestratorService.cs",
               "RelativeDocumentMoniker": "follow-me\\Services\\IOrchestratorService.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\IOrchestratorService.cs",
               "RelativeToolTip": "follow-me\\Services\\IOrchestratorService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T12:11:52.167Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 0,
+              "Title": "FollowMeController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\FollowMeController.cs",
+              "RelativeDocumentMoniker": "follow-me\\Controllers\\FollowMeController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\FollowMeController.cs",
+              "RelativeToolTip": "follow-me\\Controllers\\FollowMeController.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAgwJMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T15:20:04.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "OrchestratorStub.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\OrchestratorStub.cs",
               "RelativeDocumentMoniker": "follow-me\\Services\\OrchestratorStub.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\OrchestratorStub.cs",
               "RelativeToolTip": "follow-me\\Services\\OrchestratorStub.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAkwA0AAABUAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAkwA0AAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T12:12:40.346Z",
               "EditorCaption": ""
@@ -320,84 +292,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "GroundControlService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\GroundControlService.cs",
-              "RelativeDocumentMoniker": "follow-me\\Services\\GroundControlService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\GroundControlService.cs",
-              "RelativeToolTip": "follow-me\\Services\\GroundControlService.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAkwHgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T15:18:44.019Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "GroundControlStub.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\GroundControlStub.cs",
-              "RelativeDocumentMoniker": "follow-me\\Services\\GroundControlStub.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\GroundControlStub.cs",
-              "RelativeToolTip": "follow-me\\Services\\GroundControlStub.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T17:51:14.228Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "WeNeedFollowMeResponseDto.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\WeNeedFollowMeResponseDto.cs",
-              "RelativeDocumentMoniker": "follow-me\\Data\\WeNeedFollowMeResponseDto.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\WeNeedFollowMeResponseDto.cs",
-              "RelativeToolTip": "follow-me\\Data\\WeNeedFollowMeResponseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T15:48:58.307Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "VehicleRegistrationResponse.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\VehicleRegistrationResponse.cs",
-              "RelativeDocumentMoniker": "follow-me\\Data\\VehicleRegistrationResponse.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\VehicleRegistrationResponse.cs",
-              "RelativeToolTip": "follow-me\\Data\\VehicleRegistrationResponse.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T19:57:17.078Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "MoveResponse.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\MoveResponse.cs",
-              "RelativeDocumentMoniker": "follow-me\\Data\\MoveResponse.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\MoveResponse.cs",
-              "RelativeToolTip": "follow-me\\Data\\MoveResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-14T19:57:00.236Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "ErrorResponseDto.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\ErrorResponseDto.cs",
-              "RelativeDocumentMoniker": "follow-me\\Data\\ErrorResponseDto.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\ErrorResponseDto.cs",
-              "RelativeToolTip": "follow-me\\Data\\ErrorResponseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T15:50:40.387Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
               "Title": "CarStatusEnum.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\CarStatusEnum.cs",
               "RelativeDocumentMoniker": "follow-me\\Data\\CarStatusEnum.cs",
@@ -405,25 +299,155 @@
               "RelativeToolTip": "follow-me\\Data\\CarStatusEnum.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T15:31:38.487Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T15:31:38.487Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 9,
               "Title": "CarDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\CarDto.cs",
               "RelativeDocumentMoniker": "follow-me\\Data\\CarDto.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\CarDto.cs",
               "RelativeToolTip": "follow-me\\Data\\CarDto.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T15:30:52.026Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T15:30:52.026Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "follow-me\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "follow-me\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAALAAAAAAAAAAAAAAwNIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-02T16:15:41.966Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
+              "Title": "GroundControlService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\GroundControlService.cs",
+              "RelativeDocumentMoniker": "follow-me\\Services\\GroundControlService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\GroundControlService.cs",
+              "RelativeToolTip": "follow-me\\Services\\GroundControlService.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAkwHgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T15:18:44.019Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CarRegistrationHostedService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\CarRegistrationHostedService.cs",
+              "RelativeDocumentMoniker": "follow-me\\Services\\CarRegistrationHostedService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\CarRegistrationHostedService.cs",
+              "RelativeToolTip": "follow-me\\Services\\CarRegistrationHostedService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAwCYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T19:59:49.454Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "follow-me\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\appsettings.Development.json",
+              "RelativeToolTip": "follow-me\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-02-26T17:09:08.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Program.cs",
+              "RelativeDocumentMoniker": "follow-me\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Program.cs",
+              "RelativeToolTip": "follow-me\\Program.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAlwFcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T15:26:16.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Logger.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Utils\\Logger.cs",
+              "RelativeDocumentMoniker": "follow-me\\Utils\\Logger.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Utils\\Logger.cs",
+              "RelativeToolTip": "follow-me\\Utils\\Logger.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwCoAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T16:40:57.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "GroundControlStub.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\GroundControlStub.cs",
+              "RelativeDocumentMoniker": "follow-me\\Services\\GroundControlStub.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Services\\GroundControlStub.cs",
+              "RelativeToolTip": "follow-me\\Services\\GroundControlStub.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwCwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T17:51:14.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "WeNeedFollowMeResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\WeNeedFollowMeResponseDto.cs",
+              "RelativeDocumentMoniker": "follow-me\\Data\\WeNeedFollowMeResponseDto.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\WeNeedFollowMeResponseDto.cs",
+              "RelativeToolTip": "follow-me\\Data\\WeNeedFollowMeResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T15:48:58.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "VehicleRegistrationResponse.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\VehicleRegistrationResponse.cs",
+              "RelativeDocumentMoniker": "follow-me\\Data\\VehicleRegistrationResponse.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\VehicleRegistrationResponse.cs",
+              "RelativeToolTip": "follow-me\\Data\\VehicleRegistrationResponse.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T19:57:17.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "MoveResponse.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\MoveResponse.cs",
+              "RelativeDocumentMoniker": "follow-me\\Data\\MoveResponse.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\MoveResponse.cs",
+              "RelativeToolTip": "follow-me\\Data\\MoveResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-14T19:57:00.236Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "ErrorResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\ErrorResponseDto.cs",
+              "RelativeDocumentMoniker": "follow-me\\Data\\ErrorResponseDto.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\ErrorResponseDto.cs",
+              "RelativeToolTip": "follow-me\\Data\\ErrorResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T15:50:40.387Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
               "Title": "WeNeedFollowMeRequestDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\WeNeedFollowMeRequestDto.cs",
               "RelativeDocumentMoniker": "follow-me\\Data\\WeNeedFollowMeRequestDto.cs",
@@ -431,12 +455,11 @@
               "RelativeToolTip": "follow-me\\Data\\WeNeedFollowMeRequestDto.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-23T15:21:52.258Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T15:21:52.258Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "AuditDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Data\\AuditDto.cs",
               "RelativeDocumentMoniker": "follow-me\\Data\\AuditDto.cs",
@@ -444,12 +467,11 @@
               "RelativeToolTip": "follow-me\\Data\\AuditDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-02T16:31:40.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-02T16:31:40.956Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 37,
               "Title": "CarRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Utils\\CarRepository.cs",
               "RelativeDocumentMoniker": "follow-me\\Utils\\CarRepository.cs",
@@ -461,19 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "logs.txt",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\logs.txt",
-              "RelativeDocumentMoniker": "follow-me\\logs.txt",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\logs.txt",
-              "RelativeToolTip": "follow-me\\logs.txt",
-              "ViewState": "AgIAAO8AAAAAAAAAAAAAANIAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-03-02T13:06:00.284Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "cars.txt",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\cars.txt",
               "RelativeDocumentMoniker": "follow-me\\cars.txt",
@@ -485,7 +495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "appsettings.Production.json",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\appsettings.Production.json",
               "RelativeDocumentMoniker": "follow-me\\appsettings.Production.json",
@@ -497,31 +507,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\appsettings.json",
-              "RelativeDocumentMoniker": "follow-me\\appsettings.json",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\appsettings.json",
-              "RelativeToolTip": "follow-me\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-26T17:09:01.32Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "follow-me\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\appsettings.Development.json",
-              "RelativeToolTip": "follow-me\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-26T17:09:08.473Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 28,
               "Title": "follow-me.http",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\follow-me.http",
               "RelativeDocumentMoniker": "follow-me\\follow-me.http",
@@ -533,7 +519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 27,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "follow-me\\Properties\\launchSettings.json",
@@ -545,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 26,
               "Title": "Logs.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Views\\Admin\\Logs.cshtml",
               "RelativeDocumentMoniker": "follow-me\\Views\\Admin\\Logs.cshtml",
@@ -556,7 +542,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 25,
               "Title": "Audit.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Views\\Admin\\Audit.cshtml",
               "RelativeDocumentMoniker": "follow-me\\Views\\Admin\\Audit.cshtml",
@@ -567,7 +553,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 31,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Views\\Admin\\Index.cshtml",
               "RelativeDocumentMoniker": "follow-me\\Views\\Admin\\Index.cshtml",
@@ -579,7 +565,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 29,
               "Title": "follow-me.csproj",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\follow-me.csproj",
               "RelativeDocumentMoniker": "follow-me\\follow-me.csproj",
@@ -591,7 +577,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 32,
               "Title": "FollowMeContractTests.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Tests\\FollowMeContractTests.cs",
               "RelativeDocumentMoniker": "follow-me\\Tests\\FollowMeContractTests.cs",
@@ -603,7 +589,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 33,
               "Title": "ReflectionExtensions.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Extention\\ReflectionExtensions.cs",
               "RelativeDocumentMoniker": "follow-me\\Extention\\ReflectionExtensions.cs",
@@ -615,7 +601,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 34,
               "Title": "SessionExtention.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Extention\\SessionExtention.cs",
               "RelativeDocumentMoniker": "follow-me\\Extention\\SessionExtention.cs",
@@ -627,7 +613,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 30,
               "Title": "Microsoft.NET.Sdk.DefaultItems.Shared.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.Shared.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.101\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.Sdk.DefaultItems.Shared.targets",
@@ -639,7 +625,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 35,
               "Title": "FollowMeIntegrationTests.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Tests\\FollowMeIntegrationTests.cs",
               "RelativeDocumentMoniker": "follow-me\\Tests\\FollowMeIntegrationTests.cs",
@@ -651,7 +637,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 36,
               "Title": "NavigationController.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Reaport\\follow-me\\follow-me\\follow-me\\Controllers\\NavigationController.cs",
               "RelativeDocumentMoniker": "follow-me\\Controllers\\NavigationController.cs",

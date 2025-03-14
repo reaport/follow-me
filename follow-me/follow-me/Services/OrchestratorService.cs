@@ -50,11 +50,11 @@ namespace FollowMe.Services
         /// <param name="aircraftId">Идентификатор самолета.</param>
         /// <param name="isTakeoff">Флаг, указывающий, связан ли запрос с взлетом.</param>
         /// <returns>Задача, представляющая асинхронную операцию.</returns>
-        public async Task EndMovementAsync(string carId, string aircraftId, bool isTakeoff)
+        public async Task EndMovementAsync(string carId, string aircraftId, bool isTakeoff, string nodeTo)
         {
             Logger.Log("OrchestratorService", "INFO", $"Отправка запроса на окончание движения для машины {carId}.");
 
-            var requestBody = new { aircraft_id = aircraftId, is_takeoff = isTakeoff };
+            var requestBody = new { aircraft_id = aircraftId, is_takeoff = isTakeoff,  node_id = nodeTo };
             var jsonContent = new StringContent(
                 JsonSerializer.Serialize(requestBody),
                 Encoding.UTF8,

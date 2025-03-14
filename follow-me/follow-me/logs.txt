@@ -2,3 +2,7 @@
 14.03.2025 22:39:18 | GroundControlService | INFO | Машина зарегистрированна. Ответ: {"garrageNodeId":"garrage_follow-me_3","vehicleId":"follow-me_3","serviceSpots":{"parking_1":"parking_1_follow-me_3","parking_2":"parking_2_follow-me_3"}}.
 14.03.2025 22:39:18 | GroundControlService | INFO | Регистрация машины типа follow-me.
 14.03.2025 22:39:19 | GroundControlService | INFO | Машина зарегистрированна. Ответ: {"garrageNodeId":"garrage_follow-me_4","vehicleId":"follow-me_4","serviceSpots":{"parking_1":"parking_1_follow-me_4","parking_2":"parking_2_follow-me_4"}}.
+15.03.2025 2:37:19 | GroundControlService | INFO | Регистрация машины типа follow-me.
+15.03.2025 2:37:20 | GroundControlService | INFO | Машина зарегистрированна. Ответ: {"garrageNodeId":"garrage_follow-me_1","vehicleId":"follow-me_1","serviceSpots":{"parking_1":"parking_1_follow-me_1","parking_2":"parking_2_follow-me_1"}}.
+15.03.2025 2:37:20 | GroundControlService | INFO | Регистрация машины типа follow-me.
+15.03.2025 2:37:20 | GroundControlService | INFO | Машина зарегистрированна. Ответ: {"garrageNodeId":"garrage_follow-me_2","vehicleId":"follow-me_2","serviceSpots":{"parking_1":"parking_1_follow-me_2","parking_2":"parking_2_follow-me_2"}}.

@@ -146,7 +146,7 @@ namespace FollowMe.Controllers
                 // Отправляем запрос на окончание движения в Orchestrator с aircraftId и isTakeoff
                 await RetryAsync(async () =>
                 {
-                    await _orchestratorService.EndMovementAsync(vehicleId, aircraftId, isTakeoff);
+                    await _orchestratorService.EndMovementAsync(vehicleId, aircraftId, isTakeoff, nodeTo);
                 });
 
                 Logger.Log("FollowMeController", "INFO", $"Движение из NodeTo до гаража {vehicleId}.");
