@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 namespace FollowMe.Data
 {
     public class MoveResponse

@@ -113,7 +113,6 @@ public class AdminController : ControllerBase
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Ошибка при чтении логов: {ex.Message}");
             return StatusCode(500, new { Message = "Произошла ошибка при получении логов." });
         }
     }
@@ -144,7 +143,6 @@ public class AdminController : ControllerBase
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Ошибка при чтении аудита: {ex.Message}");
             return StatusCode(500, new { Message = "Произошла ошибка при получении аудита." });
         }
     }
@@ -162,7 +160,6 @@ public class AdminController : ControllerBase
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Ошибка при очистке логов: {ex.Message}");
             return StatusCode(500, new { Message = "Произошла ошибка при очистке логов." });
         }
     }
@@ -180,7 +177,6 @@ public class AdminController : ControllerBase
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Ошибка при очистке аудита: {ex.Message}");
             return StatusCode(500, new { Message = "Произошла ошибка при очистке аудита." });
         }
     }
