@@ -66,7 +66,7 @@ namespace FollowMe.Controllers
                 return Ok(immediateResponse);
             }
 
-            // Ожидаем первую машину, которая вернется в гараж
+            // Ожидаем первую освободившуюся машину
             car = await WaitForAvailableCarAsync(cars);
             if (car == null)
             {
