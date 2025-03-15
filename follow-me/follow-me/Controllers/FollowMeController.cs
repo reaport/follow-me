@@ -283,7 +283,6 @@ namespace FollowMe.Controllers
                     if (attempt == maxAttempts)
                     {
                         Logger.Log("FollowMeController", "ERROR", $"Ошибка после {maxAttempts} попыток: {ex.Message}");
-                        throw;
                     }
 
                     Logger.Log("FollowMeController", "WARNING", $"Попытка {attempt} не удалась. Ошибка: {ex.Message}. Повтор через {delaySeconds} секунд.");
